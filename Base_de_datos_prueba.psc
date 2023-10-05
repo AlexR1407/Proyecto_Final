@@ -21,19 +21,29 @@ Algoritmo Base_de_datos
 		Escribir Sin Saltar "" ; Leer entrada;
 		Segun entrada Hacer
 			1:
-				Escribir Sin Saltar "Nombre: ";
-				Leer nombre[i];
-				Escribir Sin Saltar "Apellido: ";
-				Leer apellido[i];
-				Escribir Sin Saltar "Cedula de ciudadania: ";
-				Leer cedulaC[i];
-				i=i+1;
-				Limpiar Pantalla;
-				Escribir "Registro con exito";
+				si i<>limite Entonces
+					Escribir Sin Saltar "Nombre: ";
+					Leer nombre[i];
+					Escribir Sin Saltar "Apellido: ";
+					Leer apellido[i];
+					Escribir Sin Saltar "Cedula de ciudadania: ";
+					Leer cedulaC[i];
+					i=i+1;
+					Limpiar Pantalla;
+					Escribir "Registro con exito";
+				SiNo
+					Limpiar Pantalla;
+					Escribir "Llego al limite";
+				FinSi
+				
 			2:
 				Escribir "Buscar datos";
 			3:
-				Escribir "Listar";
+				Limpiar Pantalla;
+				i=0;
+				Para i=0 Hasta limite-1 Con Paso 1 Hacer
+					Escribir "ID: ",i+1," Nombre: ",nombre[i]," Apellido: ",apellido[i]," Cedula: ",cedulaC[i];
+				FinPara
 			De Otro Modo:
 				Escribir "Opción no valida";
 		FinSegun
