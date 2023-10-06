@@ -2,16 +2,21 @@ Algoritmo Base_de_datos
 	//Nombre
 	//Apellido
 	//CC.
-	Definir limite, i, entrada Como Entero;
-	Definir bandera Como Logico;
+	Definir limite, i, j, entrada, ingresados, p Como Entero;
+	Definir bandera, bandera2 Como Logico;
 	limite=10;
-	i=0;
+	i=1;
 	bandera=Falso;
-	entrada=0;
+	bandera2=Falso;
+	entrada=1;
+	ingresados=1;
+	j=1;
+	p=1;
 	Dimension nombre[limite];
 	Dimension apellido[limite];
 	Dimension cedulaC[limite];
-	Definir nombre, apellido, cedulaC Como texto;
+	Definir nombre, apellido, cedulaC, busqueda Como texto;
+	busqueda="";
 	
 	Repetir //Se va a repetir cuando la condición es falsa
 		Escribir "Opciones del sistema";
@@ -21,6 +26,7 @@ Algoritmo Base_de_datos
 		Escribir Sin Saltar "" ; Leer entrada;
 		Segun entrada Hacer
 			1:
+				i=ingresados;
 				si i<>limite Entonces
 					Escribir Sin Saltar "Nombre: ";
 					Leer nombre[i];
@@ -28,22 +34,55 @@ Algoritmo Base_de_datos
 					Leer apellido[i];
 					Escribir Sin Saltar "Cedula de ciudadania: ";
 					Leer cedulaC[i];
-					i=i+1;
-					Limpiar Pantalla;
-					Escribir "Registro con exito";
+					para p=1 Hasta limite Con Paso 1 Hacer
+						si cedulaC[p]=cedulaC[i] Entonces
+							bandera2=Verdadero;
+							p=limite;
+						FinSi
+					FinPara
+					si bandera Entonces
+						nombre[i]="";
+						apellido[i]="";
+						cedulaC[i]="";
+						Escribir "Este registro ya existe";
+					SiNo
+						i=i+1;
+						Limpiar Pantalla;
+						Escribir "Registro con exito";
+						ingresados=ingresados+1;
+					FinSi
 				SiNo
 					Limpiar Pantalla;
 					Escribir "Llego al limite";
 				FinSi
 				
 			2:
-				Escribir "Buscar datos";
+				Limpiar Pantalla;
+				si ingresados > 1 entonces
+					Escribir Sin Saltar "Ingrese el documento de identidad: ";
+					Leer busqueda
+					Para j=1 Hasta limite Con Paso 1 Hacer
+						si cedulaC[j]==busqueda Entonces
+							Escribir "DAtos encontrados";
+							Escribir "ID: ",j,"   Nombre: ",nombre[j],"   Apellido: ",apellido[j],"   Cedula: ",cedulaC[j];
+						FinSi
+					FinPara
+				SiNo
+					Escribir "No hay datos registrados... "
+				FinSi
 			3:
 				Limpiar Pantalla;
-				i=0;
-				Para i=0 Hasta limite-1 Con Paso 1 Hacer
-					Escribir "ID: ",i+1," Nombre: ",nombre[i]," Apellido: ",apellido[i]," Cedula: ",cedulaC[i];
-				FinPara
+				i=1;
+				si ingresados >1 Entonces
+					Para i=1 Hasta limite Con Paso 1 Hacer
+						si nombre[i]<>"" Entonces
+							Escribir "ID: ",i,"   Nombre: ",nombre[i],"   Apellido: ",apellido[i],"   Cedula: ",cedulaC[i];
+						FinSi
+					FinPara
+				SiNo
+					Escribir "No hay registros en el sistema";
+				FinSi
+				
 			De Otro Modo:
 				Escribir "Opción no valida";
 		FinSegun
