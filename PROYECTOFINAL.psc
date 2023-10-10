@@ -1,10 +1,13 @@
 Algoritmo PROYECTOFINAL
 	Definir INGRESOALAAPP Como Caracter
-	Definir OPCIONMENUPRINCIPAL, MAIN, usuario Como Entero
+	Definir OPCIONMENUPRINCIPAL, MAIN Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Dimension Nombre[200], Apellido[200], Telefono[200]
+	Definir longdetel, limite, datosingresados, opc, ingresados, i como entero //opc=respuesta,usuario,cedula
 	AÑO=2024
-	usuario=0
+	limite=2; i=1; ingresados=1
+	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite]
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula como texto
+	
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
 	Escribir "$$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\ "
@@ -60,27 +63,65 @@ Algoritmo PROYECTOFINAL
 		borrar pantalla
 		Segun MAIN Hacer
 			1:
-				usuario=(usuario+1)
-				Escribir "---------------------------------------------------------------------------"
-				Escribir Sin Saltar "Ingrese su nombre: "
-				Leer Nombre[usuario]
-				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir Sin saltar "Ingrese su apellido: "
-				Leer Apellido[usuario]
-				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir " "
-				
-				repetir
-					Escribir "--------------------------------------------------------------------------"
-					Escribir "Ingrese su numero de telefono: "
+				i=datosingresados
+				si i<>limite Entonces
+					Escribir "---------------------------------------------------------------------------"
+					Escribir Sin Saltar "Ingrese su nombre: "
+					Leer Nombre[limite]
 					Escribir " "
-					Leer Telefono[usuario]
-					Escribir "--------------------------------------------------------------------------"
-				Hasta Que (Telefono[usuario]>1000000000 o Telefono[usuario]<9999999999)
+					Escribir "---------------------------------------------------------------------------"
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir Sin saltar "Ingrese su apellido: "
+					Leer Apellido[limite]
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir Sin Saltar "Ingrese su correo electronico: "
+					Leer Correo[limite]
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir "¿Es doctor/a?"
+					Escribir "1. Sí"
+					Escribir "2. No"
+					Leer opc
+					si	(opc=1) Entonces
+						repetir
+							Escribir "--------------------------------------------------------------------------"
+							Escribir sin saltar "Ingrese su codigo de cedula medica de 6 digitos: "
+							Leer Cedula[limite]
+							Escribir "--------------------------------------------------------------------------"
+							longdetel=longitud(Cedula[limite])
+							Si (longdetel>7 o longdetel<5) Entonces
+								Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
+							FinSi
+						Hasta Que (longdetel=6)
+					FinSi
+					repetir
+						Escribir "--------------------------------------------------------------------------"
+						Escribir sin saltar "Ingrese su numero de telefono: "
+						Leer Telefono[limite]
+						Escribir "--------------------------------------------------------------------------"
+						longdetel=longitud(Telefono[limite])
+						Si (longdetel<10) Entonces
+							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
+						FinSi
+					Hasta Que (longdetel=10)
+					
+					repetir
+						Escribir "--------------------------------------------------------------------------"
+						Escribir Sin Saltar "Ingrese su numero de DNI: "
+						Leer DNI[limite]
+						Escribir "--------------------------------------------------------------------------"
+						longdetel=longitud(DNI[limite])
+						Si (longdetel<7 o longdetel>9) Entonces
+							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
+						FinSi
+					Hasta Que (longdetel<9 y longdetel>7)
+				FinSi
 			2:
 				Escribir "Usted es: "
 				escribir " " 
@@ -92,7 +133,35 @@ Algoritmo PROYECTOFINAL
 				Escribir "|  		  2. Doctor           |"
 				Escribir " ----------------------------- "
 				Escribir " "
-				
+				Leer opc
+				Segun opc Hacer
+					1:
+						
+					2:
+						Limpiar Pantalla
+						si ingresados > 1 Entonces
+							Escribir Sin Saltar "Ingresar codigo de cedula medica de 6 digitos: "
+							Leer codigocedula
+							longdeltel=Longitud(codigocedula)
+							Repetir
+								si (longdeltel<6) Entonces
+									Escribir "Cantidad de caracteres insuficientes. Vuelva a intentar"
+								SiNo
+									si (longdeltel>6) Entonces
+										Escribir "Exeso de caracteres. Vuelva a intentar"
+									FinSi
+								FinSi
+							Hasta Que (longdeltel=6)
+							Para i=1 Hasta limite Con Paso 1 Hacer
+								si Cedula[i]==ruc Entonces
+									Escribir "Hola, doctor/a ",Nombre[i]," ",Apellido[i]
+									i=limite
+								FinSi
+							FinPara
+						SiNo
+							Escribir "No hay datos registrados... "
+						FinSi
+				FinSegun
 		FinSegun
 		
 	 Repetir
