@@ -1,14 +1,24 @@
 Algoritmo PROYECTOFINAL
 	Definir OPCIONMENUPRINCIPAL, MAIN, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, ingresados, i como entero //opc=respuesta,usuario,cedula
-	Definir menu Como Logico
-	menu=Falso
+	Definir longdetel, limite, datosingresados, opc, i, k, p, entrada como entero //opc=respuesta,usuario,cedula
+	Definir menu, menu2 Como Logico
+	menu=Falso; 
+	menu2=Falso
 	AÑO=2024
-	limite=3; i=1; ingresados=1
+	limite=3; i=1
+	datosingresados=1
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite]
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula como texto
 	
+	Para k=1 Hasta limite-1 Con Paso 1 Hacer
+		Nombre[k]=""
+		Apellido[k]=""
+		DNI[k]="" 
+		Telefono[k]=""
+		Correo[k]=""
+		Cedula[k]=""
+	FinPara
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
 	Escribir "$$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\ "
@@ -63,8 +73,11 @@ Algoritmo PROYECTOFINAL
 			leer OPCCIC
 		borrar pantalla
 		Segun OPCCIC Hacer
+			0:
+				menu=Falso
 			1:
 				i=datosingresados
+				menu2=Falso
 				si i<>limite Entonces
 					Escribir "---------------------------------------------------------------------------"
 					Escribir Sin Saltar "Ingrese su nombre: "
@@ -122,6 +135,34 @@ Algoritmo PROYECTOFINAL
 							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
 						FinSi
 					Hasta Que (longdetel<9 y longdetel>7)
+					para p=1 Hasta limite-1 Con Paso 1 Hacer
+						si Correo[p]=Correo[i] y i<>p Entonces
+							menu2=Verdadero
+							p=limite
+						FinSi
+					FinPara
+					si menu2 Entonces
+						Escribir "Hay datos que ya existen"
+					SiNo
+						//i=i+1 //Verificar error
+						Escribir "Registro con exito"
+						datosingresados=datosingresados+1
+					FinSi
+				SiNo
+					Escribir "Base de datos llena"
+				FinSi
+					
+				Escribir "¿Los datos son correctos?"
+				Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+				Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+				Escribir "1. SI"
+				Escribir "2. NO"
+				Leer entrada
+				si entrada==1 Entonces
+					menu=Verdadero
+				SiNo
+					menu=Falso
+					Escribir "Seción cerrada"
 				FinSi
 			2:
 				Escribir "Usted es: "
@@ -137,7 +178,38 @@ Algoritmo PROYECTOFINAL
 				Leer opc
 				Segun opc Hacer
 					1:
-						
+						si datosingresados > 1 Entonces
+							si datosingresados > 1 Entonces
+								Escribir Sin Saltar "Correo electronico: "
+								leer codigocedula
+								Para i=1 Hasta limite-1 Con Paso 1 Hacer
+									si Correo[i]==codigocedula Entonces
+										Escribir "Correo electronico existente"
+										i=limite
+									FinSi
+								FinPara
+							SiNo
+								Escribir "Correo electronico inexistente"
+								Escribir "1. Menu"
+								Escribir "0. Salir de la app"
+								Leer entrada
+								si entrada==1 Entonces
+									menu=Verdadero
+								SiNo
+									menu=Falso
+								FinSi
+							FinSi
+						SiNo
+							Escribir "No hay datos registrados"
+							Escribir "1. Menu"
+							Escribir "0. Salir de la app"
+							Leer entrada
+							si entrada==1 Entonces
+								menu=Verdadero
+							SiNo
+								menu=Falso
+							FinSi
+						FinSi
 					2:
 						Limpiar Pantalla
 						si ingresados > 1 Entonces
@@ -161,6 +233,14 @@ Algoritmo PROYECTOFINAL
 							FinPara
 						SiNo
 							Escribir "No hay datos registrados... "
+							Escribir "1. Menu"
+							Escribir "0. Salir de la app"
+							Leer entrada
+							si entrada==1 Entonces
+								menu=Verdadero
+							SiNo
+								menu=Falso
+							FinSi
 						FinSi
 				FinSegun
 			3:
@@ -230,9 +310,7 @@ Algoritmo PROYECTOFINAL
 					Fin Segun
 				Hasta Que (OPCIONMENUPRINCIPAL=0) 
 		FinSegun
-		//Escribir "¿Los datos son correctos?"
-		//Escribir "Nombre: ",Nombre[1],"	Apellido: ",Apellido[1],"	DNI: ",DNI[1]
-		//Escribir "Correo electronico: ",Correo[1],"	Nº celular: ",Telefono[1]
+		
 	Hasta Que (menu==Falso)
 FinAlgoritmo
 
