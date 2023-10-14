@@ -58,7 +58,8 @@ Algoritmo PROYECTOFINAL
 	Borrar Pantalla
 	//Inicio del programa
 	Repetir
-		
+		repetir
+			Limpiar Pantalla
 			Escribir " ----------------------------- " 
 			Escribir "|  	1. Crear Usuario         |"
 			Escribir " ----------------------------- "
@@ -73,6 +74,7 @@ Algoritmo PROYECTOFINAL
 			Escribir "|  	 0. Salir de la App       |"
 			Escribir " ----------------------------- "
 			leer OPCCIC
+		Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
 		borrar pantalla
 		Segun OPCCIC Hacer
 			0:
@@ -216,7 +218,8 @@ Algoritmo PROYECTOFINAL
 					Escribir "Seción cerrada"
 					Limpiar Pantalla
 				FinSi
-			2:
+			2:repetir
+				Limpiar Pantalla
 				Escribir "Usted es: "
 				escribir " " 
 				Escribir " ----------------------------- " 
@@ -227,7 +230,12 @@ Algoritmo PROYECTOFINAL
 				Escribir "|  		  2. Doctor           |"
 				Escribir " ----------------------------- "
 				Escribir " "
+				Escribir " ----------------------------- " 
+				Escribir "|  		  3. Volver           |"
+				Escribir " ----------------------------- "
+				Escribir " "
 				Leer opc
+			hasta que opc=1 o opc=2 o opc=3
 				Segun opc Hacer
 					1:
 						si datosingresados > 1 Entonces
@@ -273,10 +281,13 @@ Algoritmo PROYECTOFINAL
 								FinSi
 							FinSi
 						SiNo
-							Escribir "No hay datos registrados"
-							Escribir "1. Menu"
-							Escribir "0. Salir de la app"
-							Leer entrada
+							Repetir
+								Limpiar Pantalla
+								Escribir "No hay datos registrados"
+								Escribir "1. Menu"
+								Escribir "0. Salir de la app"
+								Leer entrada
+							Hasta Que (entrada=1 o entrada=0)
 							si entrada==1 Entonces
 								menu=Verdadero
 							SiNo
@@ -305,22 +316,30 @@ Algoritmo PROYECTOFINAL
 								FinSi
 							FinPara
 						SiNo
-							Escribir "No hay datos registrados... "
-							Escribir "1. Menu"
-							Escribir "0. Salir de la app"
-							Leer entrada
+							Repetir
+								Limpiar Pantalla
+								Escribir "No hay datos registrados... "
+								Escribir "1. Menu"
+								Escribir "0. Salir de la app"
+								Leer entrada
+							Hasta Que (entrada=1 o entrada=0)
 							si entrada==1 Entonces
 								menu=Verdadero
 							SiNo
 								menu=Falso
 							FinSi
+							
 						FinSi
+					De Otro Modo:
+						Limpiar Pantalla
+						menu = Verdadero
 				FinSegun
 		FinSegun
 		//*******************************************MENU DEL PACIENTE*************************************************************
 		Si(accesomenupaciente=Verdadero) entonces
 					Limpiar Pantalla
 					Repetir
+						Limpiar Pantalla
 						Escribir " -----------------                                              -----------------"
 						Escribir "| 1. NUEVO TURNO  |                                            | 2. MIS TURNOS   | "
 						Escribir " -----------------                                              ----------------- "
@@ -341,10 +360,29 @@ Algoritmo PROYECTOFINAL
 								Borrar Pantalla
 								// "NUEVO TURNO"
 								Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
-								Escribir "DÍA: "
-								Leer DIA
-								Escribir "MES: "
-								LEER MES
+								repetir
+									Escribir "DÍA: "
+									Leer DIA
+									Si DIA >= 1 y DIA <= 31 Entonces
+										CUMPLIRDIA=1
+									SiNo
+										CUMPLIRDIA=0
+									Fin Si
+								hasta que (DIA >= 1 y DIA <= 31 y CUMPLIRDIA==1)
+								Repetir 
+									Escribir "MES: "
+									LEER MES
+									CUMPLIRMES=0
+									Si MES=1 o MES=3 o MES=5 o MES=7 o MES=8 o MES=10 o MES=12 y DIA >= 1 y DIA <= 31 Entonces
+										CUMPLIRMES=1
+									Fin Si
+									Si MES=4 o MES=6 o MES=9 o MES=11 y DIA >= 1 y DIA < 31 Entonces
+										CUMPLIRMES=1
+									FinSi
+									si MES=2 y DIA>=1 y DIA<=28
+										CUMPLIRMES=1
+									FinSi
+								Hasta Que (MES >= 1 y MES <= 12 y CUMPLIRMES==1)
 								Escribir "Seleccione una Sede: " //sedes en desarrollo
 								Escribir "-----------------------------------"
 								Escribir " 	   SEDE Av. Corrientes		   "
