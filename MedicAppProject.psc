@@ -1,15 +1,16 @@
 Algoritmo PROYECTOFINAL
 	Definir OPCIONMENUPRINCIPAL, MAIN, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, i, k, p, entrada como entero //opc=respuesta,usuario,cedula
-	Definir menu, menu2 Como Logico
+	Definir longdetel, limite, datosingresados, opc, i, k, p, entrada, sede como entero //opc=respuesta,usuario,cedula
+	Definir menu, menu2, acceesomenupaciente Como Logico
 	menu=Falso; 
 	menu2=Falso
+	accesomenupaciente=Falso
 	AÑO=2024
 	limite=3; i=1
 	datosingresados=1
-	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite]
-	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula como texto
+	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, contraseña_iniciosesion como texto
 	
 	Para k=1 Hasta limite-1 Con Paso 1 Hacer
 		Nombre[k]=""
@@ -98,22 +99,9 @@ Algoritmo PROYECTOFINAL
 					Escribir "---------------------------------------------------------------------------"
 					Escribir " "
 					Escribir "---------------------------------------------------------------------------"
-					Escribir "¿Es doctor/a?"
-					Escribir "1. Sí"
-					Escribir "2. No"
-					Leer opc
-					si	(opc=1) Entonces
-						repetir
-							Escribir "--------------------------------------------------------------------------"
-							Escribir sin saltar "Ingrese su codigo de cedula medica de 6 digitos: "
-							Leer Cedula[i]
-							Escribir "--------------------------------------------------------------------------"
-							longdetel=longitud(Cedula[i])
-							Si (longdetel>7 o longdetel<5) Entonces
-								Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-							FinSi
-						Hasta Que (longdetel=6)
-					FinSi
+					Escribir sin saltar "Ingrese una contraseña para esta cuenta: "
+					Leer Contraseña[i]
+					Escribir "---------------------------------------------------------------------------"
 					repetir
 						Escribir "--------------------------------------------------------------------------"
 						Escribir sin saltar "Ingrese su numero de telefono: "
@@ -160,9 +148,11 @@ Algoritmo PROYECTOFINAL
 				Leer entrada
 				si entrada==1 Entonces
 					menu=Verdadero
+					Limpiar Pantalla
 				SiNo
 					menu=Falso
 					Escribir "Seción cerrada"
+					Limpiar Pantalla
 				FinSi
 			2:
 				Escribir "Usted es: "
@@ -190,6 +180,27 @@ Algoritmo PROYECTOFINAL
 								FinPara
 							SiNo
 								Escribir "Correo electronico inexistente"
+								Escribir "1. Menu"
+								Escribir "0. Salir de la app"
+								Leer entrada
+								si entrada==1 Entonces
+									menu=Verdadero
+								SiNo
+									menu=Falso
+								FinSi
+							FinSi
+							si datosingresados > 1 Entonces
+							Escribir Sin Saltar "Ingrese su contraseña: "
+								leer contraseña_iniciosesion
+								Para i=1 Hasta limite-1 Con Paso 1 Hacer
+									si Contraseña[i]==contraseña_inicosesion Entonces
+										Escribir "Contraseña existente"
+										i=limite
+										accesomenupaciente=Verdadero
+									FinSi
+								FinPara
+							SiNo
+								Escribir "Contraseña inexistente"
 								Escribir "1. Menu"
 								Escribir "0. Salir de la app"
 								Leer entrada
@@ -243,74 +254,84 @@ Algoritmo PROYECTOFINAL
 							FinSi
 						FinSi
 				FinSegun
-			3:
-				Repetir
-					Escribir " -----------------                                              -----------------"
-					Escribir "| 1. NUEVO TURNO  |                                            | 2. MIS TURNOS   | "
-					Escribir " -----------------                                              ----------------- "
-					Escribir " "
-					Escribir " "
-					Escribir " ----------------------                                      ---------------------------- "
-					Escribir "| 3. DATOS PERSONALES  |                                    | 4. INFORMACIÓN DE LA APP   |  "
-					Escribir " ----------------------                                      ----------------------------"
-					Escribir " "
-					Escribir " "
-					Escribir "				                       ------------- 											"
-					Escribir "				                       | 5. Salir  | 											"
-					Escribir "				                       -------------                                            "
-					Escribir Sin Saltar "INGRESE OPCIÓN:  "
-					Leer OPCIONMENUPRINCIPAL
-					Segun OPCIONMENUPRINCIPAL Hacer
-						1:
-							Borrar Pantalla
-							// "NUEVO TURNO"
-							Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
-							Escribir "DÍA: "
-							Leer DIA
-							Escribir "MES: "
-							LEER MES
-							
-						2:
-							Borrar Pantalla
-							// "MIS TURNOS"
-						3:
-							Borrar Pantalla
-							// "VER INFORMACION PERSONAL"
-							Escribir " "
-							Escribir " ------------------------------------------------- " 
-							Escribir "|  				0) Cerrar Sesión  				|"
-							Escribir " ------------------------------------------------- "
-							Escribir " "
-							Escribir " "
-							Escribir " ------------------------------------ " 
-							Escribir "|  N° > 0). Volver al menú           |"
-							Escribir " ------------------------------------ "
-							Escribir " "
-							Leer OPCIONMENUPRINCIPAL
-							borrar pantalla
-							
-						4:
-							Borrar Pantalla
-							// "INFORMACIÓN DE LA APP"
-							Escribir "---------------------------------"
-							Escribir "VERSIÓN DE LA APP: 1.0v"
-							Escribir "--------------------------------"
-							Escribir "DESARROLLADO POR: "
-							Escribir " THOMAS RODAS"
-							Escribir " FACUNDO RIBEIRO NUNES DA SILVA"
-							Escribir " FACUNDO FALLERONI"
-							Escribir " ALEX RAMOS "
-							Escribir "-------------------------------"
-						5:
-							Borrar Pantalla
-							//SALIR
-							OPCIONMENUPRINCIPAL=0
-						De Otro Modo:
-							OPCIONMENUPRINCIPAL<-1
-					Fin Segun
-				Hasta Que (OPCIONMENUPRINCIPAL=0) 
 		FinSegun
-		
+		//*******************************************MENU DEL PACIENTE*************************************************************
+		Si(accesomenupaciente=Verdadero) entonces
+					Limpiar Pantalla
+					Repetir
+						Escribir " -----------------                                              -----------------"
+						Escribir "| 1. NUEVO TURNO  |                                            | 2. MIS TURNOS   | "
+						Escribir " -----------------                                              ----------------- "
+						Escribir " "
+						Escribir " "
+						Escribir " ----------------------                                      ---------------------------- "
+						Escribir "| 3. DATOS PERSONALES  |                                    | 4. INFORMACIÓN DE LA APP   |  "
+						Escribir " ----------------------                                      ----------------------------"
+						Escribir " "
+						Escribir " "
+						Escribir "				                       ------------- 											"
+						Escribir "				                       | 5. Salir  | 											"
+						Escribir "				                       -------------                                            "
+						Escribir Sin Saltar "INGRESE OPCIÓN:  "
+						Leer OPCIONMENUPRINCIPAL
+						Segun OPCIONMENUPRINCIPAL Hacer
+							1:
+								Borrar Pantalla
+								// "NUEVO TURNO"
+								Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
+								Escribir "DÍA: "
+								Leer DIA
+								Escribir "MES: "
+								LEER MES
+								Escribir "Seleccione una Sede: " //sedes en desarrollo
+								Escribir ""
+								Escribir ""
+								Escribir ""
+								Escribir ""
+								Leer SEDE
+							2:
+								Borrar Pantalla
+								// "MIS TURNOS"
+							3:
+								Borrar Pantalla
+								// "VER INFORMACION PERSONAL"
+								Escribir " "
+								Escribir " ------------------------------------------------- " 
+								Escribir "|  				0) Cerrar Sesión  				|"
+								Escribir " ------------------------------------------------- "
+								Escribir " "
+								Escribir " "
+								Escribir " ------------------------------------ " 
+								Escribir "|  N° > 0). Volver al menú           |"
+								Escribir " ------------------------------------ "
+								Escribir " "
+								Leer OPCIONMENUPRINCIPAL
+								borrar pantalla
+								
+							4:
+								Borrar Pantalla
+								// "INFORMACIÓN DE LA APP"
+								Escribir "---------------------------------"
+								Escribir "VERSIÓN DE LA APP: 1.0v"
+								Escribir "--------------------------------"
+								Escribir "DESARROLLADO POR: "
+								Escribir " THOMAS RODAS"
+								Escribir " FACUNDO RIBEIRO NUNES DA SILVA"
+								Escribir " FACUNDO FALLERONI"
+								Escribir " ALEX RAMOS "
+								Escribir "-------------------------------"
+							5:
+								Borrar Pantalla
+								//SALIR
+								OPCIONMENUPRINCIPAL=0
+							De Otro Modo:
+								OPCIONMENUPRINCIPAL<-1
+						Fin Segun
+					Hasta Que (OPCIONMENUPRINCIPAL=0) 
+				SiNo
+				Escribir ""
+			FinSI
+			
 	Hasta Que (menu==Falso)
 FinAlgoritmo
 
