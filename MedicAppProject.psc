@@ -386,15 +386,15 @@ Algoritmo PROYECTOFINAL
 								Escribir " "
 								Escribir " "
 								Escribir "--------------------------------------------------------------"
-								Escribir " Nombre del usuario: ", Nombre[limite], " ", Apellido[limite] 
+								Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
 								Escribir "--------------------------------------------------------------"
 								Escribir " "
 								Escribir "-------------------------------------------------------------- "
-								Escribir " DNI usuario: ", DNI[limite]
+								Escribir " DNI usuario: ", DNI[i]
 								Escribir "--------------------------------------------------------------"
 								Escribir " "
 								Escribir "--------------------------------------------------------------"
-								Escribir " Correo Electrónico del usuario: ", Correo[limite]
+								Escribir " Correo Electrónico del usuario: ", Correo[i]
 								Escribir "--------------------------------------------------------------"
 								Escribir " "
 								Escribir " "
