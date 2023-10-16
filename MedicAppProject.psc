@@ -215,8 +215,9 @@ Algoritmo PROYECTOFINAL
 					Esperar 2 segundos
 					Limpiar Pantalla
 				SiNo
-					menu=Falso
-					Escribir "Seción cerrada"
+					menu=Verdadero
+					Escribir "Seción cerrada... Repita el proceso"
+					esperar 2 Segundos
 					Limpiar Pantalla
 				FinSi
 			2:repetir
