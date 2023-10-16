@@ -1,5 +1,5 @@
 Algoritmo PROYECTOFINAL
-	Definir OPCIONMENU, MAIN, OPCCIC Como Entero
+	Definir OPCIONMENU, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, limite, datosingresados, opc, i, k, p, entrada, sede, long como entero //opc=respuesta,usuario,cedula
 	Definir menu, menu2, acceesomenupaciente, accesomenudoctor Como Logico
@@ -200,13 +200,14 @@ Algoritmo PROYECTOFINAL
 				SiNo
 					Escribir "Base de datos llena"
 				FinSi
-					
-				Escribir "¿Los datos son correctos?"
-				Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
-				Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
-				Escribir "1. SI"
-				Escribir "2. NO"
-				Leer entrada
+				Repetir	
+					Escribir "¿Los datos son correctos?"
+					Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+					Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+					Escribir "1. SI"
+					Escribir "2. NO"
+					Leer entrada
+				Hasta Que (entrada == 1 o entrada == 2)
 				si entrada==1 Entonces
 					menu=Verdadero
 					Limpiar Pantalla 
@@ -246,7 +247,13 @@ Algoritmo PROYECTOFINAL
 									si Correo[i]==codigocedula Entonces
 										Escribir "Correo electronico existente"
 										i=limite
+									SiNo
+										Si Correo[i]<>codigocedula Entonces
+										Escribir "EL CORREO INGRESADO ES ERRONEO"
+										accesomenupaciente=Falso
+										menu=Verdadero
 									FinSi
+								FinSi
 								FinPara
 							SiNo
 								Escribir "Correo electronico inexistente"
@@ -267,6 +274,12 @@ Algoritmo PROYECTOFINAL
 										Escribir "Contraseña existente"
 										i=limite
 										accesomenupaciente=Verdadero
+									SiNo
+										Si Contraseña[i]<>contraseña_iniciosesion Entonces
+											Escribir "LA CONTRASEÑA INGRESADA ES ERRONEA"
+											accesomenupaciente=Falso
+											menu=Verdadero
+										FinSi
 									FinSi
 								FinPara
 							SiNo
@@ -383,12 +396,50 @@ Algoritmo PROYECTOFINAL
 										CUMPLIRMES=1
 									FinSi
 								Hasta Que (MES >= 1 y MES <= 12 y CUMPLIRMES==1)
-								Escribir "Seleccione una Sede: " //sedes en desarrollo
-								Escribir "-----------------------------------"
-								Escribir " 	   SEDE Av. Corrientes		   "
-								Escribir "-----------------------------------"
-								Escribir " "
-								Leer SEDE
+								Repetir
+									Limpiar Pantalla
+									Escribir "Seleccione una Sede: " //sedes en desarrollo
+									Escribir "------------------------------------"
+									Escribir " 	  1. SEDE AV. CORRIENTES		   "
+									Escribir " 		Av.Corrientes 3220         "
+									Escribir "------------------------------------"
+									Escribir " "
+									Escribir "------------------------------------"
+									Escribir " 	     2. SEDE POMPEYA		   "
+									Escribir " 		   Av.Saenz 835         "
+									Escribir "------------------------------------"
+									Escribir " "
+									Escribir "------------------------------------"
+									Escribir " 	   3. SEDE AV. SANTA FE		   "
+									Escribir " 		  Av.Santa Fe 930         "
+									Escribir "------------------------------------"
+									Escribir " "
+									Escribir "------------------------------------"
+									Escribir " 	   4. SEDE TRIUNVIRATO	   "
+									Escribir " 		Av.Triunvirato 3174         "
+									Escribir "------------------------------------"
+									Escribir " "
+									Escribir " "
+									Escribir " 0. Volver"
+									Leer SEDE
+								HASTA QUE (SEDE >=0 O SEDE <=4)
+								//------Comienzo de sedes
+								Segun SEDE Hacer
+									0: OPCIONMENU=1
+									1: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
+										
+										
+									2: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
+										
+										
+									3: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
+										
+										
+									4: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
+										
+										
+								FinSegun
+								//-----------Fin Sedes
 							2:
 								Borrar Pantalla
 								// "MIS TURNOS"
@@ -493,6 +544,31 @@ Algoritmo PROYECTOFINAL
 					SEGUN (OPCIONMENU) Hacer
 						1:
 						2:
+							Escribir "                @@@@@@@@@@@@                 "
+							Escribir "           @@@@@@@        @@@@@@@            "
+							Escribir "         @@@@                  @@@@          "
+							Escribir "       @@@                        @@@        "
+							Escribir "    @@@                            @@@       "
+							Escribir "    @@@           @@@@@@@@           @@@     "
+							Escribir "   @@@          @@@@@@@@@@@@@         @@@    "
+							Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+							Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+							Escribir "  @@          @@@@@@@@@@@@@@@@          @@   "
+							Escribir " @@@          @@@@@@@@@@@@@@@@@          @@  "
+							Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+							Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+							Escribir " @@             @@@@@@@@@@@@             @@  "
+							Escribir " @@@              @@@@@@@@@              @@  "
+							Escribir "  @@         @@@@@@@@@@@@@@@@@@         @@   "
+							Escribir "  @@@      @@@@@@@@@@@@@@@@@@@@@@@     @@@   "
+							Escribir "  @@@   @@@@@@@@@@@@@@@@@@@@@@@@@@   @@@     "
+							Escribir "	   @@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@     "
+							Escribir "     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      "
+							Escribir "        @@@@@@@@@@@@@@@@@@@@@@@@@@@          "
+							Escribir "           @@@@@@@@@@@@@@@@@@@@@@            "
+							Escribir "                @@@@@@@@@@@@                 "
+							Escribir " "
+							
 						3:Borrar Pantalla
 							// "INFORMACIÓN DE LA APP"
 							Escribir "---------------------------------"
