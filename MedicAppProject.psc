@@ -62,241 +62,11 @@ Algoritmo PROYECTOFINAL
 		PRIMERMENU();
 		//*******************************************MENU DEL PACIENTE*************************************************************
 		Si(accesomenupaciente=Verdadero) entonces
-					Limpiar Pantalla
-					Repetir
-						Limpiar Pantalla
-						Escribir " -----------------                                              -----------------"
-						Escribir "| 1. NUEVO TURNO  |                                            | 2. MIS TURNOS   | "
-						Escribir " -----------------                                              ----------------- "
-						Escribir " "
-						Escribir " "
-						Escribir " ----------------------                                      ---------------------------- "
-						Escribir "| 3. DATOS PERSONALES  |                                    | 4. INFORMACIÓN DE LA APP   |  "
-						Escribir " ----------------------                                      ----------------------------"
-						Escribir " "
-						Escribir " "
-						Escribir "				                       ------------- 											"
-						Escribir "				                       | 5. Salir  | 											"
-						Escribir "				                       -------------                                            "
-						Escribir Sin Saltar "INGRESE OPCIÓN:  "
-						Leer OPCIONMENU
-						Segun OPCIONMENU Hacer
-							1:
-								Borrar Pantalla
-								// "NUEVO TURNO"
-								Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
-								repetir
-									Escribir "DÍA: "
-									Leer DIA
-									Si DIA >= 1 y DIA <= 31 Entonces
-										CUMPLIRDIA=1
-									SiNo
-										CUMPLIRDIA=0
-									Fin Si
-								hasta que (DIA >= 1 y DIA <= 31 y CUMPLIRDIA==1)
-								Repetir 
-									Escribir "MES: "
-									LEER MES
-									CUMPLIRMES=0
-									Si MES=1 o MES=3 o MES=5 o MES=7 o MES=8 o MES=10 o MES=12 y DIA >= 1 y DIA <= 31 Entonces
-										CUMPLIRMES=1
-									Fin Si
-									Si MES=4 o MES=6 o MES=9 o MES=11 y DIA >= 1 y DIA < 31 Entonces
-										CUMPLIRMES=1
-									FinSi
-									si MES=2 y DIA>=1 y DIA<=28
-										CUMPLIRMES=1
-									FinSi
-								Hasta Que (MES >= 1 y MES <= 12 y CUMPLIRMES==1)
-								Repetir
-									Limpiar Pantalla
-									Escribir "Seleccione una Sede: " //sedes en desarrollo
-									Escribir "------------------------------------"
-									Escribir " 	  1. SEDE AV. CORRIENTES		   "
-									Escribir " 		Av.Corrientes 3220         "
-									Escribir "------------------------------------"
-									Escribir " "
-									Escribir "------------------------------------"
-									Escribir " 	     2. SEDE POMPEYA		   "
-									Escribir " 		   Av.Saenz 835         "
-									Escribir "------------------------------------"
-									Escribir " "
-									Escribir "------------------------------------"
-									Escribir " 	   3. SEDE AV. SANTA FE		   "
-									Escribir " 		  Av.Santa Fe 930         "
-									Escribir "------------------------------------"
-									Escribir " "
-									Escribir "------------------------------------"
-									Escribir " 	   4. SEDE TRIUNVIRATO	   "
-									Escribir " 		Av.Triunvirato 3174         "
-									Escribir "------------------------------------"
-									Escribir " "
-									Escribir " "
-									Escribir " 0. Volver"
-									Leer SEDE
-								HASTA QUE (SEDE >=0 O SEDE <=4)
-								//------Comienzo de sedes
-								Segun SEDE Hacer
-									0: OPCIONMENU=1
-									1: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
-										
-										
-									2: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
-										
-										
-									3: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
-										
-										
-									4: Escribir "SELECCIONE LA ESPECIALIDAD QUE NECESITE"
-										
-										
-								FinSegun
-								//-----------Fin Sedes
-							2:
-								Borrar Pantalla
-								// "MIS TURNOS"
-							3:
-								Borrar Pantalla
-								// "VER INFORMACION PERSONAL"
-								Escribir "                @@@@@@@@@@@@                 "
-								Escribir "           @@@@@@@        @@@@@@@            "
-								Escribir "         @@@@                  @@@@          "
-								Escribir "       @@@                        @@@        "
-								Escribir "    @@@                            @@@       "
-								Escribir "    @@@           @@@@@@@@           @@@     "
-								Escribir "   @@@          @@@@@@@@@@@@@         @@@    "
-								Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
-								Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
-								Escribir "  @@          @@@@@@@@@@@@@@@@          @@   "
-								Escribir " @@@          @@@@@@@@@@@@@@@@@          @@  "
-								Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
-								Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
-								Escribir " @@             @@@@@@@@@@@@             @@  "
-								Escribir " @@@              @@@@@@@@@              @@  "
-								Escribir "  @@         @@@@@@@@@@@@@@@@@@         @@   "
-								Escribir "  @@@      @@@@@@@@@@@@@@@@@@@@@@@     @@@   "
-								Escribir "  @@@   @@@@@@@@@@@@@@@@@@@@@@@@@@   @@@     "
-								Escribir "	   @@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@     "
-								Escribir "     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      "
-								Escribir "        @@@@@@@@@@@@@@@@@@@@@@@@@@@          "
-								Escribir "           @@@@@@@@@@@@@@@@@@@@@@            "
-								Escribir "                @@@@@@@@@@@@                 "
-								Escribir " "
-								Escribir " "
-								Escribir " "
-								Escribir " "
-								Escribir " "
-								Escribir "--------------------------------------------------------------"
-								Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
-								Escribir "--------------------------------------------------------------"
-								Escribir " "
-								Escribir "-------------------------------------------------------------- "
-								Escribir " DNI usuario: ", DNI[i]
-								Escribir "--------------------------------------------------------------"
-								Escribir " "
-								Escribir "--------------------------------------------------------------"
-								Escribir " Correo Electrónico del usuario: ", Correo[i]
-								Escribir "--------------------------------------------------------------"
-								Escribir " "
-								Escribir " "
-								Escribir " ------------------------------------------------- " 
-								Escribir "|  				0) Cerrar Sesión  				|"
-								Escribir " ------------------------------------------------- "
-								Escribir " "
-								Escribir " "
-								Escribir " ------------------------------------ " 
-								Escribir "|  N° > 0). Volver al menú           |"
-								Escribir " ------------------------------------ "
-								Escribir " "
-								Leer OPCIONMENUPACIENTE
-								borrar pantalla
-								
-							4:
-								Borrar Pantalla
-								// "INFORMACIÓN DE LA APP"
-								Escribir "---------------------------------"
-								Escribir "VERSIÓN DE LA APP: 1.55v"
-								Escribir "--------------------------------"
-								Escribir "DESARROLLADO POR: "
-								Escribir " THOMAS RODAS"
-								Escribir " ALEX RAMOS"
-								Escribir " FACUNDO FALLERONI"
-								Escribir " FACUNDO RIBEIRO NUNES DA SILVA "
-								Escribir "-------------------------------"
-							5:
-								Borrar Pantalla
-								//SALIR
-								OPCIONMENU=0
-							De Otro Modo:
-								OPCIONMENU<-1
-						Fin Segun
-					Hasta Que (OPCIONMENU=0) 
-				SiNo
-				
+				MENUDELPACIENTE()
 			FinSI
 			//----------------------MENÚ DOCTOR---------------------------------------
 			Si (accesomenudoctor=Verdadero) Entonces
-				Limpiar Pantalla
-				Repetir
-					Escribir " -----------------                                             ----------------------------"
-					Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
-					Escribir " -----------------                                             ---------------------------- "
-					Escribir " "
-					Escribir " "
-					Escribir "							  ----------------------------"
-					Escribir "							  | 3. INFORMACION DE LA APP |"
-					Escribir " 						  ----------------------------"
-					Escribir " "
-					Escribir " "
-					Escribir "				                       ------------- 											"
-					Escribir "				                       | 4. Salir  | 											"
-					Escribir "				                       -------------                                            "
-					Escribir Sin Saltar "INGRESE OPCIÓN:  "
-					Leer OPCIONMENU
-					SEGUN (OPCIONMENU) Hacer
-						1:
-						2:
-							Escribir "                @@@@@@@@@@@@                 "
-							Escribir "           @@@@@@@        @@@@@@@            "
-							Escribir "         @@@@                  @@@@          "
-							Escribir "       @@@                        @@@        "
-							Escribir "    @@@                            @@@       "
-							Escribir "    @@@           @@@@@@@@           @@@     "
-							Escribir "   @@@          @@@@@@@@@@@@@         @@@    "
-							Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
-							Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
-							Escribir "  @@          @@@@@@@@@@@@@@@@          @@   "
-							Escribir " @@@          @@@@@@@@@@@@@@@@@          @@  "
-							Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
-							Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
-							Escribir " @@             @@@@@@@@@@@@             @@  "
-							Escribir " @@@              @@@@@@@@@              @@  "
-							Escribir "  @@         @@@@@@@@@@@@@@@@@@         @@   "
-							Escribir "  @@@      @@@@@@@@@@@@@@@@@@@@@@@     @@@   "
-							Escribir "  @@@   @@@@@@@@@@@@@@@@@@@@@@@@@@   @@@     "
-							Escribir "	   @@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@     "
-							Escribir "     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      "
-							Escribir "        @@@@@@@@@@@@@@@@@@@@@@@@@@@          "
-							Escribir "           @@@@@@@@@@@@@@@@@@@@@@            "
-							Escribir "                @@@@@@@@@@@@                 "
-							Escribir " "
-							
-						3:Borrar Pantalla
-							// "INFORMACIÓN DE LA APP"
-							Escribir "---------------------------------"
-							Escribir "VERSIÓN DE LA APP: 1.55v"
-							Escribir "--------------------------------"
-							Escribir "DESARROLLADO POR: "
-							Escribir " THOMAS RODAS"
-							Escribir " ALEX RAMOS "
-							Escribir " FACUNDO FALLERONI"
-							Escribir " FACUNDO RIBEIRO NUNES DA SILVA "
-							Escribir "-------------------------------"
-						4: OPCIONMENU<-0
-						De Otro Modo:
-							OPCIONMENU<-1
-					FinSegun
-				Hasta Que (OPCIONMENU=0)
+				MENUDELDOCTOR()
 			FinSi
 	Hasta Que (menu==Falso)
 FinAlgoritmo
@@ -585,7 +355,7 @@ hasta que opc=1 o opc=2 o opc=3
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
 				lista_profecionales() 
-				
+				MENUDELDOCTOR()
 				
 			De Otro Modo:
 				PRIMERMENU();
@@ -614,18 +384,166 @@ Repetir
 	Escribir Sin Saltar "INGRESE OPCIÓN:  "
 	Leer OPCIONMENU
 
-	Segun OPCIONMENU Hacer
-	1:
-	2:
-	3:
-	4:
-	5:
+		Segun OPCIONMENU Hacer
+			1: 
+				NUEVOTURNO();
+			2:	MISTURNOS();
+			3: DATOSPERSONALES();
+			4: INFORMACIONDELAAPP();
+			5: CERRARAPP();
+		FinSegun
+	
 FinFuncion
 
+//---------------------------FUNCION PARA LOS TURNOS------------------------
+Funcion NUEVOTURNO ()
+	Borrar Pantalla
+	// "NUEVO TURNO"
+	Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
+	repetir
+		Escribir "DÍA: "
+		Leer DIA
+		Si DIA >= 1 y DIA <= 31 Entonces
+			CUMPLIRDIA=1
+		SiNo
+			CUMPLIRDIA=0
+		Fin Si
+	hasta que (DIA >= 1 y DIA <= 31 y CUMPLIRDIA==1)
+	Repetir 
+		Escribir "MES: "
+		LEER MES
+		CUMPLIRMES=0
+		Si MES=1 o MES=3 o MES=5 o MES=7 o MES=8 o MES=10 o MES=12 y DIA >= 1 y DIA <= 31 Entonces
+			CUMPLIRMES=1
+		Fin Si
+		Si MES=4 o MES=6 o MES=9 o MES=11 y DIA >= 1 y DIA < 31 Entonces
+			CUMPLIRMES=1
+		FinSi
+		si MES=2 y DIA>=1 y DIA<=28
+			CUMPLIRMES=1
+		FinSi
+	Hasta Que (MES >= 1 y MES <= 12 y CUMPLIRMES==1)
+	Repetir
+		Limpiar Pantalla
+		Escribir "Seleccione una Sede: " //sedes en desarrollo
+		Escribir "------------------------------------"
+		Escribir " 	  1. SEDE AV. CORRIENTES		   "
+		Escribir " 		Av.Corrientes 3220         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir "------------------------------------"
+		Escribir " 	     2. SEDE POMPEYA		   "
+		Escribir " 		   Av.Saenz 835         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir "------------------------------------"
+		Escribir " 	   3. SEDE AV. SANTA FE		   "
+		Escribir " 		  Av.Santa Fe 930         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir "------------------------------------"
+		Escribir " 	   4. SEDE TRIUNVIRATO	   "
+		Escribir " 		Av.Triunvirato 3174         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir " "
+		Escribir " 0. Volver"
+		Leer SEDE
+	HASTA QUE (SEDE >=0 O SEDE <=4)
+FinFuncion
+
+
+//---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
+Funcion MISTURNOS ()
+	
+FinFuncion
+
+//------------------------------------FUNCION INFORMACION PERSONAL DEL PACIENTE---------------------
+
+Funcion INFORMACIONPERSONAL() //FALTA LOS ARGUMENTOS
+	Definir OPCIONINFORMACIONPERSONAL Como Entero
+	Borrar Pantalla
+	// "VER INFORMACION PERSONAL"
+	Escribir "                @@@@@@@@@@@@                 "
+	Escribir "           @@@@@@@        @@@@@@@            "
+	Escribir "         @@@@                  @@@@          "
+	Escribir "       @@@                        @@@        "
+	Escribir "    @@@                            @@@       "
+	Escribir "    @@@           @@@@@@@@           @@@     "
+	Escribir "   @@@          @@@@@@@@@@@@@         @@@    "
+	Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+	Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+	Escribir "  @@          @@@@@@@@@@@@@@@@          @@   "
+	Escribir " @@@          @@@@@@@@@@@@@@@@@          @@  "
+	Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+	Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+	Escribir " @@             @@@@@@@@@@@@             @@  "
+	Escribir " @@@              @@@@@@@@@              @@  "
+	Escribir "  @@         @@@@@@@@@@@@@@@@@@         @@   "
+	Escribir "  @@@      @@@@@@@@@@@@@@@@@@@@@@@     @@@   "
+	Escribir "  @@@   @@@@@@@@@@@@@@@@@@@@@@@@@@   @@@     "
+	Escribir "	   @@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@     "
+	Escribir "     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      "
+	Escribir "        @@@@@@@@@@@@@@@@@@@@@@@@@@@          "
+	Escribir "           @@@@@@@@@@@@@@@@@@@@@@            "
+	Escribir "                @@@@@@@@@@@@                 "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir "--------------------------------------------------------------"
+	Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir "-------------------------------------------------------------- "
+	Escribir " DNI usuario: ", DNI[i]
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir "--------------------------------------------------------------"
+	Escribir " Correo Electrónico del usuario: ", Correo[i]
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir " "
+	Escribir " ------------------------------------------------- " 
+	Escribir "|  				0) Cerrar Sesión  				|"
+	Escribir " ------------------------------------------------- "
+	Escribir " "
+	Escribir " "
+	Escribir " ------------------------------------ " 
+	Escribir "|  N° > 0). Volver al menú           |"
+	Escribir " ------------------------------------ "
+	Escribir " "
+	Leer OPCIONINFORMACIONPERSONAL
+	borrar pantalla
+	si (OPCIONINFORMACIONPERSONAL = 0)
+		Escribir "",CERRARAPP();
+		Borrar Pantalla
+	Sino 
+		MENUDELPACIENTE()
+	FinSi
+FinFuncion
+
+Funcion INFORMACIONDELAAPP ()
+	
+	Borrar Pantalla
+	Escribir "---------------------------------"
+	Escribir "VERSIÓN DE LA APP: 1.55v"
+	Escribir "--------------------------------"
+	Escribir "DESARROLLADO POR: "
+	Escribir " THOMAS RODAS"
+	Escribir " ALEX RAMOS "
+	Escribir " FACUNDO FALLERONI"
+	Escribir " FACUNDO RIBEIRO NUNES DA SILVA "
+	Escribir "-------------------------------"
+	
+FinFuncion
+
+
 //---------------------FUNCION PARA CARGAR LAS FECHAS DE LOS TURNOS------------------------------------
-funcion agregarfechas( DIA Por Referencia, MES Por Referencia ) 
-	definir x como entero
-	dimension FECHAS[12]
+funcion agregarfechas( DIA Por Referencia, MES Por Referencia, AÑO Por Referencia ) 
+	definir x,i como entero
+	dimension FECHAS[13]
 	FECHAS[1]<- AZAR(31)+1
 	si (MES=2 y (AÑO mod 4)=0) entonces
 		FECHAS[2]<- AZAR(29)+1
@@ -642,8 +560,96 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 	FECHAS[10]<- AZAR(31)+1
 	FECHAS[11]<- AZAR(30)+1
 	FECHAS[12]<- AZAR(31)+1
-
-	FinFuncion
+	si MES==1
+		Repetir
+			i<-aleatorio(1,2)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[1] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	
+	si MES==2
+		Repetir
+			i<-aleatorio(2,4)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[2] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==3
+		Repetir
+			i<-aleatorio(3,5)
+			x<-FECHAS[i]
+			
+		Hasta que (x>FECHAS[3] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==4
+		Repetir
+			i<-aleatorio(4,6)
+			x<-FECHAS[i]
+			
+		Hasta que (x>FECHAS[4] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==5
+		Repetir
+			i<-aleatorio(5,7)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[5] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==6
+		Repetir
+			i<-aleatorio(6,8)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[6] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==7
+		Repetir
+			i<-aleatorio(7,9)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[7] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==8
+		Repetir
+			i<-aleatorio(8,10)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[8] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==9
+		Repetir
+			i<-aleatorio(9,11)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[9] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==10
+		Repetir
+			i<-aleatorio(10,12)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[10] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==11
+		Repetir
+			i<-aleatorio(11,12)
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[11] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+	si MES==12
+		Repetir
+			i<-azar(2)+1
+			x<-FECHAS[i]
+		Hasta que (x>FECHAS[12] o i>MES)
+		Escribir x,"/",i,"/",año
+	FinSi
+FinFuncion
+	
+	//--------------------------FUNCIONES DE DOCTORES/MEDICOS-------------------------------
 	
 	SubProceso lista_profecionales()
 		Definir limite, opc Como Entero
@@ -701,6 +707,38 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 			FinPara
 		Hasta Que (opc=0)
 	FinSubProceso
+	
+	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
+	Funcion MENUDELDOCTOR ()
+		Definir OPCIONMENU Como Entero
+		Limpiar Pantalla
+		Repetir
+			Escribir " -----------------                                             ----------------------------"
+			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
+			Escribir " -----------------                                             ---------------------------- "
+			Escribir " "
+			Escribir " "
+			Escribir "							  ----------------------------"
+			Escribir "							  | 3. INFORMACION DE LA APP |"
+			Escribir " 						  ----------------------------"
+			Escribir " "
+			Escribir " "
+			Escribir "				                       ------------- 											"
+			Escribir "				                       | 4. Salir  | 											"
+			Escribir "				                       -------------                                            "
+			Escribir Sin Saltar "INGRESE OPCIÓN:  "
+			Leer OPCIONMENU
+		Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
+			Segun OPCIONMENU Hacer
+				1:
+				2:	
+				3: INFORMACIONDELAAPP();
+				4: CERRARAPP();
+			FinSegun
+FinFuncion
+	
+	
+	
 	
 	//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
