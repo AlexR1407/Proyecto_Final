@@ -1,7 +1,7 @@
 Algoritmo PROYECTOFINAL
 	Definir OPCIONMENU, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long,Acceso_InicioSesion como entero //opc=respuesta,usuario,cedula
+	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
 	Definir menu, menu2, accesomenupaciente, accesomenudoctor Como Logico
 	menu=Falso; 
 	menu2=Falso
@@ -11,7 +11,7 @@ Algoritmo PROYECTOFINAL
 	limite=3; i=1
 	datosingresados=1
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, contraseña_iniciosesion como texto
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña , contraseña_iniciosesion como texto
 	
 	//Se inicializa los vectores como caracteres
 	Para k=1 Hasta limite-1 Con Paso 1 Hacer
@@ -21,6 +21,7 @@ Algoritmo PROYECTOFINAL
 		Telefono[k]=" "
 		Correo[k]=" "
 		Cedula[k]=" "
+		Contraseña[k]=" "
 	FinPara
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
@@ -58,34 +59,7 @@ Algoritmo PROYECTOFINAL
 	Borrar Pantalla
 	//Inicio del programa
 	Repetir
-		repetir
-			Limpiar Pantalla
-			Escribir " ----------------------------- " 
-			Escribir "|  	1. Crear Usuario         |"
-			Escribir " ----------------------------- "
-			Escribir " "
-			Escribir " "
-			Escribir " ----------------------------- " 
-			Escribir "|  	  2. Iniciar Sesión       |"
-			Escribir " ----------------------------- "
-			Escribir " "
-			Escribir " "
-			Escribir " ----------------------------- " 
-			Escribir "|  	 0. Salir de la App       |"
-			Escribir " ----------------------------- "
-			leer OPCCIC
-		Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
-		borrar pantalla
-		Segun OPCCIC Hacer
-			0:
-				menu=Falso
-			1:
-				CREAR_USUARIO();
-				
-			2: 
-				INICIOSESION(Correo,Contraseña)
-			
-		FinSegun
+		PRIMERMENU();
 		//*******************************************MENU DEL PACIENTE*************************************************************
 		Si(accesomenupaciente=Verdadero) entonces
 					Limpiar Pantalla
@@ -326,6 +300,40 @@ Algoritmo PROYECTOFINAL
 			FinSi
 	Hasta Que (menu==Falso)
 FinAlgoritmo
+//---------------------------------------FUNCIONES--------------------------------------------------------------
+
+//----------------Menu de CREAR USUARIO/INICIOSESION-----------------------------------------------------
+Funcion PRIMERMENU
+	Definir OPCCIC Como Entero
+	repetir
+		Limpiar Pantalla
+		Escribir " ----------------------------- " 
+		Escribir "|  	1. Crear Usuario         |"
+		Escribir " ----------------------------- "
+		Escribir " "
+		Escribir " "
+		Escribir " ----------------------------- " 
+		Escribir "|  	  2. Iniciar Sesión       |"
+		Escribir " ----------------------------- "
+		Escribir " "
+		Escribir " "
+		Escribir " ----------------------------- " 
+		Escribir "|  	 0. Salir de la App       |"
+		Escribir " ----------------------------- "
+		leer OPCCIC
+	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
+	borrar pantalla
+	Segun OPCCIC Hacer
+		0:
+			Escribir " ",CERRARAPP();
+		1:
+			CREAR_USUARIO();
+			
+		2: 
+			INICIOSESION(Correo,Contraseña)
+			
+	FinSegun
+FinFuncion
 
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
 funcion CREAR_USUARIO
@@ -345,7 +353,7 @@ funcion CREAR_USUARIO
 			Leer Nombre[i]
 			Si (Nombre[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Escribir " "
@@ -359,7 +367,7 @@ funcion CREAR_USUARIO
 			Leer Apellido[i]
 			Si (Apellido[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Escribir " "
@@ -373,12 +381,12 @@ funcion CREAR_USUARIO
 			long<-longitud(Correo[i])
 			Si (Correo[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Si (long <= 10)
 				Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Escribir " "
@@ -393,12 +401,12 @@ funcion CREAR_USUARIO
 			long<-longitud(Contraseña[i])
 			Si (Contraseña[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Si (long<8)
 				Escribir "Su contraseña posee pocos caracteres"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Escribir "---------------------------------------------------------------------------"
@@ -412,12 +420,12 @@ funcion CREAR_USUARIO
 			longdetel=longitud(Telefono[i])
 			Si (Telefono[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Si (longdetel<10) Entonces
 				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel=10 y Telefono[i] <> ' ')
@@ -430,18 +438,18 @@ funcion CREAR_USUARIO
 			longdetel=longitud(DNI[i])
 			Si (longdetel<7 o longdetel>9) Entonces
 				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 			Si (DNI[i]= '')
 				escribir "ERROR CAMPO VACÍO"
-				Esperar 10 Segundos
+				Esperar 5 Segundos
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
 		para p=1 Hasta limite-1 Con Paso 1 Hacer
 			si Correo[p]=Correo[i] y i<>p Entonces
-				menu2=Verdadero
+				
 				p=limite
 			FinSi
 		FinPara
@@ -468,7 +476,7 @@ funcion CREAR_USUARIO
 		Limpiar Pantalla 
 		Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
 		Esperar 5 segundos
-		INICIOSESION (Correo, Contraseña);
+		INICIOSESION (Correo, Contraseña)
 		Limpiar Pantalla
 	SiNo
 		Escribir "Seción cerrada... Repita el proceso"
@@ -479,11 +487,11 @@ funcion CREAR_USUARIO
 FinFuncion
 
 //-------------------------FUNCION INICIO DE SESIÓN DEL USUARIO--------------------------------------
-SubProceso  INICIOSESION (Correo, Contraseña)
+	FUNCION INICIOSESION (Correo Por Referencia, Contraseña Por Referencia)
 	Definir opc, i, limite como Entero 
 	Definir codigocedula, contraseña_iniciosesion como texto
 	
-	repetir
+	Repetir
 		Limpiar Pantalla
 		Escribir "Usted es: "
 		escribir " " 
@@ -524,7 +532,7 @@ hasta que opc=1 o opc=2 o opc=3
 						Escribir "0. Salir de la app"
 						Leer opc
 						si opc==1 Entonces
-							CREAR_USUARIO();
+							PRIMERMENU()
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -537,11 +545,11 @@ hasta que opc=1 o opc=2 o opc=3
 							si Contraseña[i]==contraseña_inicosesion Entonces
 								Escribir "Contraseña existente"
 								i=limite
-	
+								
 							SiNo
 								Si Contraseña[i]<>contraseña_iniciosesion Entonces
 									Escribir "LA CONTRASEÑA INGRESADA ES ERRONEA"
-
+									
 								FinSi
 							FinSi
 						FinPara
@@ -551,7 +559,7 @@ hasta que opc=1 o opc=2 o opc=3
 						Escribir "0. Salir de la app"
 						Leer opc
 						si opc==1 Entonces
-						CREAR_USUARIO();
+							PRIMERMENU()
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -566,7 +574,7 @@ hasta que opc=1 o opc=2 o opc=3
 						Leer opc
 					Hasta Que (opc=1 o opc=0)
 					si opc==1 Entonces
-						CREAR_USUARIO();
+						PRIMERMENU()
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -580,9 +588,38 @@ hasta que opc=1 o opc=2 o opc=3
 				
 				
 			De Otro Modo:
-				Limpiar Pantalla
+				PRIMERMENU();
 
 	FinSegun
+FinFuncion
+
+//-----------------------------FUNCION MENU PACIENTE----------------------------------------------
+Funcion MENUDELPACIENTE()
+Limpiar Pantalla
+Repetir
+	Limpiar Pantalla
+	Escribir " -----------------                                              -----------------"
+	Escribir "| 1. NUEVO TURNO  |                                            | 2. MIS TURNOS   | "
+	Escribir " -----------------                                              ----------------- "
+	Escribir " "
+	Escribir " "
+	Escribir " ----------------------                                      ---------------------------- "
+	Escribir "| 3. DATOS PERSONALES  |                                    | 4. INFORMACIÓN DE LA APP   |  "
+	Escribir " ----------------------                                      ----------------------------"
+	Escribir " "
+	Escribir " "
+	Escribir "				                       ------------- 											"
+	Escribir "				                       | 5. Salir  | 											"
+	Escribir "				                       -------------                                            "
+	Escribir Sin Saltar "INGRESE OPCIÓN:  "
+	Leer OPCIONMENU
+
+	Segun OPCIONMENU Hacer
+	1:
+	2:
+	3:
+	4:
+	5:
 FinFuncion
 
 //---------------------FUNCION PARA CARGAR LAS FECHAS DE LOS TURNOS------------------------------------
@@ -665,6 +702,27 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 		Hasta Que (opc=0)
 	FinSubProceso
 	
+	//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
 		menu=falso
+		Borrar Pantalla
 	FinFuncion
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
