@@ -1,8 +1,8 @@
 Algoritmo PROYECTOFINAL
 	Definir OPCIONMENU, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, i, k, p, entrada, sede, long como entero //opc=respuesta,usuario,cedula
-	Definir menu, menu2, acceesomenupaciente, accesomenudoctor Como Logico
+	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
+	Definir menu, menu2, accesomenupaciente, accesomenudoctor Como Logico
 	menu=Falso; 
 	menu2=Falso
 	accesomenupaciente=Falso
@@ -13,13 +13,14 @@ Algoritmo PROYECTOFINAL
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, contraseña_iniciosesion como texto
 	
+	//Se inicializa los vectores como caracteres
 	Para k=1 Hasta limite-1 Con Paso 1 Hacer
-		Nombre[k]=""
-		Apellido[k]=""
-		DNI[k]="" 
-		Telefono[k]=""
-		Correo[k]=""
-		Cedula[k]=""
+		Nombre[k]=" "
+		Apellido[k]=" "
+		DNI[k]=" " 
+		Telefono[k]=" "
+		Correo[k]=" "
+		Cedula[k]=" "
 	FinPara
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
@@ -53,8 +54,7 @@ Algoritmo PROYECTOFINAL
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	Escribir "INGRESE CUALQUIER TECLA PARA INICIAR"
-	Esperar Tecla
+	Esperar 3 Segundos
 	Borrar Pantalla
 	//Inicio del programa
 	Repetir
@@ -90,7 +90,7 @@ Algoritmo PROYECTOFINAL
 						Leer Nombre[i]
 						Si (Nombre[i]= '')
 							Escribir "ERROR CAMPO VACÍO"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 					Escribir " "
@@ -104,7 +104,7 @@ Algoritmo PROYECTOFINAL
 					Leer Apellido[i]
 					Si (Apellido[i]= '')
 						Escribir "ERROR CAMPO VACÍO"
-						Esperar 2 Segundos
+						Esperar 10 Segundos
 						Borrar Pantalla
 					FinSi
 					Escribir " "
@@ -118,12 +118,12 @@ Algoritmo PROYECTOFINAL
 						long<-longitud(Correo[i])
 						Si (Correo[i]= '')
 							Escribir "ERROR CAMPO VACÍO"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Si (long <= 10)
 							Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Escribir " "
@@ -138,12 +138,12 @@ Algoritmo PROYECTOFINAL
 						long<-longitud(Contraseña[i])
 						Si (Contraseña[i]= '')
 							Escribir "ERROR CAMPO VACÍO"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Si (long<8)
 							Escribir "Su contraseña posee pocos caracteres"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Escribir "---------------------------------------------------------------------------"
@@ -157,12 +157,12 @@ Algoritmo PROYECTOFINAL
 						longdetel=longitud(Telefono[i])
 						Si (Telefono[i]= '')
 							Escribir "ERROR CAMPO VACÍO"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Si (longdetel<10) Entonces
 							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 					Hasta Que (longdetel=10 y Telefono[i] <> ' ')
@@ -175,12 +175,12 @@ Algoritmo PROYECTOFINAL
 						longdetel=longitud(DNI[i])
 						Si (longdetel<7 o longdetel>9) Entonces
 							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 						Si (DNI[i]= '')
 							escribir "ERROR CAMPO VACÍO"
-							Esperar 2 Segundos
+							Esperar 10 Segundos
 							Borrar Pantalla
 						FinSi
 					Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
@@ -212,12 +212,12 @@ Algoritmo PROYECTOFINAL
 					menu=Verdadero
 					Limpiar Pantalla 
 					Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-					Esperar 2 segundos
+					Esperar 10 segundos
 					Limpiar Pantalla
 				SiNo
 					menu=Verdadero
 					Escribir "Seción cerrada... Repita el proceso"
-					esperar 2 Segundos
+					esperar 10 Segundos
 					Limpiar Pantalla
 				FinSi
 			2:repetir
@@ -260,8 +260,8 @@ Algoritmo PROYECTOFINAL
 								Escribir "Correo electronico inexistente"
 								Escribir "1. Menu"
 								Escribir "0. Salir de la app"
-								Leer entrada
-								si entrada==1 Entonces
+								Leer opc
+								si opc==1 Entonces
 									menu=Verdadero
 								SiNo
 									menu=Falso
@@ -287,8 +287,8 @@ Algoritmo PROYECTOFINAL
 								Escribir "Contraseña inexistente"
 								Escribir "1. Menu"
 								Escribir "0. Salir de la app"
-								Leer entrada
-								si entrada==1 Entonces
+								Leer opc
+								si opc==1 Entonces
 									menu=Verdadero
 								SiNo
 									menu=Falso
@@ -300,9 +300,9 @@ Algoritmo PROYECTOFINAL
 								Escribir "No hay datos registrados"
 								Escribir "1. Menu"
 								Escribir "0. Salir de la app"
-								Leer entrada
-							Hasta Que (entrada=1 o entrada=0)
-							si entrada==1 Entonces
+								Leer opc
+							Hasta Que (opc=1 o opc=0)
+							si opc==1 Entonces
 								menu=Verdadero
 							SiNo
 								menu=Falso
@@ -310,40 +310,16 @@ Algoritmo PROYECTOFINAL
 						FinSi
 					2:
 						Limpiar Pantalla
-						si ingresados > 1 Entonces
-							Escribir Sin Saltar "Ingresar codigo de cedula medica de 6 digitos: "
-							Leer codigocedula
-							longdeltel=Longitud(codigocedula)
-							Repetir
-								si (longdeltel<6) Entonces
-									Escribir "Cantidad de caracteres insuficientes. Vuelva a intentar"
-								SiNo
-									si (longdeltel>6) Entonces
-										Escribir "Exeso de caracteres. Vuelva a intentar"
-									FinSi
-								FinSi
-							Hasta Que (longdeltel=6)
-							Para i=1 Hasta limite Con Paso 1 Hacer
-								si Cedula[i]==ruc Entonces
-									Escribir "Hola, doctor/a ",Nombre[i]," ",Apellido[i]
-									i=limite
-								FinSi
-							FinPara
+						
+						//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
+						lista_profecionales() 
+						
+						si opc==1 Entonces
+							menu=Verdadero
 						SiNo
-							Repetir
-								Limpiar Pantalla
-								Escribir "No hay datos registrados... "
-								Escribir "1. Menu"
-								Escribir "0. Salir de la app"
-								Leer entrada
-							Hasta Que (entrada=1 o entrada=0)
-							si entrada==1 Entonces
-								menu=Verdadero
-							SiNo
-								menu=Falso
-							FinSi
-							
+							menu=Falso
 						FinSi
+						
 					De Otro Modo:
 						Limpiar Pantalla
 						menu = Verdadero
@@ -613,3 +589,60 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 
 	FinFuncion
 	
+	SubProceso lista_profecionales()
+		Definir limite, opc Como Entero
+		limite=21
+		Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
+		Definir i, k, cedula_medica, cedula  Como Entero
+		Definir nombres, apellidos, especialidades  Como caracter
+		i=1; cedula=1
+		
+		//Para k=1 hasta limite-1 Con Paso 1
+		//nombres[k]=""
+		//apellidos[k]=""
+		//especialidades[k]=""
+		//FinPara
+		
+		nombres[1] = "María"; apellidos[1] = "Gómez"; cedula_medica[1] = 123456; especialidades[1] = "Medicina General"
+		nombres[2] = "Juan"; apellidos[2] = "Rodríguez"; cedula_medica[2] = 234567; especialidades[2] = "Cardiología"
+		nombres[3] = "Ana"; apellidos[3] = "López"; cedula_medica[3] = 345678; especialidades[3] = "Oftalmología"
+		nombres[4] = "Luis"; apellidos[4] = "Fernández"; cedula_medica[4] = 456789; especialidades[4] = "Ginecología y Obstetricia"
+		nombres[5] = "Sofía"; apellidos[5] = "Martínez"; cedula_medica[5] = 567890; especialidades[5] = "Dermatología"
+		nombres[6] = "Pedro"; apellidos[6] = "González"; cedula_medica[6] = 678901; especialidades[6] = "Medicina Interna"
+		nombres[7] = "Laura"; apellidos[7] = "Pérez"; cedula_medica[7] = 789012; especialidades[7] = "Ortopedia"
+		nombres[8] = "Carlos"; apellidos[8] = "García"; cedula_medica[8] = 890123; especialidades[8] = "Pediatría"
+		nombres[9] = "Andrea"; apellidos[9] = "Sánchez"; cedula_medica[9] = 901234; especialidades[9] = "Nutrición y Dietética"
+		nombres[10] = "José"; apellidos[10] = "Ramírez"; cedula_medica[10] = 102345; especialidades[10] = "Otorrinolaringología"
+		nombres[11] = "Patricia"; apellidos[11] = "Torres"; cedula_medica[11] = 210345; especialidades[11] = "Cardiología"
+		nombres[12] = "Alejandro"; apellidos[12] = "Díaz"; cedula_medica[12] = 321045; especialidades[12] = "Ortopedia"
+		nombres[13] = "Elena"; apellidos[13] = "Ruiz"; cedula_medica[13] = 432105; especialidades[13] = "Nutrición y Dietética"
+		nombres[14] = "Miguel"; apellidos[14] = "Ortega"; cedula_medica[14] = 543210; especialidades[14] = "Pediatría"
+		nombres[15] = "Carolina"; apellidos[15] = "Jiménez"; cedula_medica[15] = 654321; especialidades[15] = "Medicina General"
+		nombres[16] = "Ricardo"; apellidos[16] = "Vargas"; cedula_medica[16] = 765432; especialidades[16] = "Otorrinolaringología"
+		nombres[17] = "Isabel"; apellidos[17] = "Rojas"; cedula_medica[17] = 876543; especialidades[17] = "Medicina Interna"
+		nombres[18] = "Sergio"; apellidos[18] = "Molina"; cedula_medica[18] = 987654; especialidades[18] = "Dermatología"
+		nombres[19] = "Diana"; apellidos[19] = "Castro"; cedula_medica[19] = 109876; especialidades[19] = "Ginecología y Obstetricia"
+		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
+		
+		Repetir
+			Limpiar Pantalla
+			Escribir " --------------------"
+			Escribir "| Nro. Cedula Medica |"
+			Escribir " --------------------"
+			Leer cedula
+			para i=1 Hasta limite-1 Con Paso 1 Hacer
+				si cedula_medica[i]==cedula Entonces
+					Escribir "Datos encontrados"
+					Escribir i,") Cedula Medica: ",cedula_medica[i], "  Profesional: ",nombres[i]," ",apellidos[i]
+					i=limite
+				SiNo
+					Escribir "Cedula inexiste.Desea"
+					Escribir " 0. Volver"
+					Escribir " 1. Reintentar"
+					Leer opc
+					i=limite
+				FinSi
+			FinPara
+		Hasta Que (opc=0)
+	FinSubProceso
+		
