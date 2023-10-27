@@ -54,7 +54,7 @@ Algoritmo PROYECTOFINAL
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	Esperar 3 Segundos
+	Esperar 1 Segundos
 	Borrar Pantalla
 	//Inicio del programa
 	Repetir
@@ -312,7 +312,7 @@ Algoritmo PROYECTOFINAL
 						Limpiar Pantalla
 						
 						//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
-						lista_profecionales() 
+						opc=lista_profecionales() 
 						
 						si opc==1 Entonces
 							menu=Verdadero
@@ -589,7 +589,7 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 
 	FinFuncion
 	
-	SubProceso lista_profecionales()
+	Funcion  opc <- lista_profecionales()
 		Definir limite, opc Como Entero
 		limite=21
 		Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
@@ -597,11 +597,12 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 		Definir nombres, apellidos, especialidades  Como caracter
 		i=1; cedula=1
 		
-		//Para k=1 hasta limite-1 Con Paso 1
-		//nombres[k]=""
-		//apellidos[k]=""
-		//especialidades[k]=""
-		//FinPara
+		Para k=1 hasta limite-1 Con Paso 1
+			nombres[k]=" "
+			apellidos[k]=" "
+			especialidades[k]=" "
+			cedula_medica[k]=1
+		FinPara
 		
 		nombres[1] = "María"; apellidos[1] = "Gómez"; cedula_medica[1] = 123456; especialidades[1] = "Medicina General"
 		nombres[2] = "Juan"; apellidos[2] = "Rodríguez"; cedula_medica[2] = 234567; especialidades[2] = "Cardiología"
@@ -644,5 +645,7 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 				FinSi
 			FinPara
 		Hasta Que (opc=0)
-	FinSubProceso
+		
+	FinFuncion
+
 		
