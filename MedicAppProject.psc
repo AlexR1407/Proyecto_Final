@@ -106,7 +106,7 @@ Funcion PRIMERMENU
 FinFuncion
 
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
-funcion CREAR_USUARIO
+funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
 	limite=3; i=1
 	datosingresados=1
@@ -117,13 +117,14 @@ funcion CREAR_USUARIO
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
 		Repetir
-			
+			Borrar Pantalla
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su nombre: "
 			Leer Nombre[i]
 			Si (Nombre[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Escribir " "
@@ -138,6 +139,7 @@ funcion CREAR_USUARIO
 			Si (Apellido[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Escribir " "
@@ -152,6 +154,7 @@ funcion CREAR_USUARIO
 			Si (Correo[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Si (long <= 10)
@@ -172,11 +175,13 @@ funcion CREAR_USUARIO
 			Si (Contraseña[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Si (long<8)
 				Escribir "Su contraseña posee pocos caracteres"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Escribir "---------------------------------------------------------------------------"
@@ -191,11 +196,13 @@ funcion CREAR_USUARIO
 			Si (Telefono[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Si (longdetel<10) Entonces
 				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel=10 y Telefono[i] <> ' ')
@@ -209,11 +216,13 @@ funcion CREAR_USUARIO
 			Si (longdetel<7 o longdetel>9) Entonces
 				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 			Si (DNI[i]= '')
 				escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
+				CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
@@ -246,12 +255,12 @@ funcion CREAR_USUARIO
 		Limpiar Pantalla 
 		Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
 		Esperar 5 segundos
-		INICIOSESION (Correo, Contraseña)
+		//INCIOSESION (Correo, Contraseña)
 		Limpiar Pantalla
 	SiNo
 		Escribir "Seción cerrada... Repita el proceso"
 		esperar 5 Segundos
-		Acceso_InicioSesion=0
+		CREAR_USUARIO();
 		Limpiar Pantalla
 	FinSi	
 FinFuncion
@@ -383,14 +392,15 @@ Repetir
 	Escribir "				                       -------------                                            "
 	Escribir Sin Saltar "INGRESE OPCIÓN:  "
 	Leer OPCIONMENU
-
+Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
 		Segun OPCIONMENU Hacer
 			1: 
 				NUEVOTURNO();
 			2:	MISTURNOS();
-			3: DATOSPERSONALES();
+			3: INFORMACIONPERSONAL();
 			4: INFORMACIONDELAAPP();
-			5: CERRARAPP();
+			5: Escribir "",CERRARAPP();
+				Borrar Pantalla
 		FinSegun
 	
 FinFuncion
@@ -455,7 +465,7 @@ FinFuncion
 
 //---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
 Funcion MISTURNOS ()
-	
+		
 FinFuncion
 
 //------------------------------------FUNCION INFORMACION PERSONAL DEL PACIENTE---------------------
@@ -493,15 +503,15 @@ Funcion INFORMACIONPERSONAL() //FALTA LOS ARGUMENTOS
 	Escribir " "
 	Escribir " "
 	Escribir "--------------------------------------------------------------"
-	Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
+	//Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir "-------------------------------------------------------------- "
-	Escribir " DNI usuario: ", DNI[i]
+	//Escribir " DNI usuario: ", DNI[i]
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir "--------------------------------------------------------------"
-	Escribir " Correo Electrónico del usuario: ", Correo[i]
+	//Escribir " Correo Electrónico del usuario: ", Correo[i]
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir " "
@@ -733,7 +743,8 @@ FinFuncion
 				1:
 				2:	
 				3: INFORMACIONDELAAPP();
-				4: CERRARAPP();
+				4: Escribir "",CERRARAPP();
+					Borrar Pantalla
 			FinSegun
 FinFuncion
 	
