@@ -22,40 +22,9 @@ Algoritmo PROYECTOFINAL
 		Correo[k]=" "
 		Cedula[k]=" "
 	FinPara
-	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
-	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "$$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "$$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "$$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "$$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "$$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "$$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "\__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar 1 Segundos
-	Borrar Pantalla
+	
+	Logo_inicio()
+	
 	//Inicio del programa
 	Repetir
 		repetir
@@ -648,4 +617,44 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 		
 	FinFuncion
 
+	Funcion Logo_inicio()
+		//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+		Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+		escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+		escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+		Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+		Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+		Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+		Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Esperar Tecla
+		Borrar Pantalla
+	FinFuncion
 		
