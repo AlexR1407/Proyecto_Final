@@ -1,80 +1,32 @@
 Algoritmo PROYECTOFINAL
-	//HOLA
-	Definir OPCIONMENU, OPCCIC Como Entero
+	
+	Definir OPCIONMENU Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
-	Definir menu, menu2, accesomenupaciente, accesomenudoctor Como Logico
+	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
+	Definir menu, accesomenupaciente, accesomenudoctor Como Logico
 	menu=Falso; 
-	menu2=Falso
 	accesomenupaciente=Falso
 	accesomenudoctor=Falso
 	AÑO=2024
-	limite=3; i=1
-	datosingresados=1
-	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña , contraseña_iniciosesion como texto
 	
-	//Se inicializa los vectores como caracteres
-	Para k=1 Hasta limite-1 Con Paso 1 Hacer
-		Nombre[k]=" "
-		Apellido[k]=" "
-		DNI[k]=" " 
-		Telefono[k]=" "
-		Correo[k]=" "
-		Cedula[k]=" "
-		Contraseña[k]=" "
-	FinPara
-	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
-	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "$$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "$$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "$$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "$$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "$$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "$$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "\__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar 3 Segundos
-	Borrar Pantalla
-	//Inicio del programa
-	Repetir
-		PRIMERMENU();
-		//*******************************************MENU DEL PACIENTE*************************************************************
-		Si(accesomenupaciente=Verdadero) entonces
-				MENUDELPACIENTE()
-			FinSI
-			//----------------------MENÚ DOCTOR---------------------------------------
-			Si (accesomenudoctor=Verdadero) Entonces
-				MENUDELDOCTOR()
-			FinSi
-	Hasta Que (menu==Falso)
+	LogoInicio_parte0()
+	
+
+	PRIMERMENU();
+//*******************************************MENUDELPACIENTE*************************************************************
+	Si(accesomenupaciente=Verdadero) entonces
+		MENUDELPACIENTE()
+	FinSI
+//----------------------MENÚ DOCTOR---------------------------------------
+	Si (accesomenudoctor=Verdadero) Entonces
+		MENUDELDOCTOR()
+	FinSi
+	LogoInicio_parte0()
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
 //----------------Menu de CREAR USUARIO/INICIOSESION-----------------------------------------------------
-Funcion PRIMERMENU
+Funcion PRIMERMENU()
 	Definir OPCCIC Como Entero
 	repetir
 		Limpiar Pantalla
@@ -109,55 +61,53 @@ FinFuncion
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
-	limite=3; i=1
-	datosingresados=1
+	Definir limite, i, datosingresados, k, long como entero
+	limite=3; k=1; i=1; i=datosingresados
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
+
 	i=datosingresados
 	menu2=Falso
 	
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
+	Definir menu2, camp_obl Como Logico
+	menu2=Falso; camp_obl=Falso
+	//Se inicializa los vectores como caracteres
+	Para k=1 Hasta 1 Con Paso 1 Hacer
+		Nombre[k]=" "
+		Apellido[k]=" "
+		DNI[k]=" " 
+		Telefono[k]=" "
+		Correo[k]=" "
+		Cedula[k]=" "
+		Contraseña[k]=" "
+	FinPara
+	//------------------------------------------------------------
+
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
-		Repetir
+			//---------------------------Carga el nombre del paciente-----------------------------
 			Borrar Pantalla
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su nombre: "
 			Leer Nombre[i]
-			Si (Nombre[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Nombre)
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Nombre[i]<> ' ')
-		
-		Repetir
+			//----------------------Carga el apellido del paciente-------------------------------
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin saltar "Ingrese su apellido: "
 			Leer Apellido[i]
-			Si (Apellido[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Apellido)
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Apellido[i]<> ' ')
-		Repetir
+			//---------------------Carga el correo del paciente----------------------------------
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su correo electronico: "
 			Leer Correo[i]
 			long<-longitud(Correo[i])
-			Si (Correo[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Correo)
 			Si (long <= 10)
 				Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
 				Esperar 5 Segundos
@@ -165,8 +115,8 @@ funcion CREAR_USUARIO()
 			FinSi
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Correo[i] <> ' ' y long>10)
-		
+		//Hasta Que (Correo[i] <> ' ' y long>10)
+		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
@@ -187,7 +137,7 @@ funcion CREAR_USUARIO()
 			FinSi
 			Escribir "---------------------------------------------------------------------------"
 		Hasta que (long>=8 y Contraseña[i]<> '')
-		
+		//----------------------------Carga el numero de celular del paciente--------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
 			Escribir sin saltar "Ingrese su numero de telefono: "
@@ -207,7 +157,7 @@ funcion CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel=10 y Telefono[i] <> ' ')
-		
+		//-----------------------------Carga el DNI del paciente--------------------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su numero de DNI: "
@@ -288,7 +238,7 @@ FinFuncion
 		Escribir " ----------------------------- "
 		Escribir " "
 		Leer opc
-hasta que opc=1 o opc=2 o opc=3
+	hasta que opc=1 o opc=2 o opc=3
 	Segun opc Hacer
 			1:
 				si datosingresados > 1 Entonces
@@ -364,7 +314,7 @@ hasta que opc=1 o opc=2 o opc=3
 				Limpiar Pantalla
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
-				lista_profecionales() 
+				opc=lista_profesionales() 
 				MENUDELDOCTOR()
 				
 			De Otro Modo:
@@ -439,30 +389,62 @@ Funcion NUEVOTURNO ()
 		Escribir "Seleccione una Sede: " //sedes en desarrollo
 		Escribir "------------------------------------"
 		Escribir " 	  1. SEDE AV. CORRIENTES		   "
-		Escribir " 		Av.Corrientes 3220         "
+		Escribir " 		Av.Corrientes 1100         "
 		Escribir "------------------------------------"
 		Escribir " "
 		Escribir "------------------------------------"
-		Escribir " 	     2. SEDE POMPEYA		   "
-		Escribir " 		   Av.Saenz 835         "
-		Escribir "------------------------------------"
-		Escribir " "
-		Escribir "------------------------------------"
-		Escribir " 	   3. SEDE AV. SANTA FE		   "
-		Escribir " 		  Av.Santa Fe 930         "
-		Escribir "------------------------------------"
-		Escribir " "
-		Escribir "------------------------------------"
-		Escribir " 	   4. SEDE TRIUNVIRATO	   "
-		Escribir " 		Av.Triunvirato 3174         "
+		Escribir " 	   2. SEDE TRIUNVIRATO		   "
+		Escribir " 	   Av.Triunvirato 3174         "
 		Escribir "------------------------------------"
 		Escribir " "
 		Escribir " "
 		Escribir " 0. Volver"
 		Leer SEDE
-	HASTA QUE (SEDE >=0 O SEDE <=4)
+	HASTA QUE (SEDE >=0 O SEDE <=2)
+	Segun SEDE Hacer
+		1: CORRIENTES();
+		2: TRIUNVIRATO();
+	FinSegun
+FinFuncion
+//-------------------------FUNCION PARA LAS SEDES---------------------------------
+Funcion CORRIENTES ()
+	Definir OPCIONESPECIALIDAD como entero
+	Repetir
+		Borrar Pantalla
+		Escribir "------------------------------------------------------"
+		Escribir "			   SELECCIONE UNA ESPECIALIDAD"
+		Escribir "------------------------------------------------------"
+		Escribir " "
+		Escribir " "
+		Escribir "------------------------------------------------------"
+		Escribir "					 1. Medico Clínico "
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					  2. Pediatría "
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					 3. Derematología"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					4. Cardiología"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "						5. Volver"
+		Escribir "------------------------------------------------------"
+		Leer OPCIONESPECIALIDAD
+	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=5)
+	Segun OPCIONESPECIALIDAD hacer
+		1:
+		2:
+		3:
+		4:
+		5: NUEVOTURNO();	
+	FinSegun
 FinFuncion
 
+Funcion TRIUNVIRATO ()
+	
+FinFuncion
 
 //---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
 Funcion MISTURNOS ()
@@ -536,18 +518,18 @@ Funcion INFORMACIONPERSONAL() //FALTA LOS ARGUMENTOS
 FinFuncion
 
 Funcion INFORMACIONDELAAPP ()
-	
-	Borrar Pantalla
-	Escribir "---------------------------------"
-	Escribir "VERSIÓN DE LA APP: 1.55v"
-	Escribir "--------------------------------"
-	Escribir "DESARROLLADO POR: "
-	Escribir " THOMAS RODAS"
-	Escribir " ALEX RAMOS "
-	Escribir " FACUNDO FALLERONI"
-	Escribir " FACUNDO RIBEIRO NUNES DA SILVA "
-	Escribir "-------------------------------"
-	
+	 
+		Borrar Pantalla
+		Escribir "---------------------------------"
+		Escribir "VERSIÓN DE LA APP: 2.2v"
+		Escribir "--------------------------------"
+		Escribir "DESARROLLADO POR: "
+		Escribir " THOMAS RODAS"
+		Escribir " ALEX RAMOS "
+		Escribir " FACUNDO FALLERONI "
+		Escribir " FACUNDO RIBEIRO NUNES DA SILVA "
+		Escribir "-------------------------------"
+		
 FinFuncion
 
 
@@ -662,43 +644,53 @@ FinFuncion
 	
 	//--------------------------FUNCIONES DE DOCTORES/MEDICOS-------------------------------
 	
-	SubProceso lista_profecionales()
-		Definir limite, opc Como Entero
-		limite=21
+	Funcion  menu <- lista_profesionales()
+		Definir limite, opc,reiniciarproceso Como Entero
+		Definir menu Como Logico
+		limite=30
 		Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
 		Definir i, k, cedula_medica, cedula  Como Entero
 		Definir nombres, apellidos, especialidades  Como caracter
 		i=1; cedula=1
 		
-		//Para k=1 hasta limite-1 Con Paso 1
-		//nombres[k]=""
-		//apellidos[k]=""
-		//especialidades[k]=""
-		//FinPara
+		Para k=1 hasta 1 Con Paso 1
+			nombres[k]=" "
+			apellidos[k]=" "
+			especialidades[k]=" "
+			cedula_medica[k]=1
+		FinPara
 		
-		nombres[1] = "María"; apellidos[1] = "Gómez"; cedula_medica[1] = 123456; especialidades[1] = "Medicina General"
+		nombres[1] = "María"; apellidos[1] = "Gómez"; cedula_medica[1] = 123456; especialidades[1] = "Medico Clínico"
 		nombres[2] = "Juan"; apellidos[2] = "Rodríguez"; cedula_medica[2] = 234567; especialidades[2] = "Cardiología"
 		nombres[3] = "Ana"; apellidos[3] = "López"; cedula_medica[3] = 345678; especialidades[3] = "Oftalmología"
-		nombres[4] = "Luis"; apellidos[4] = "Fernández"; cedula_medica[4] = 456789; especialidades[4] = "Ginecología y Obstetricia"
+		nombres[4] = "Javier"; apellidos[4] = "Milei"; cedula_medica[4] = 456789; especialidades[4] = "Ginecología y Obstetricia"
 		nombres[5] = "Sofía"; apellidos[5] = "Martínez"; cedula_medica[5] = 567890; especialidades[5] = "Dermatología"
 		nombres[6] = "Pedro"; apellidos[6] = "González"; cedula_medica[6] = 678901; especialidades[6] = "Medicina Interna"
 		nombres[7] = "Laura"; apellidos[7] = "Pérez"; cedula_medica[7] = 789012; especialidades[7] = "Ortopedia"
 		nombres[8] = "Carlos"; apellidos[8] = "García"; cedula_medica[8] = 890123; especialidades[8] = "Pediatría"
-		nombres[9] = "Andrea"; apellidos[9] = "Sánchez"; cedula_medica[9] = 901234; especialidades[9] = "Nutrición y Dietética"
+		nombres[9] = "Andrea"; apellidos[9] = "Sánchez"; cedula_medica[9] = 901234; especialidades[9] = "Nutricionista"
 		nombres[10] = "José"; apellidos[10] = "Ramírez"; cedula_medica[10] = 102345; especialidades[10] = "Otorrinolaringología"
-		nombres[11] = "Patricia"; apellidos[11] = "Torres"; cedula_medica[11] = 210345; especialidades[11] = "Cardiología"
+		nombres[11] = "Patricia"; apellidos[11] = "Bullrich"; cedula_medica[11] = 210345; especialidades[11] = "Cardiología"
 		nombres[12] = "Alejandro"; apellidos[12] = "Díaz"; cedula_medica[12] = 321045; especialidades[12] = "Ortopedia"
-		nombres[13] = "Elena"; apellidos[13] = "Ruiz"; cedula_medica[13] = 432105; especialidades[13] = "Nutrición y Dietética"
+		nombres[13] = "Elena"; apellidos[13] = "Ruiz"; cedula_medica[13] = 432105; especialidades[13] = "Nutricionista"
 		nombres[14] = "Miguel"; apellidos[14] = "Ortega"; cedula_medica[14] = 543210; especialidades[14] = "Pediatría"
-		nombres[15] = "Carolina"; apellidos[15] = "Jiménez"; cedula_medica[15] = 654321; especialidades[15] = "Medicina General"
+		nombres[15] = "Carolina"; apellidos[15] = "Jiménez"; cedula_medica[15] = 654321; especialidades[15] = "Medico Clínico"
 		nombres[16] = "Ricardo"; apellidos[16] = "Vargas"; cedula_medica[16] = 765432; especialidades[16] = "Otorrinolaringología"
-		nombres[17] = "Isabel"; apellidos[17] = "Rojas"; cedula_medica[17] = 876543; especialidades[17] = "Medicina Interna"
-		nombres[18] = "Sergio"; apellidos[18] = "Molina"; cedula_medica[18] = 987654; especialidades[18] = "Dermatología"
+		nombres[17] = "Isabel"; apellidos[17] = "Rojas"; cedula_medica[17] = 876543; especialidades[17] = "Medico Clínico"
+		nombres[18] = "Sergio"; apellidos[18] = "Massa"; cedula_medica[18] = 987654; especialidades[18] = "Dermatología"
 		nombres[19] = "Diana"; apellidos[19] = "Castro"; cedula_medica[19] = 109876; especialidades[19] = "Ginecología y Obstetricia"
 		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
-		
+		nombres[21] = "Thomas"; Apellidos[21] = "Rodas"; cedula_medica[21] = 179800; especialidades[21] = "Médico Clínico"
+		nombres[22] = "Lucía"; Apellidos[22] = "García"; cedula_medica[22] = 484895; especialidades[22] = "Pediatra"
+		nombres[23] = "Carlos"; Apellidos[23] = "Martínez"; cedula_medica[23] = 304050; especialidades[24] = "Dermatólogo"
+		nombres[24] = "Alex"; Apellidos[24] = "Ramos"; cedula_medica[24] = 181920; especialidades[24] = "Cardiólogo"
+		nombres[25] = "Pablo"; Apellidos[25] = "Hernández"; cedula_medica[25] = 100232; especialidades[25] = "Oftalmólogo"
+		nombres[26] = "Isabel"; Apellidos[26] = "Cramer"; cedula_medica[26] = 369258; especialidades[26] = "Ginecólogo"
+		nombres[27] = "Isabel"; Apellidos[27] = "Cramer"; cedula_medica[27] = 369258; especialidades[27] = "Dentista"
+		nombres[28] = "Isabel"; Apellidos[28] = "Cramer"; cedula_medica[28] = 369258; especialidades[28] = "Dentista"
+		nombres[29] = "Isabel"; Apellidos[29] = "Cramer"; cedula_medica[29] = 369258; especialidades[26] = "Dentista"
 		Repetir
-			Limpiar Pantalla
+			Borrar Pantalla
 			Escribir " --------------------"
 			Escribir "| Nro. Cedula Medica |"
 			Escribir " --------------------"
@@ -708,16 +700,29 @@ FinFuncion
 					Escribir "Datos encontrados"
 					Escribir i,") Cedula Medica: ",cedula_medica[i], "  Profesional: ",nombres[i]," ",apellidos[i]
 					i=limite
+					MENUDELDOCTOR();
 				SiNo
 					Escribir "Cedula inexiste.Desea"
 					Escribir " 0. Volver"
 					Escribir " 1. Reintentar"
 					Leer opc
+					si (opc=0)
+						PRIMERMENU();
+					SiNo
+						Escribir"",lista_profesionales();
+						Borrar Pantalla
+					FinSi
 					i=limite
+					Limpiar Pantalla
 				FinSi
 			FinPara
-		Hasta Que (opc=0)
-	FinSubProceso
+		Hasta Que (opc=0 o opc=1)
+		si opc==1 Entonces
+			menu=Verdadero
+		SiNo
+			menu=Falso
+		FinSi
+	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
 	Funcion MENUDELDOCTOR ()
@@ -748,32 +753,59 @@ FinFuncion
 					Borrar Pantalla
 			FinSegun
 FinFuncion
-
-//buenas tardes hoy se labura
-	
-	
 	
 	//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
 		menu=falso
 		Borrar Pantalla
-	FinFuncion
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+FinFuncion
 
-	
-	
-	
-	
-	
-	
+//-----------------Verifica si hay un campo vacío-----------------------
+Funcion camp_obligatorio(Nombre)
+	Definir i Como Entero
+	Definir camp_obl Como Logico
+	Si (Nombre[i]= '')
+		camp_obl=Falso
+	FinSi
+FinFuncion
+	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+	Funcion LogoInicio_parte0()
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+		Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+		escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+		escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+		Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+		Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+		Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+		Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Esperar 2 Segundos
+		Borrar Pantalla
+	FinFuncion
+
