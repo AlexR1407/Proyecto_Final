@@ -114,7 +114,7 @@ funcion CREAR_USUARIO()
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
 	i=datosingresados
 	menu2=Falso
-	//------------------------------------------------------------
+	
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
 		Repetir
@@ -748,7 +748,8 @@ FinFuncion
 					Borrar Pantalla
 			FinSegun
 FinFuncion
-	
+
+//buenas tardes hoy se labura
 	
 	
 	
