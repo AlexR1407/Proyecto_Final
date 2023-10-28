@@ -62,10 +62,8 @@ funcion CREAR_USUARIO()
 	Definir limite, i, datosingresados, k, long como entero
 	limite=3; k=1; i=1; i=datosingresados
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-
 	i=datosingresados
 	menu2=Falso
-	
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
 	Definir menu2, camp_obl Como Logico
 	menu2=Falso; camp_obl=Falso
@@ -107,7 +105,8 @@ funcion CREAR_USUARIO()
 			Leer Correo[i]
 			long<-longitud(Correo[i])
 			camp_obligatorio(Correo)
-		Hasta Que (Correo[i] <> ' ' y long>10)
+			long_camp(long)
+		Hasta Que (Correo[i] <> ' ' y long>8)
 		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
@@ -115,18 +114,8 @@ funcion CREAR_USUARIO()
 			Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
 			Leer Contraseña[i]
 			long<-longitud(Contraseña[i])
-			Si (Contraseña[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
-			Si (long<8)
-				Escribir "Su contraseña posee pocos caracteres"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Correo)
+			long_camp(long)
 			Escribir "---------------------------------------------------------------------------"
 		Hasta que (long>=8 y Contraseña[i]<> '')
 		//----------------------------Carga el numero de celular del paciente--------------------
@@ -746,15 +735,12 @@ FinFuncion
 					Borrar Pantalla
 			FinSegun
 FinFuncion
-	
-	//-------------FUNCIONCERRARAPLICACION----------------------------
+//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
 		Definir menu Como Logico
 		menu=falso
 		Borrar Pantalla
 FinFuncion
-
-
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre)
 	Definir i Como Entero
@@ -770,8 +756,8 @@ FinFuncion
 
 //--------------Verifica long. del dato--------------------------------
 Funcion long_camp(long)
-	Si (long <= 10)
-		Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
+	Si (long>6 y long <= 8)
+		Escribir "CARACTERES INSUFICIENTES"
 		Esperar 3 Segundos
 		Borrar Pantalla
 	FinSi
