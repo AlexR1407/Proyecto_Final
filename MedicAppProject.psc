@@ -1,5 +1,4 @@
 Algoritmo PROYECTOFINAL
-
 	Definir OPCIONMENU Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
@@ -11,7 +10,6 @@ Algoritmo PROYECTOFINAL
 	
 	LogoInicio_parte0()
 	
-
 	PRIMERMENU();
 //*******************************************MENUDELPACIENTE*************************************************************
 	Si(accesomenupaciente=Verdadero) entonces
@@ -71,7 +69,7 @@ funcion CREAR_USUARIO()
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
 	Definir menu2, camp_obl Como Logico
 	menu2=Falso; camp_obl=Falso
-	//Se inicializa los vectores como caracteres
+	//------------------Se inicializa los vectores como caracteres
 	Para k=1 Hasta 1 Con Paso 1 Hacer
 		Nombre[k]=" "
 		Apellido[k]=" "
@@ -109,15 +107,7 @@ funcion CREAR_USUARIO()
 			Leer Correo[i]
 			long<-longitud(Correo[i])
 			camp_obligatorio(Correo)
-			Si (long <= 10)
-				Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
-				Esperar 5 Segundos
-				Borrar Pantalla
-			FinSi
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Correo[i]<>'')
-
+		Hasta Que (Correo[i] <> ' ' y long>10)
 		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
@@ -780,7 +770,13 @@ FinFuncion
 
 //--------------Verifica long. del dato--------------------------------
 Funcion long_camp(long)
-	
+	Si (long <= 10)
+		Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
+		Esperar 3 Segundos
+		Borrar Pantalla
+	FinSi
+	Escribir " "
+	Escribir "---------------------------------------------------------------------------"
 FinFuncion
 
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
