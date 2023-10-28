@@ -1,316 +1,32 @@
 Algoritmo PROYECTOFINAL
 	//Hello World
-	Definir OPCIONMENU, OPCCIC Como Entero
+	Definir OPCIONMENU Como Entero
 	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
-	Definir menu, menu2, accesomenupaciente, accesomenudoctor Como Logico
+	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
+	Definir menu, accesomenupaciente, accesomenudoctor Como Logico
 	menu=Falso; 
-	menu2=Falso
 	accesomenupaciente=Falso
 	accesomenudoctor=Falso
 	AÑO=2024
-	limite=3; i=1
-	datosingresados=1
-	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña , contraseña_iniciosesion como texto
 	
-	//Se inicializa los vectores como caracteres
-	Para k=1 Hasta limite-1 Con Paso 1 Hacer
-		Nombre[k]=" "
-		Apellido[k]=" "
-		DNI[k]=" " 
-		Telefono[k]=" "
-		Correo[k]=" "
-		Cedula[k]=" "
-		Contraseña[k]=" "
-	FinPara
+	LogoInicio_parte0()
 	
-	Logo_inicio()
-	
-	//Inicio del programa
-	Repetir
-		repetir
-			Limpiar Pantalla
-			Escribir " ----------------------------- " 
-			Escribir "|  	1. Crear Usuario         |"
-			Escribir " ----------------------------- "
-			Escribir " "
-			Escribir " "
-			Escribir " ----------------------------- " 
-			Escribir "|  	  2. Iniciar Sesión       |"
-			Escribir " ----------------------------- "
-			Escribir " "
-			Escribir " "
-			Escribir " ----------------------------- " 
-			Escribir "|  	 0. Salir de la App       |"
-			Escribir " ----------------------------- "
-			leer OPCCIC
-		Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
-		borrar pantalla
-		Segun OPCCIC Hacer
-			0:
-				menu=Falso
-			1:
-				i=datosingresados
-				menu2=Falso
-				si i<>limite Entonces
-					Repetir
-						 
-						Escribir "---------------------------------------------------------------------------"
-						Escribir Sin Saltar "Ingrese su nombre: "
-						Leer Nombre[i]
-						Si (Nombre[i]= '')
-							Escribir "ERROR CAMPO VACÍO"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-					Escribir " "
-					Escribir "---------------------------------------------------------------------------"
-					Hasta Que (Nombre[i]<> ' ')
-					
-					Repetir
-					Escribir " "
-					Escribir "---------------------------------------------------------------------------"
-					Escribir Sin saltar "Ingrese su apellido: "
-					Leer Apellido[i]
-					Si (Apellido[i]= '')
-						Escribir "ERROR CAMPO VACÍO"
-						Esperar 10 Segundos
-						Borrar Pantalla
-					FinSi
-					Escribir " "
-					Escribir "---------------------------------------------------------------------------"
-					Hasta Que (Apellido[i]<> ' ')
-					Repetir
-						Escribir " "
-						Escribir "---------------------------------------------------------------------------"
-						Escribir Sin Saltar "Ingrese su correo electronico: "
-						Leer Correo[i]
-						long<-longitud(Correo[i])
-						Si (Correo[i]= '')
-							Escribir "ERROR CAMPO VACÍO"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Si (long <= 10)
-							Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Escribir " "
-						Escribir "---------------------------------------------------------------------------"
-					Hasta Que (Correo[i] <> ' ' y long>10)
-					
-					Repetir
-						Escribir " "
-						Escribir "---------------------------------------------------------------------------"
-						Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
-						Leer Contraseña[i]
-						long<-longitud(Contraseña[i])
-						Si (Contraseña[i]= '')
-							Escribir "ERROR CAMPO VACÍO"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Si (long<8)
-							Escribir "Su contraseña posee pocos caracteres"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Escribir "---------------------------------------------------------------------------"
-					Hasta que (long>=8 y Contraseña[i]<> '')
-					
-					repetir
-						Escribir "--------------------------------------------------------------------------"
-						Escribir sin saltar "Ingrese su numero de telefono: "
-						Leer Telefono[i]
-						Escribir "--------------------------------------------------------------------------"
-						longdetel=longitud(Telefono[i])
-						Si (Telefono[i]= '')
-							Escribir "ERROR CAMPO VACÍO"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Si (longdetel<10) Entonces
-							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-					Hasta Que (longdetel=10 y Telefono[i] <> ' ')
-					
-					repetir
-						Escribir "--------------------------------------------------------------------------"
-						Escribir Sin Saltar "Ingrese su numero de DNI: "
-						Leer DNI[i]
-						Escribir "--------------------------------------------------------------------------"
-						longdetel=longitud(DNI[i])
-						Si (longdetel<7 o longdetel>9) Entonces
-							Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-						Si (DNI[i]= '')
-							escribir "ERROR CAMPO VACÍO"
-							Esperar 10 Segundos
-							Borrar Pantalla
-						FinSi
-					Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
-					para p=1 Hasta limite-1 Con Paso 1 Hacer
-						si Correo[p]=Correo[i] y i<>p Entonces
-							menu2=Verdadero
-							p=limite
-						FinSi
-					FinPara
-					si menu2 Entonces
-						Escribir "Hay datos que ya existen"
-					SiNo
-						//i=i+1 //Verificar error
-						Escribir "Registro con exito"
-						datosingresados=datosingresados+1
-					FinSi
-				SiNo
-					Escribir "Base de datos llena"
-				FinSi
-				Repetir	
-					Escribir "¿Los datos son correctos?"
-					Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
-					Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
-					Escribir "1. SI"
-					Escribir "2. NO"
-					Leer entrada
-				Hasta Que (entrada == 1 o entrada == 2)
-				si entrada==1 Entonces
-					menu=Verdadero
-					Limpiar Pantalla 
-					Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-					Esperar 10 segundos
-					Limpiar Pantalla
-				SiNo
-					menu=Verdadero
-					Escribir "Seción cerrada... Repita el proceso"
-					esperar 10 Segundos
-					Limpiar Pantalla
-				FinSi
-			2:repetir
-				Limpiar Pantalla
-				Escribir "Usted es: "
-				escribir " " 
-				Escribir " ----------------------------- " 
-				Escribir "|  		1. Paciente           |"
-				Escribir " ----------------------------- "
-				Escribir " "
-				Escribir " ----------------------------- " 
-				Escribir "|  		  2. Doctor           |"
-				Escribir " ----------------------------- "
-				Escribir " "
-				Escribir " ----------------------------- " 
-				Escribir "|  		  3. Volver           |"
-				Escribir " ----------------------------- "
-				Escribir " "
-				Leer opc
-			hasta que opc=1 o opc=2 o opc=3
-				Segun opc Hacer
-					1:
-						si datosingresados > 1 Entonces
-							si datosingresados > 1 Entonces
-								Escribir Sin Saltar "Correo electronico: "
-								leer codigocedula
-								Para i=1 Hasta limite-1 Con Paso 1 Hacer
-									si Correo[i]==codigocedula Entonces
-										Escribir "Correo electronico existente"
-										i=limite
-									SiNo
-										Si Correo[i]<>codigocedula Entonces
-										Escribir "EL CORREO INGRESADO ES ERRONEO"
-										accesomenupaciente=Falso
-										menu=Verdadero
-									FinSi
-								FinSi
-								FinPara
-							SiNo
-								Escribir "Correo electronico inexistente"
-								Escribir "1. Menu"
-								Escribir "0. Salir de la app"
-								Leer opc
-								si opc==1 Entonces
-									menu=Verdadero
-								SiNo
-									menu=Falso
-								FinSi
-							FinSi
-							si datosingresados > 1 Entonces
-							Escribir Sin Saltar "Ingrese su contraseña: "
-								leer contraseña_iniciosesion
-								Para i=1 Hasta limite-1 Con Paso 1 Hacer
-									si Contraseña[i]==contraseña_inicosesion Entonces
-										Escribir "Contraseña existente"
-										i=limite
-										accesomenupaciente=Verdadero
-									SiNo
-										Si Contraseña[i]<>contraseña_iniciosesion Entonces
-											Escribir "LA CONTRASEÑA INGRESADA ES ERRONEA"
-											accesomenupaciente=Falso
-											menu=Verdadero
-										FinSi
-									FinSi
-								FinPara
-							SiNo
-								Escribir "Contraseña inexistente"
-								Escribir "1. Menu"
-								Escribir "0. Salir de la app"
-								Leer opc
-								si opc==1 Entonces
-									menu=Verdadero
-								SiNo
-									menu=Falso
-								FinSi
-							FinSi
-						SiNo
-							Repetir
-								Limpiar Pantalla
-								Escribir "No hay datos registrados"
-								Escribir "1. Menu"
-								Escribir "0. Salir de la app"
-								Leer opc
-							Hasta Que (opc=1 o opc=0)
-							si opc==1 Entonces
-								menu=Verdadero
-							SiNo
-								menu=Falso
-							FinSi
-						FinSi
-					2:
-						Limpiar Pantalla
-						
-						//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
-						opc=lista_profecionales() 
-						
-						si opc==1 Entonces
-							menu=Verdadero
-						SiNo
-							menu=Falso
-						FinSi
-						
-					De Otro Modo:
-						Limpiar Pantalla
-						menu = Verdadero
-				FinSegun
-		FinSegun
-		PRIMERMENU();
-		//*******************************************MENU DEL PACIENTE*************************************************************
-		Si(accesomenupaciente=Verdadero) entonces
-				MENUDELPACIENTE()
-			FinSI
-			//----------------------MENÚ DOCTOR---------------------------------------
-			Si (accesomenudoctor=Verdadero) Entonces
-				MENUDELDOCTOR()
-			FinSi
-	Hasta Que (menu==Falso)
+
+	PRIMERMENU();
+//*******************************************MENUDELPACIENTE*************************************************************
+	Si(accesomenupaciente=Verdadero) entonces
+		MENUDELPACIENTE()
+	FinSI
+//----------------------MENÚ DOCTOR---------------------------------------
+	Si (accesomenudoctor=Verdadero) Entonces
+		MENUDELDOCTOR()
+	FinSi
+	LogoInicio_parte0()
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
 //----------------Menu de CREAR USUARIO/INICIOSESION-----------------------------------------------------
-Funcion PRIMERMENU
+Funcion PRIMERMENU()
 	Definir OPCCIC Como Entero
 	repetir
 		Limpiar Pantalla
@@ -345,55 +61,48 @@ FinFuncion
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
-	limite=3; i=1
-	datosingresados=1
+	Definir limite, i, datosingresados, k, long como entero
+	limite=3; k=1; i=1; i=datosingresados
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	i=datosingresados
-	menu2=Falso
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
+	Definir menu2, camp_obl Como Logico
+	menu2=Falso; camp_obl=Falso
+	//Se inicializa los vectores como caracteres
+	Para k=1 Hasta 1 Con Paso 1 Hacer
+		Nombre[k]=" "
+		Apellido[k]=" "
+		DNI[k]=" " 
+		Telefono[k]=" "
+		Correo[k]=" "
+		Cedula[k]=" "
+		Contraseña[k]=" "
+	FinPara
 	//------------------------------------------------------------
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
-		Repetir
+			//---------------------------Carga el nombre del paciente-----------------------------
 			Borrar Pantalla
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su nombre: "
 			Leer Nombre[i]
-			Si (Nombre[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Nombre)
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Nombre[i]<> ' ')
-		
-		Repetir
+			//----------------------Carga el apellido del paciente-------------------------------
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin saltar "Ingrese su apellido: "
 			Leer Apellido[i]
-			Si (Apellido[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Apellido)
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-		Hasta Que (Apellido[i]<> ' ')
-		Repetir
+			//---------------------Carga el correo del paciente----------------------------------
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su correo electronico: "
 			Leer Correo[i]
 			long<-longitud(Correo[i])
-			Si (Correo[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
+			camp_obligatorio(Correo)
 			Si (long <= 10)
 				Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
 				Esperar 5 Segundos
@@ -402,7 +111,7 @@ funcion CREAR_USUARIO()
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 		Hasta Que (Correo[i] <> ' ' y long>10)
-		
+		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
@@ -423,7 +132,7 @@ funcion CREAR_USUARIO()
 			FinSi
 			Escribir "---------------------------------------------------------------------------"
 		Hasta que (long>=8 y Contraseña[i]<> '')
-		
+		//----------------------------Carga el numero de celular del paciente--------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
 			Escribir sin saltar "Ingrese su numero de telefono: "
@@ -443,7 +152,7 @@ funcion CREAR_USUARIO()
 				Borrar Pantalla
 			FinSi
 		Hasta Que (longdetel=10 y Telefono[i] <> ' ')
-		
+		//-----------------------------Carga el DNI del paciente--------------------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
 			Escribir Sin Saltar "Ingrese su numero de DNI: "
@@ -898,15 +607,16 @@ FinFuncion
 	
 	//--------------------------FUNCIONES DE DOCTORES/MEDICOS-------------------------------
 	
-	Funcion  opc <- lista_profecionales()
+	Funcion  menu <- lista_profecionales()
 		Definir limite, opc Como Entero
+		Definir menu Como Logico
 		limite=21
 		Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
 		Definir i, k, cedula_medica, cedula  Como Entero
 		Definir nombres, apellidos, especialidades  Como caracter
 		i=1; cedula=1
 		
-		Para k=1 hasta limite-1 Con Paso 1
+		Para k=1 hasta 1 Con Paso 1
 			nombres[k]=" "
 			apellidos[k]=" "
 			especialidades[k]=" "
@@ -953,8 +663,12 @@ FinFuncion
 					Limpiar Pantalla
 				FinSi
 			FinPara
-		Hasta Que (opc=0)
-		
+		Hasta Que (opc=0 o opc=1)
+		si opc==1 Entonces
+			menu=Verdadero
+		SiNo
+			menu=Falso
+		FinSi
 	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
@@ -994,10 +708,17 @@ FinFuncion
 	Funcion menu<-CERRARAPP
 		menu=falso
 		Borrar Pantalla
-	FinFuncion
-
-	Funcion Logo_inicio()
-		//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+FinFuncion
+//-----------------Verifica si hay un campo vacío-----------------------
+Funcion camp_obligatorio(Nombre)
+	Definir i Como Entero
+	Definir camp_obl Como Logico
+	Si (Nombre[i]= '')
+		camp_obl=Falso
+	FinSi
+FinFuncion
+	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+	Funcion LogoInicio_parte0()
 		Escribir  " "
 		Escribir  " "
 		Escribir  " "
@@ -1033,7 +754,7 @@ FinFuncion
 		Escribir  " "
 		Escribir  " "
 		Escribir  " "
-		Esperar Tecla
+		Esperar 1 Segundos
 		Borrar Pantalla
 	FinFuncion
 		
