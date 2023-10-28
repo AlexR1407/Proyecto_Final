@@ -1,5 +1,5 @@
 Algoritmo PROYECTOFINAL
-	//HOLA
+	//Hello World
 	Definir OPCIONMENU, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
@@ -24,40 +24,9 @@ Algoritmo PROYECTOFINAL
 		Cedula[k]=" "
 		Contraseña[k]=" "
 	FinPara
-	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
-	escribir "$$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "$$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "$$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "$$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "$$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "$$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "$$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "\__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar 1 Segundos
-	Borrar Pantalla
+	
+	Logo_inicio()
+	
 	//Inicio del programa
 	Repetir
 		repetir
@@ -555,7 +524,7 @@ FinFuncion
 		Escribir " ----------------------------- "
 		Escribir " "
 		Leer opc
-hasta que opc=1 o opc=2 o opc=3
+	hasta que opc=1 o opc=2 o opc=3
 	Segun opc Hacer
 			1:
 				si datosingresados > 1 Entonces
@@ -966,7 +935,6 @@ FinFuncion
 		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
 		
 		Repetir
-			Limpiar Pantalla
 			Escribir " --------------------"
 			Escribir "| Nro. Cedula Medica |"
 			Escribir " --------------------"
@@ -982,6 +950,7 @@ FinFuncion
 					Escribir " 1. Reintentar"
 					Leer opc
 					i=limite
+					Limpiar Pantalla
 				FinSi
 			FinPara
 		Hasta Que (opc=0)
@@ -1026,3 +995,45 @@ FinFuncion
 		menu=falso
 		Borrar Pantalla
 	FinFuncion
+
+	Funcion Logo_inicio()
+		//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+		Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+		escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+		escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+		Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+		Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+		Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+		Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Escribir  " "
+		Esperar Tecla
+		Borrar Pantalla
+	FinFuncion
+		
