@@ -1,27 +1,28 @@
 Algoritmo PROYECTOFINAL
-
-	Definir OPCIONMENU Como Entero
-	Definir DÍA, MES, AÑO como entero
-	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
-	Definir menu, accesomenupaciente, accesomenudoctor Como Logico
-	menu=Falso; 
-	accesomenupaciente=Falso
-	accesomenudoctor=Falso
-	AÑO=2024
-	
-	LogoInicio_parte0()
-	
-
-	PRIMERMENU();
+		
+		Definir OPCIONMENU Como Entero
+		Definir DÍA, MES, AÑO como entero
+		Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
+		Definir menu, accesomenupaciente, accesomenudoctor Como Logico
+		menu=Falso; 
+		accesomenupaciente=Falso
+		accesomenudoctor=Falso
+		AÑO=2024
+		
+		LogoInicio_parte0()
+		
+		
+		PRIMERMENU();
 //*******************************************MENUDELPACIENTE*************************************************************
-	Si(accesomenupaciente=Verdadero) entonces
-		MENUDELPACIENTE()
-	FinSI
+		Si(accesomenupaciente=Verdadero) entonces
+			MENUDELPACIENTE()
+		FinSI
 //----------------------MENÚ DOCTOR---------------------------------------
-	Si (accesomenudoctor=Verdadero) Entonces
-		MENUDELDOCTOR()
-	FinSi
-	LogoInicio_parte0()
+		Si (accesomenudoctor=Verdadero) Entonces
+			MENUDELDOCTOR()
+		FinSi
+		
+	 LogoInicio_parte0()
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
@@ -113,6 +114,7 @@ funcion CREAR_USUARIO()
 				Escribir "ERROR... PROBABLEMENTE SE OLVIDÓ DE ESCRIBIR EL DOMINIO DEL CORREO "
 				Esperar 5 Segundos
 				Borrar Pantalla
+				CREARUSUARIO();
 			FinSi
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
@@ -128,7 +130,7 @@ funcion CREAR_USUARIO()
 			Si (Contraseña[i]= '')
 				Escribir "ERROR CAMPO VACÍO"
 				Esperar 5 Segundos
-				CREAR_USUARIO()
+				CREAR_USUARIO();
 				Borrar Pantalla
 			FinSi
 			Si (long<8)
@@ -428,13 +430,16 @@ Funcion CORRIENTES ()
 		Escribir "					 3. Derematología"
 		Escribir "------------------------------------------------------"
 		Escribir "------------------------------------------------------"
-		Escribir "					4. Cardiología"
+		Escribir "					4. Ginecología"
 		Escribir "------------------------------------------------------"
 		Escribir "------------------------------------------------------"
-		Escribir "						5. Volver"
+		Escribir "					5. Dentista"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "						6. Volver"
 		Escribir "------------------------------------------------------"
 		Leer OPCIONESPECIALIDAD
-	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=5)
+	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=6)
 	Segun OPCIONESPECIALIDAD hacer
 		1:
 		2:
@@ -445,7 +450,41 @@ Funcion CORRIENTES ()
 FinFuncion
 
 Funcion TRIUNVIRATO ()
-	
+	Definir OPCIONESPECIALIDAD como entero
+	Repetir
+		Borrar Pantalla
+		Escribir "------------------------------------------------------"
+		Escribir "			   SELECCIONE UNA ESPECIALIDAD"
+		Escribir "------------------------------------------------------"
+		Escribir " "
+		Escribir " "
+		Escribir "------------------------------------------------------"
+		Escribir "					 1. Medicina Interna "
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					  2. Cardiología "
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					 3. Oftalmología"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					4. Ortopedia"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "					5. Otorrinolaringología"
+		Escribir "------------------------------------------------------"
+		Escribir "------------------------------------------------------"
+		Escribir "						6. Volver"
+		Escribir "------------------------------------------------------"
+		Leer OPCIONESPECIALIDAD
+	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=6)
+	Segun OPCIONESPECIALIDAD hacer
+		1:
+		2:
+		3:
+		4:
+		5: NUEVOTURNO();	
+	FinSegun
 FinFuncion
 
 //---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
@@ -780,7 +819,7 @@ FinFuncion
 
 //--------------Verifica long. del dato--------------------------------
 Funcion long_camp(long)
-	
+		
 FinFuncion
 
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
