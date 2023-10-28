@@ -1,5 +1,5 @@
 Algoritmo PROYECTOFINAL
-	//Hello World
+	//Te toca modularizar
 	Definir OPCIONMENU Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
@@ -80,26 +80,27 @@ funcion CREAR_USUARIO()
 	//------------------------------------------------------------
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
-			//---------------------------Carga el nombre del paciente-----------------------------
-			Borrar Pantalla
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin Saltar "Ingrese su nombre: "
+		Borrar Pantalla
+		//---------------------------Carga el nombre del paciente-----------------------------
+		Repetir
+			Escribir "-----------------------------------------------------------------------"
+			Escribir Sin Saltar "Nombre: "
 			Leer Nombre[i]
 			camp_obligatorio(Nombre)
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
+		Hasta Que (Nombre[i]<> '')
 			//----------------------Carga el apellido del paciente-------------------------------
+		Repetir
 			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin saltar "Ingrese su apellido: "
+			Escribir "------------------------------------------------------------------------"
+			Escribir Sin saltar "Apellido: "
 			Leer Apellido[i]
 			camp_obligatorio(Apellido)
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
+		Hasta Que (Apellido[i]<> '')
 			//---------------------Carga el correo del paciente----------------------------------
+		Repetir
 			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin Saltar "Ingrese su correo electronico: "
+			Escribir "------------------------------------------------------------------------"
+			Escribir Sin Saltar "Email: "
 			Leer Correo[i]
 			long<-longitud(Correo[i])
 			camp_obligatorio(Correo)
@@ -706,16 +707,25 @@ FinFuncion
 	
 	//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
+		Definir menu Como Logico
 		menu=falso
 		Borrar Pantalla
-FinFuncion
+	FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre)
 	Definir i Como Entero
-	Definir camp_obl Como Logico
 	Si (Nombre[i]= '')
-		camp_obl=Falso
+		Escribir "Es requerido llenar este campo"
+		Esperar 3 Segundos
+		Borrar Pantalla
+	SiNo
+		Escribir " "
+		Escribir "------------------------------------------------------------------------"
 	FinSi
+FinFuncion
+//--------------Verifica long. del dato--------------------------------
+Funcion long_camp(long)
+	
 FinFuncion
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	Funcion LogoInicio_parte0()
