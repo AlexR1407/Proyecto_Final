@@ -1,5 +1,5 @@
 Algoritmo PROYECTOFINAL
-	
+
 	Definir OPCIONMENU Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
@@ -85,26 +85,27 @@ funcion CREAR_USUARIO()
 
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
-			//---------------------------Carga el nombre del paciente-----------------------------
-			Borrar Pantalla
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin Saltar "Ingrese su nombre: "
+		Borrar Pantalla
+		//---------------------------Carga el nombre del paciente-----------------------------
+		Repetir
+			Escribir "-----------------------------------------------------------------------"
+			Escribir Sin Saltar "Nombre: "
 			Leer Nombre[i]
 			camp_obligatorio(Nombre)
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
+		Hasta Que (Nombre[i]<> '')
 			//----------------------Carga el apellido del paciente-------------------------------
+		Repetir
 			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin saltar "Ingrese su apellido: "
+			Escribir "------------------------------------------------------------------------"
+			Escribir Sin saltar "Apellido: "
 			Leer Apellido[i]
 			camp_obligatorio(Apellido)
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
+		Hasta Que (Apellido[i]<> '')
 			//---------------------Carga el correo del paciente----------------------------------
+		Repetir
 			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-			Escribir Sin Saltar "Ingrese su correo electronico: "
+			Escribir "------------------------------------------------------------------------"
+			Escribir Sin Saltar "Email: "
 			Leer Correo[i]
 			long<-longitud(Correo[i])
 			camp_obligatorio(Correo)
@@ -115,7 +116,7 @@ funcion CREAR_USUARIO()
 			FinSi
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-
+		Hasta Que (Correo[i]<>'')
 
 		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
@@ -683,13 +684,14 @@ FinFuncion
 		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
 		nombres[21] = "Thomas"; Apellidos[21] = "Rodas"; cedula_medica[21] = 179800; especialidades[21] = "Médico Clínico"
 		nombres[22] = "Lucía"; Apellidos[22] = "García"; cedula_medica[22] = 484895; especialidades[22] = "Pediatra"
-		nombres[23] = "Carlos"; Apellidos[23] = "Martínez"; cedula_medica[23] = 304050; especialidades[24] = "Dermatólogo"
+		nombres[23] = "Carlos"; Apellidos[23] = "Martínez"; cedula_medica[23] = 304050; especialidades[23] = "Dermatólogo"
 		nombres[24] = "Alex"; Apellidos[24] = "Ramos"; cedula_medica[24] = 181920; especialidades[24] = "Cardiólogo"
 		nombres[25] = "Pablo"; Apellidos[25] = "Hernández"; cedula_medica[25] = 100232; especialidades[25] = "Oftalmólogo"
 		nombres[26] = "Isabel"; Apellidos[26] = "Cramer"; cedula_medica[26] = 369258; especialidades[26] = "Ginecólogo"
-		nombres[27] = "Isabel"; Apellidos[27] = "Cramer"; cedula_medica[27] = 369258; especialidades[27] = "Dentista"
-		nombres[28] = "Isabel"; Apellidos[28] = "Cramer"; cedula_medica[28] = 369258; especialidades[28] = "Dentista"
-		nombres[29] = "Isabel"; Apellidos[29] = "Cramer"; cedula_medica[29] = 369258; especialidades[26] = "Dentista"
+		nombres[27] = "Lionel"; Apellidos[27] = "Messi"; cedula_medica[27] = 181222; especialidades[27] = "Dentista"
+		nombres[28] = "Mike"; Apellidos[28] = "Tyson"; cedula_medica[28] = 143670; especialidades[28] = "Dentista"
+		nombres[29] = "Miguel"; Apellidos[29] = "Silva"; cedula_medica[29] = 103230; especialidades[29] = "Dentista"
+		
 		Repetir
 			Borrar Pantalla
 			Escribir " --------------------"
@@ -757,6 +759,7 @@ FinFuncion
 	
 	//-------------FUNCIONCERRARAPLICACION----------------------------
 	Funcion menu<-CERRARAPP
+		Definir menu Como Logico
 		menu=falso
 		Borrar Pantalla
 FinFuncion
@@ -765,10 +768,19 @@ FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre)
 	Definir i Como Entero
-	Definir camp_obl Como Logico
 	Si (Nombre[i]= '')
-		camp_obl=Falso
+		Escribir "Es requerido llenar este campo"
+		Esperar 3 Segundos
+		Borrar Pantalla
+	SiNo
+		Escribir " "
+		Escribir "------------------------------------------------------------------------"
 	FinSi
+FinFuncion
+
+//--------------Verifica long. del dato--------------------------------
+Funcion long_camp(long)
+	
 FinFuncion
 
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
