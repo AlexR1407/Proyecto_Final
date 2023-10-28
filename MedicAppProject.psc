@@ -596,7 +596,6 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
 		
 		Repetir
-			Limpiar Pantalla
 			Escribir " --------------------"
 			Escribir "| Nro. Cedula Medica |"
 			Escribir " --------------------"
@@ -612,6 +611,7 @@ funcion agregarfechas( DIA Por Referencia, MES Por Referencia )
 					Escribir " 1. Reintentar"
 					Leer opc
 					i=limite
+					Limpiar Pantalla
 				FinSi
 			FinPara
 		Hasta Que (opc=0)
