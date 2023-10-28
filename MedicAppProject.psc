@@ -1,4 +1,5 @@
 Algoritmo PROYECTOFINAL
+	//Hello World
 	Definir OPCIONMENU, OPCCIC Como Entero
 	Definir DÍA, MES, AÑO como entero
 	Definir longdetel, limite, datosingresados, opc, i, k, p, sede, long como entero //opc=respuesta,usuario,cedula
