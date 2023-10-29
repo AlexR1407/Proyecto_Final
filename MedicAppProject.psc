@@ -12,16 +12,9 @@ Algoritmo PROYECTOFINAL
 		
 		
 		PRIMERMENU();
-//*******************************************MENUDELPACIENTE*************************************************************
-		Si(accesomenupaciente=Verdadero) entonces
-			MENUDELPACIENTE()
-		FinSI
-//----------------------MENÚ DOCTOR---------------------------------------
-		Si (accesomenudoctor=Verdadero) Entonces
-			MENUDELDOCTOR()
-		FinSi
 		
-	 LogoInicio_parte0()
+		
+		LogoInicio_parte0()
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
@@ -53,7 +46,7 @@ Funcion PRIMERMENU()
 			CREAR_USUARIO();
 			
 		2: 
-			INICIOSESION(Correo,Contraseña)
+			INICIOSESION(Correo,Contraseña,i,datosingresados,longcorreo,longcontra)
 			
 	FinSegun
 FinFuncion
@@ -61,8 +54,8 @@ FinFuncion
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
-	Definir limite, i, datosingresados, k, long como entero
-	limite=3; k=1; i=1; i=datosingresados
+	Definir limite, i, datosingresados, k, longcorreo, longcontra como entero
+	limite=3; k=1; datosingresados=1; i=datosingresados
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
 	i=datosingresados
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
@@ -88,7 +81,7 @@ funcion CREAR_USUARIO()
 			Escribir "-----------------------------------------------------------------------"
 			Escribir Sin Saltar "Nombre: "
 			Leer Nombre[i]
-			camp_obligatorio(Nombre)
+			camp_obligatorio(Nombre,i)
 		Hasta Que (Nombre[i]<> '')
 			//----------------------Carga el apellido del paciente-------------------------------
 		Repetir
@@ -96,7 +89,7 @@ funcion CREAR_USUARIO()
 			Escribir "------------------------------------------------------------------------"
 			Escribir Sin saltar "Apellido: "
 			Leer Apellido[i]
-			camp_obligatorio(Apellido)
+			camp_obligatorio(Apellido,i)
 		Hasta Que (Apellido[i]<> '')
 			//---------------------Carga el correo del paciente----------------------------------
 		Repetir
@@ -104,21 +97,20 @@ funcion CREAR_USUARIO()
 			Escribir "------------------------------------------------------------------------"
 			Escribir Sin Saltar "Email: "
 			Leer Correo[i]
-			long<-longitud(Correo[i])
-			camp_obligatorio(Correo)
-			long_camp(long)
-		Hasta Que (Correo[i] <> ' ' y long>8)
+			longcorreo<-longitud(Correo[i])
+			camp_obligatorio(Correo,i)
+			long_camp(longcorreo)
+		Hasta Que (Correo[i] <> ' ' y longcorreo>8)
 		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
 			Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
 			Leer Contraseña[i]
-			long<-longitud(Contraseña[i])
-			camp_obligatorio(Correo)
-			long_camp(long)
+			longcontra<-longitud(Contraseña[i])
+			long_camp(longcontra)
 			Escribir "---------------------------------------------------------------------------"
-		Hasta que (long>=8 y Contraseña[i]<> '')
+		Hasta que (longcontra>=8 y Contraseña[i]<> '')
 		//----------------------------Carga el numero de celular del paciente--------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
@@ -170,7 +162,7 @@ funcion CREAR_USUARIO()
 		SiNo
 			//i=i+1 //Verificar error
 			Escribir "Registro con exito"
-			datosingresados=datosingresados+1
+			
 		FinSi
 	SiNo
 		Escribir "Base de datos llena"
@@ -186,9 +178,10 @@ funcion CREAR_USUARIO()
 	si entrada==1 Entonces
 
 		Limpiar Pantalla 
+		datosingresados=datosingresados+1
 		Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
 		Esperar 5 segundos
-		//INCIOSESION (Correo, Contraseña)
+		INICIOSESION(Correo, Contraseña,i, datosingresados, longcorreo, longcontra)
 		Limpiar Pantalla
 	SiNo
 		Escribir "Seción cerrada... Repita el proceso"
@@ -199,8 +192,8 @@ funcion CREAR_USUARIO()
 FinFuncion
 
 //-------------------------FUNCION INICIO DE SESIÓN DEL USUARIO--------------------------------------
-	FUNCION INICIOSESION (Correo Por Referencia, Contraseña Por Referencia)
-	Definir opc, i, limite como Entero 
+	FUNCION INICIOSESION (Correo Por Referencia, Contraseña Por Referencia, i Por Referencia, datosingresados Por Referencia, longcorreo Por Referencia, longcontra Por Referencia)
+	Definir opc, limite, longvalidacion como Entero 
 	Definir codigocedula, contraseña_iniciosesion como texto
 	
 	Repetir
@@ -224,59 +217,44 @@ FinFuncion
 	Segun opc Hacer
 			1:
 				si datosingresados > 1 Entonces
-					si datosingresados > 1 Entonces
 						Escribir Sin Saltar "Correo electronico: "
 						leer codigocedula
-						Para i=1 Hasta limite-1 Con Paso 1 Hacer
-							si Correo[i]==codigocedula Entonces
+						longvalidacion=longitud(codigocedula)
+							si longcorreo == longvalidacion Entonces
 								Escribir "Correo electronico existente"
-								i=limite
 							SiNo
-								Si Correo[i]<>codigocedula Entonces
 									Escribir "EL CORREO INGRESADO ES ERRONEO"
-									
-								FinSi
+									Escribir "1. Menu"
+									Escribir "0. Salir de la app"
+									Leer opc
+									si opc==1 Entonces
+										PRIMERMENU()
+									SiNo
+										Escribir "",CERRARAPP();
+										Borrar Pantalla
+									FinSi
 							FinSi
-						FinPara
-					SiNo
-						Escribir "Correo electronico inexistente"
-						Escribir "1. Menu"
-						Escribir "0. Salir de la app"
-						Leer opc
-						si opc==1 Entonces
-							PRIMERMENU()
-						SiNo
-							Escribir "",CERRARAPP();
-							Borrar Pantalla
-						FinSi
-					FinSi
-					si datosingresados > 1 Entonces
+						
 						Escribir Sin Saltar "Ingrese su contraseña: "
 						leer contraseña_iniciosesion
-						Para i=1 Hasta limite-1 Con Paso 1 Hacer
-							si Contraseña[i]==contraseña_inicosesion Entonces
+						longvalidacion=longitud(contraseña_iniciosesion)
+							si longcontra==longvalidacion Entonces
 								Escribir "Contraseña existente"
-								i=limite
+								MENUDELPACIENTE();
 								
 							SiNo
-								Si Contraseña[i]<>contraseña_iniciosesion Entonces
 									Escribir "LA CONTRASEÑA INGRESADA ES ERRONEA"
-									
+									Escribir "1. Menu"
+									Escribir "0. Salir de la app"
+									Leer opc
+									si opc==1 Entonces
+										PRIMERMENU()
+									SiNo
+										Escribir "",CERRARAPP();
+										Borrar Pantalla
+									FinSi
 								FinSi
-							FinSi
-						FinPara
-					SiNo
-						Escribir "Contraseña inexistente"
-						Escribir "1. Menu"
-						Escribir "0. Salir de la app"
-						Leer opc
-						si opc==1 Entonces
-							PRIMERMENU()
-						SiNo
-							Escribir "",CERRARAPP();
-							Borrar Pantalla
-						FinSi
-					FinSi
+				MENUDELPACIENTE();
 				SiNo
 					Repetir
 						Limpiar Pantalla
@@ -297,7 +275,7 @@ FinFuncion
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
 				opc=lista_profesionales() 
-				MENUDELDOCTOR()
+				MENUDELDOCTOR(nombres,apellidos,i)
 				
 			De Otro Modo:
 				PRIMERMENU();
@@ -330,7 +308,7 @@ Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
 			1: 
 				NUEVOTURNO();
 			2:	MISTURNOS();
-			3: INFORMACIONPERSONAL();
+			3: INFORMACIONPERSONAL(Nombre,Apellido,DNI,Correo,i);
 			4: INFORMACIONDELAAPP();
 			5: Escribir "",CERRARAPP();
 				Borrar Pantalla
@@ -472,7 +450,7 @@ FinFuncion
 
 //------------------------------------FUNCION INFORMACION PERSONAL DEL PACIENTE---------------------
 
-Funcion INFORMACIONPERSONAL() //FALTA LOS ARGUMENTOS
+Funcion INFORMACIONPERSONAL(Nombre Por Referencia,Apellido Por Referencia,DNI Por Referencia,Correo Por Referencia, i Por Referencia) //FALTA LOS ARGUMENTOS
 	Definir OPCIONINFORMACIONPERSONAL Como Entero
 	Borrar Pantalla
 	// "VER INFORMACION PERSONAL"
@@ -505,15 +483,15 @@ Funcion INFORMACIONPERSONAL() //FALTA LOS ARGUMENTOS
 	Escribir " "
 	Escribir " "
 	Escribir "--------------------------------------------------------------"
-	//Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
+	Escribir " Nombre del usuario: ", Nombre[i], " ", Apellido[i] 
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir "-------------------------------------------------------------- "
-	//Escribir " DNI usuario: ", DNI[i]
+	Escribir " DNI usuario: ", DNI[i]
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir "--------------------------------------------------------------"
-	//Escribir " Correo Electrónico del usuario: ", Correo[i]
+	Escribir " Correo Electrónico del usuario: ", Correo[i]
 	Escribir "--------------------------------------------------------------"
 	Escribir " "
 	Escribir " "
@@ -699,15 +677,15 @@ FinFuncion
 		nombres[18] = "Sergio"; apellidos[18] = "Massa"; cedula_medica[18] = 987654; especialidades[18] = "Dermatología"
 		nombres[19] = "Diana"; apellidos[19] = "Castro"; cedula_medica[19] = 109876; especialidades[19] = "Ginecología y Obstetricia"
 		nombres[20] = "David"; apellidos[20] = "Hernández"; cedula_medica[20] = 210987; especialidades[20] = "Oftalmología"
-		nombres[21] = "Thomas"; Apellidos[21] = "Rodas"; cedula_medica[21] = 179800; especialidades[21] = "Médico Clínico"
-		nombres[22] = "Lucía"; Apellidos[22] = "García"; cedula_medica[22] = 484895; especialidades[22] = "Pediatra"
-		nombres[23] = "Carlos"; Apellidos[23] = "Martínez"; cedula_medica[23] = 304050; especialidades[23] = "Dermatólogo"
-		nombres[24] = "Alex"; Apellidos[24] = "Ramos"; cedula_medica[24] = 181920; especialidades[24] = "Cardiólogo"
-		nombres[25] = "Pablo"; Apellidos[25] = "Hernández"; cedula_medica[25] = 100232; especialidades[25] = "Oftalmólogo"
-		nombres[26] = "Isabel"; Apellidos[26] = "Cramer"; cedula_medica[26] = 369258; especialidades[26] = "Ginecólogo"
-		nombres[27] = "Lionel"; Apellidos[27] = "Messi"; cedula_medica[27] = 181222; especialidades[27] = "Dentista"
-		nombres[28] = "Mike"; Apellidos[28] = "Tyson"; cedula_medica[28] = 143670; especialidades[28] = "Dentista"
-		nombres[29] = "Miguel"; Apellidos[29] = "Silva"; cedula_medica[29] = 103230; especialidades[29] = "Dentista"
+		nombres[21] = "Thomas"; apellidos[21] = "Rodas"; cedula_medica[21] = 179800; especialidades[21] = "Médico Clínico"
+		nombres[22] = "Lucía"; apellidos[22] = "García"; cedula_medica[22] = 484895; especialidades[22] = "Pediatra"
+		nombres[23] = "Carlos"; apellidos[23] = "Martínez"; cedula_medica[23] = 304050; especialidades[23] = "Dermatólogo"
+		nombres[24] = "Alex"; apellidos[24] = "Ramos"; cedula_medica[24] = 181920; especialidades[24] = "Cardiólogo"
+		nombres[25] = "Pablo"; apellidos[25] = "Hernández"; cedula_medica[25] = 100232; especialidades[25] = "Oftalmólogo"
+		nombres[26] = "Isabel"; apellidos[26] = "Cramer"; cedula_medica[26] = 369258; especialidades[26] = "Ginecólogo"
+		nombres[27] = "Lionel"; apellidos[27] = "Messi"; cedula_medica[27] = 181222; especialidades[27] = "Dentista"
+		nombres[28] = "Mike"; apellidos[28] = "Tyson"; cedula_medica[28] = 143670; especialidades[28] = "Dentista"
+		nombres[29] = "Miguel"; apellidos[29] = "Silva"; cedula_medica[29] = 103230; especialidades[29] = "Dentista"
 		
 		Repetir
 			Borrar Pantalla
@@ -720,7 +698,8 @@ FinFuncion
 					Escribir "Datos encontrados"
 					Escribir i,") Cedula Medica: ",cedula_medica[i], "  Profesional: ",nombres[i]," ",apellidos[i]
 					i=limite
-					MENUDELDOCTOR();
+					ESPERAR 3 SEGUNDOS
+					MENUDELDOCTOR(nombres, apellidos, i);
 				SiNo
 					Escribir "Cedula inexiste.Desea"
 					Escribir " 0. Volver"
@@ -745,18 +724,19 @@ FinFuncion
 	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
-	Funcion MENUDELDOCTOR ()
+	Funcion MENUDELDOCTOR (nombres Por Referencia, apellidos Por Referencia, i Por Referencia)
 		Definir OPCIONMENU Como Entero
 		Limpiar Pantalla
 		Repetir
+			Escribir "Bienvenido al menú de Doctores Dr. ", nombres[i]," ",apellidos[i]
 			Escribir " -----------------                                             ----------------------------"
 			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
 			Escribir " -----------------                                             ---------------------------- "
 			Escribir " "
 			Escribir " "
-			Escribir "							  ----------------------------"
-			Escribir "							  | 3. INFORMACION DE LA APP |"
-			Escribir " 						  ----------------------------"
+			Escribir "							 	 	----------------------------"
+			Escribir "							  	    | 3. INFORMACION DE LA APP |"
+			Escribir " 						  		----------------------------"
 			Escribir " "
 			Escribir " "
 			Escribir "				                       ------------- 											"
@@ -780,8 +760,7 @@ FinFuncion
 		Borrar Pantalla
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
-Funcion camp_obligatorio(Nombre)
-	Definir i Como Entero
+Funcion camp_obligatorio(Nombre, i)
 	Si (Nombre[i]= '')
 		Escribir "Es requerido llenar este campo"
 		Esperar 3 Segundos
@@ -843,4 +822,5 @@ FinFuncion
 		Esperar 1 Segundos
 		Borrar Pantalla
 	FinFuncion
+	
 
