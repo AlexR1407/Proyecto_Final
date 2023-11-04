@@ -784,6 +784,7 @@ Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI Por referencia,Correo,Telefon
 	Definir i Como Entero
 	i=1
 	Escribir "DNI",DNI[i]
+	Escribir "No sirve"
 	si ingresados>0 Entonces
 		para i=1 Hasta limite-1 Con Paso 1 Hacer
 			si DNI[i]<>"" Entonces
