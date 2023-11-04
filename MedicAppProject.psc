@@ -1,16 +1,6 @@
 Algoritmo PROYECTOFINAL
-		Definir OPCIONMENU Como Entero
-		Definir DÍA, MES, AÑO como entero
-		Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
-		Definir menu, accesomenupaciente, accesomenudoctor Como Logico
-		menu=Falso; 
-		accesomenupaciente=Falso
-		accesomenudoctor=Falso
-		AÑO=2024
-		
+		//--------------------Logo de la app--------------------------------
 		LogoInicio_parte0()
-		
-		
 		PRIMERMENU();
 //*******************************************MENUDELPACIENTE*************************************************************
 		Si(accesomenupaciente=Verdadero) entonces
@@ -20,7 +10,6 @@ Algoritmo PROYECTOFINAL
 		Si (accesomenudoctor=Verdadero) Entonces
 			MENUDELDOCTOR()
 		FinSi
-		
 	 LogoInicio_parte0()
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
@@ -44,7 +33,7 @@ Funcion PRIMERMENU()
 		Escribir "|  	 0. Salir de la App       |"
 		Escribir " ----------------------------- "
 		leer OPCCIC
-	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
+	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0 
 	borrar pantalla
 	Segun OPCCIC Hacer
 		0:
@@ -61,26 +50,27 @@ FinFuncion
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
-	Definir limite, i, datosingresados, k, long como entero
-	limite=3; k=1; i=1; i=datosingresados
+	Definir limite, i, ingresados, k, long, opc como entero
+	limite=3; k=1; i=1; i=ingresados
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	i=datosingresados
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
-	Definir menu2, camp_obl Como Logico
-	menu2=Falso; camp_obl=Falso
+	Definir bandera2, camp_obl Como Logico
+	bandera2=Falso; camp_obl=Falso
 	//------------------Se inicializa los vectores como caracteres
-	Para k=1 Hasta 1 Con Paso 1 Hacer
-		Nombre[k]=" "
-		Apellido[k]=" "
-		DNI[k]=" " 
-		Telefono[k]=" "
-		Correo[k]=" "
-		Cedula[k]=" "
-		Contraseña[k]=" "
+	Para k=1 Hasta limite-1 Con Paso 1 Hacer
+		Nombre[k]=""
+		Apellido[k]=""
+		DNI[k]="" 
+		Telefono[k]=""
+		Correo[k]=""
+		Cedula[k]=""
+		Contraseña[k]=""
 	FinPara
 	//------------------------------------------------------------
 
 	//-------comienzo de inicio de sesion----------------------
+	i=ingresados
+	bandera2=Falso //va a verificar si los datos ya existen
 	si i<>limite Entonces
 		Borrar Pantalla
 		//---------------------------Carga el nombre del paciente-----------------------------
@@ -98,6 +88,16 @@ funcion CREAR_USUARIO()
 			Leer Apellido[i]
 			camp_obligatorio(Apellido)
 		Hasta Que (Apellido[i]<> '')
+		//-----------------------------Carga el DNI del paciente--------------------------------
+		repetir
+			Escribir "------------------------------------------------------------------------"
+			Escribir Sin Saltar "DNI: "
+			Leer DNI[i]
+			Escribir "------------------------------------------------------------------------"
+			long=longitud(DNI[i])
+			camp_obligatorio(DNI)
+			long_camp(long,6,9)
+		Hasta Que (long<10 y long>6 y DNI[i]<> ' ')
 			//---------------------Carga el correo del paciente----------------------------------
 		Repetir
 			Escribir " "
@@ -106,133 +106,104 @@ funcion CREAR_USUARIO()
 			Leer Correo[i]
 			long<-longitud(Correo[i])
 			camp_obligatorio(Correo)
-			long_camp(long)
-		Hasta Que (Correo[i] <> ' ' y long>8)
+			long_camp(long,20,40)
+		Hasta Que (Correo[i] <> ' ' y long>10)
 		//---------------------------Carga la contraseña del paciente-----------------------------
 		Repetir
 			Escribir " "
 			Escribir "---------------------------------------------------------------------------"
-			Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
+			Escribir sin saltar "Crear contraseña (Mínimo 8 caracteres): "
 			Leer Contraseña[i]
 			long<-longitud(Contraseña[i])
-			camp_obligatorio(Correo)
-			long_camp(long)
+			camp_obligatorio(Contraseña)
+			long_camp(long,8,20)
 			Escribir "---------------------------------------------------------------------------"
 		Hasta que (long>=8 y Contraseña[i]<> '')
 		//----------------------------Carga el numero de celular del paciente--------------------
 		repetir
 			Escribir "--------------------------------------------------------------------------"
-			Escribir sin saltar "Ingrese su numero de telefono: "
+			Escribir sin saltar "Nro. Celular: "
 			Leer Telefono[i]
 			Escribir "--------------------------------------------------------------------------"
-			longdetel=longitud(Telefono[i])
-			Si (Telefono[i]= '')
-				Escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
-			Si (longdetel<10) Entonces
-				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
-		Hasta Que (longdetel=10 y Telefono[i] <> ' ')
-		//-----------------------------Carga el DNI del paciente--------------------------------
-		repetir
-			Escribir "--------------------------------------------------------------------------"
-			Escribir Sin Saltar "Ingrese su numero de DNI: "
-			Leer DNI[i]
-			Escribir "--------------------------------------------------------------------------"
-			longdetel=longitud(DNI[i])
-			Si (longdetel<7 o longdetel>9) Entonces
-				Escribir "Error. Los caracteres no son suficientes. Volver a intentar..."
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
-			Si (DNI[i]= '')
-				escribir "ERROR CAMPO VACÍO"
-				Esperar 5 Segundos
-				CREAR_USUARIO()
-				Borrar Pantalla
-			FinSi
-		Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
-		para p=1 Hasta limite-1 Con Paso 1 Hacer
-			si Correo[p]=Correo[i] y i<>p Entonces
-				
-				p=limite
-			FinSi
-		FinPara
-		si menu2 Entonces
+			long=longitud(Telefono[i])
+			camp_obligatorio(Telefono)
+			long_camp(long,9,15)
+		Hasta Que (long>9 y Telefono[i] <> '')
+		Repetir	
+			Escribir "¿Los datos son correctos?"
+			Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+			Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+			Escribir "1. SI"
+			Escribir "2. NO"
+			Leer opc
+		Hasta Que (opc== 1 o opc== 2 o opc==1357)
+		Escribir "DNI: ",DNI[i]
+		//k=1
+		//para k=1 Hasta limite Con Paso 1 Hacer
+			//si Correo[k]=Correo[i] y i<>k Entonces
+				//k=limite
+			//FinSi
+		//FinPara
+		si bandera2 Entonces
 			Escribir "Hay datos que ya existen"
 		SiNo
-			//i=i+1 //Verificar error
-			Escribir "Registro con exito"
-			datosingresados=datosingresados+1
+			i=i+1 //Verificar error //Error verificado Nota:no borrar comentario
+			ingresados=ingresados+1
 		FinSi
 	SiNo
 		Escribir "Base de datos llena"
 	FinSi
-	Repetir	
-		Escribir "¿Los datos son correctos?"
-		Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
-		Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
-		Escribir "1. SI"
-		Escribir "2. NO"
-		Leer entrada
-	Hasta Que (entrada == 1 o entrada == 2)
-	si entrada==1 Entonces
-
+	si opc==1357 Entonces
+		BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc)
+	FinSi
+	si opc==1 Entonces
 		Limpiar Pantalla 
 		Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-		Esperar 5 segundos
-		//INCIOSESION (Correo, Contraseña)
-		Limpiar Pantalla
+		tiempo_espera()
+		INICIOSESION(Correo, Contraseña)
 	SiNo
 		Escribir "Seción cerrada... Repita el proceso"
-		esperar 5 Segundos
+		tiempo_espera()
 		CREAR_USUARIO();
 		Limpiar Pantalla
 	FinSi	
 FinFuncion
 
 //-------------------------FUNCION INICIO DE SESIÓN DEL USUARIO--------------------------------------
-	FUNCION INICIOSESION (Correo Por Referencia, Contraseña Por Referencia)
-	Definir opc, i, limite como Entero 
-	Definir codigocedula, contraseña_iniciosesion como texto
-	
-	Repetir
-		Limpiar Pantalla
-		Escribir "Usted es: "
-		escribir " " 
-		Escribir " ----------------------------- " 
-		Escribir "|  		1. Paciente           |"
-		Escribir " ----------------------------- "
-		Escribir " "
-		Escribir " ----------------------------- " 
-		Escribir "|  		  2. Doctor           |"
-		Escribir " ----------------------------- "
-		Escribir " "
-		Escribir " ----------------------------- " 
-		Escribir "|  		  3. Volver           |"
-		Escribir " ----------------------------- "
-		Escribir " "
-		Leer opc
-	hasta que opc=1 o opc=2 o opc=3
-	Segun opc Hacer
+FUNCION INICIOSESION(Correo, Contraseña)
+		Definir opc, i, limite, datosingresados como Entero 
+		Definir Email, contraseña_iniciosesion como texto
+		limite=3; i=1; datosingresados=i;
+		Repetir
+			Limpiar Pantalla
+			Escribir "Usted es: "
+			escribir " " 
+			Escribir " ----------------------------- " 
+			Escribir "|  		1. Paciente           |"
+			Escribir " ----------------------------- "
+			Escribir " "
+			Escribir " ----------------------------- " 
+			Escribir "|  		  2. Doctor           |"
+			Escribir " ----------------------------- "
+			Escribir " "
+			Escribir " ----------------------------- " 
+			Escribir "|  		  3. Volver           |"
+			Escribir " ----------------------------- "
+			Escribir " "
+			Leer opc
+		hasta que opc=1 o opc=2 o opc=3
+		Segun opc Hacer
 			1:
 				si datosingresados > 1 Entonces
 					si datosingresados > 1 Entonces
-						Escribir Sin Saltar "Correo electronico: "
-						leer codigocedula
+						Escribir Sin Saltar "E-mail: "
+						leer Email
 						Para i=1 Hasta limite-1 Con Paso 1 Hacer
-							si Correo[i]==codigocedula Entonces
+							si Correo[i]==Email Entonces
 								Escribir "Correo electronico existente"
 								i=limite
 							SiNo
-								Si Correo[i]<>codigocedula Entonces
+								Si Correo[i]<>Email Entonces
 									Escribir "EL CORREO INGRESADO ES ERRONEO"
 									
 								FinSi
@@ -251,7 +222,7 @@ FinFuncion
 						FinSi
 					FinSi
 					si datosingresados > 1 Entonces
-						Escribir Sin Saltar "Ingrese su contraseña: "
+						Escribir Sin Saltar "Contraseña: "
 						leer contraseña_iniciosesion
 						Para i=1 Hasta limite-1 Con Paso 1 Hacer
 							si Contraseña[i]==contraseña_inicosesion Entonces
@@ -287,9 +258,9 @@ FinFuncion
 					Hasta Que (opc=1 o opc=0)
 					si opc==1 Entonces
 						PRIMERMENU()
-						SiNo
-							Escribir "",CERRARAPP();
-							Borrar Pantalla
+					SiNo
+						Escribir "",CERRARAPP();
+						Borrar Pantalla
 					FinSi
 				FinSi
 			2:
@@ -301,8 +272,8 @@ FinFuncion
 				
 			De Otro Modo:
 				PRIMERMENU();
-
-	FinSegun
+		FinSegun
+		Limpiar Pantalla
 FinFuncion
 
 //-----------------------------FUNCION MENU PACIENTE----------------------------------------------
@@ -784,7 +755,7 @@ Funcion camp_obligatorio(Nombre)
 	Definir i Como Entero
 	Si (Nombre[i]= '')
 		Escribir "Es requerido llenar este campo"
-		Esperar 3 Segundos
+		tiempo_espera
 		Borrar Pantalla
 	SiNo
 		Escribir " "
@@ -793,16 +764,44 @@ Funcion camp_obligatorio(Nombre)
 FinFuncion
 
 //--------------Verifica long. del dato--------------------------------
-Funcion long_camp(long)
-	Si (long>6 y long <= 8)
-		Escribir "CARACTERES INSUFICIENTES"
-		Esperar 3 Segundos
-		Borrar Pantalla
-	FinSi
+Funcion long_camp(long,long_num1,long_num2) 
+		Si (long>1 y long<long_num1)
+			Escribir "CARACTERES INSUFICIENTES"
+			tiempo_espera
+			Borrar Pantalla
+		SiNo
+			si (long>=long_num2)
+				Escribir "EXESO DE CARACTERES"
+				tiempo_espera()
+				Borrar Pantalla
+			FinSi
+		FinSi
 	Escribir " "
-	Escribir "---------------------------------------------------------------------------"
+	Escribir "------------------------------------------------------------------------"
 FinFuncion
-
+Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI Por referencia,Correo,Telefono,opc)
+	Limpiar Pantalla
+	Definir i Como Entero
+	i=1
+	Escribir "DNI",DNI[i]
+	si ingresados>0 Entonces
+		para i=1 Hasta limite-1 Con Paso 1 Hacer
+			si DNI[i]<>"" Entonces
+				Escribir "Base de Datos"
+				Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+				Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+			SiNo
+				Escribir "No hay registros en el sistema";
+			FinSi
+		FinPara
+	FinSi
+	Esperar Tecla
+	opc=1
+FinFuncion
+//------------------------------------Tiempo de espera---------------------------------
+SubProceso tiempo_espera()
+	Esperar 3 Segundos
+FinsubProceso
 	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
 	Funcion LogoInicio_parte0()
 		Escribir  " "
