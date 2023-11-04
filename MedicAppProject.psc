@@ -1,7 +1,128 @@
 Algoritmo PROYECTOFINAL
-		//--------------------Logo de la app--------------------------------
+	//--------------------Logo de la app--------------------------------
+	Definir limite, i, ingresados, k, long, opc como entero
+	ingresados=1;limite=3; k=1; i=ingresados
+	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
+	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
+	Definir bandera2, camp_obl, CrearUsuario Como Logico
+	bandera2=Falso; camp_obl=Falso ; CrearUsuario= Verdadero
+	
 		LogoInicio_parte0()
-		PRIMERMENU();
+		//PRIMERMENU();
+			//------------------Se inicializa los vectores como caracteres
+			Para k=1 Hasta limite-1 Con Paso 1 Hacer
+				Nombre[k]=""
+				Apellido[k]=""
+				DNI[k]="" 
+				Telefono[k]=""
+				Correo[k]=""
+				Cedula[k]=""
+				Contraseña[k]=""
+			FinPara
+			//------------------------------------------------------------
+			Repetir
+				
+				i=ingresados
+				bandera2=Falso //va a verificar si los datos ya existen
+				si i<>limite Entonces
+				Borrar Pantalla
+				//---------------------------Carga el nombre del paciente-----------------------------
+				Repetir
+					Escribir "-----------------------------------------------------------------------"
+					Escribir Sin Saltar "Nombre: "
+					Leer Nombre[i]
+					camp_obligatorio(Nombre,i)
+				Hasta Que (Nombre[i]<> '')
+				//----------------------Carga el apellido del paciente-------------------------------
+				Repetir
+					Escribir " "
+					Escribir "------------------------------------------------------------------------"
+					Escribir Sin saltar "Apellido: "
+					Leer Apellido[i]
+					camp_obligatorio(Apellido,i)
+				Hasta Que (Apellido[i]<> '')
+				//-----------------------------Carga el DNI del paciente--------------------------------
+				repetir
+					Escribir "------------------------------------------------------------------------"
+					Escribir Sin Saltar "DNI: "
+					Leer DNI[i]
+					Escribir "------------------------------------------------------------------------"
+					long=longitud(DNI[i])
+					camp_obligatorio(DNI,i)
+					long_camp(long,6,9)
+				Hasta Que (long<10 y long>6 y DNI[i]<> ' ')
+				//---------------------Carga el correo del paciente----------------------------------
+				Repetir
+					Escribir " "
+					Escribir "------------------------------------------------------------------------"
+					Escribir Sin Saltar "Email: "
+					Leer Correo[i]
+					long<-longitud(Correo[i])
+					camp_obligatorio(Correo,i)
+					long_camp(long,20,40)
+				Hasta Que (Correo[i] <> ' ' y long>10)
+				//---------------------------Carga la contraseña del paciente-----------------------------
+				Repetir
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir sin saltar "Crear contraseña (Mínimo 8 caracteres): "
+					Leer Contraseña[i]
+					long<-longitud(Contraseña[i])
+					camp_obligatorio(Contraseña,i)
+					long_camp(long,8,20)
+					Escribir "---------------------------------------------------------------------------"
+				Hasta que (long>=8 y Contraseña[i]<> '')
+				//----------------------------Carga el numero de celular del paciente--------------------
+				repetir
+					Escribir "--------------------------------------------------------------------------"
+					Escribir sin saltar "Nro. Celular: "
+					Leer Telefono[i]
+					Escribir "--------------------------------------------------------------------------"
+					long=longitud(Telefono[i])
+					camp_obligatorio(Telefono,i)
+					long_camp(long,9,15)
+				Hasta Que (long>9 y Telefono[i] <> '')
+				Repetir	
+					Escribir "¿Los datos son correctos?"
+					Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+					Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+					Escribir "1. SI"
+					Escribir "2. NO"
+					Leer opc
+				Hasta Que (opc== 1 o opc== 2 o opc==1357)
+				Escribir "DNI: ",DNI[i]
+				//k=1
+				//para k=1 Hasta limite Con Paso 1 Hacer
+				//si Correo[k]=Correo[i] y i<>k Entonces
+				//k=limite
+				//FinSi
+				//FinPara
+				si bandera2 Entonces
+					Escribir "Hay datos que ya existen"
+				SiNo
+					i=i+1 //Verificar error //Error verificado Nota:no borrar comentario
+					ingresados=ingresados+1
+				FinSi
+			SiNo
+				Escribir "Base de datos llena"
+			FinSi
+			si opc==1357 Entonces
+				BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc,i)
+			FinSi
+			si opc==1 Entonces
+				Limpiar Pantalla 
+				Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
+				tiempo_espera()
+				INICIOSESION(Correo, Contraseña)
+			SiNo
+				Escribir "Seción cerrada... Repita el proceso"
+				tiempo_espera()
+				CrearUsuario=Verdadero
+				Limpiar Pantalla
+			FinSi
+		Hasta Que (CrearUsuario=Falso)
+
+
 //*******************************************MENUDELPACIENTE*************************************************************
 		Si(accesomenupaciente=Verdadero) entonces
 			MENUDELPACIENTE()
@@ -15,159 +136,39 @@ FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
 //----------------Menu de CREAR USUARIO/INICIOSESION-----------------------------------------------------
-Funcion PRIMERMENU()
-	Definir OPCCIC Como Entero
-	repetir
-		Limpiar Pantalla
-		Escribir " ----------------------------- " 
-		Escribir "|  	1. Crear Usuario         |"
-		Escribir " ----------------------------- "
-		Escribir " "
-		Escribir " "
-		Escribir " ----------------------------- " 
-		Escribir "|  	  2. Iniciar Sesión       |"
-		Escribir " ----------------------------- "
-		Escribir " "
-		Escribir " "
-		Escribir " ----------------------------- " 
-		Escribir "|  	 0. Salir de la App       |"
-		Escribir " ----------------------------- "
-		leer OPCCIC
-	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0 
-	borrar pantalla
-	Segun OPCCIC Hacer
-		0:
-			Escribir " ",CERRARAPP();
-		1:
-			CREAR_USUARIO();
+//Funcion PRIMERMENU()
+	//Definir OPCCIC Como Entero
+	//repetir
+		//Limpiar Pantalla
+		//Escribir " ----------------------------- " 
+		//Escribir "|  	1. Crear Usuario         |"
+		//Escribir " ----------------------------- "
+		//Escribir " "
+		//Escribir " "
+		//Escribir " ----------------------------- " 
+		//Escribir "|  	  2. Iniciar Sesión       |"
+		//Escribir " ----------------------------- "
+		//Escribir " "
+		//Escribir " "
+		//Escribir " ----------------------------- " 
+		//Escribir "|  	 0. Salir de la App       |"
+		//Escribir " ----------------------------- "
+		//leer OPCCIC
+	//Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0 
+	//borrar pantalla
+	//Segun OPCCIC Hacer
+		//0:
+			//Escribir " ",CERRARAPP();
+		//1:
 			
-		2: 
-			INICIOSESION(Correo,Contraseña)
 			
-	FinSegun
-FinFuncion
+		//2: 
+			//INICIOSESION(Correo,Contraseña)
+			
+	//FinSegun
+//FinFuncion
 
 //---------------------FUNCION DE CREAR USUARIO DE PACIENTE------------------------------------------
-funcion CREAR_USUARIO()
-	//------------VARIABLES----------------------------------------
-	Definir limite, i, ingresados, k, long, opc como entero
-	limite=3; k=1; i=1; i=ingresados
-	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
-	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
-	Definir bandera2, camp_obl Como Logico
-	bandera2=Falso; camp_obl=Falso
-	//------------------Se inicializa los vectores como caracteres
-	Para k=1 Hasta limite-1 Con Paso 1 Hacer
-		Nombre[k]=""
-		Apellido[k]=""
-		DNI[k]="" 
-		Telefono[k]=""
-		Correo[k]=""
-		Cedula[k]=""
-		Contraseña[k]=""
-	FinPara
-	//------------------------------------------------------------
-
-	//-------comienzo de inicio de sesion----------------------
-	i=ingresados
-	bandera2=Falso //va a verificar si los datos ya existen
-	si i<>limite Entonces
-		Borrar Pantalla
-		//---------------------------Carga el nombre del paciente-----------------------------
-		Repetir
-			Escribir "-----------------------------------------------------------------------"
-			Escribir Sin Saltar "Nombre: "
-			Leer Nombre[i]
-			camp_obligatorio(Nombre)
-		Hasta Que (Nombre[i]<> '')
-			//----------------------Carga el apellido del paciente-------------------------------
-		Repetir
-			Escribir " "
-			Escribir "------------------------------------------------------------------------"
-			Escribir Sin saltar "Apellido: "
-			Leer Apellido[i]
-			camp_obligatorio(Apellido)
-		Hasta Que (Apellido[i]<> '')
-		//-----------------------------Carga el DNI del paciente--------------------------------
-		repetir
-			Escribir "------------------------------------------------------------------------"
-			Escribir Sin Saltar "DNI: "
-			Leer DNI[i]
-			Escribir "------------------------------------------------------------------------"
-			long=longitud(DNI[i])
-			camp_obligatorio(DNI)
-			long_camp(long,6,9)
-		Hasta Que (long<10 y long>6 y DNI[i]<> ' ')
-			//---------------------Carga el correo del paciente----------------------------------
-		Repetir
-			Escribir " "
-			Escribir "------------------------------------------------------------------------"
-			Escribir Sin Saltar "Email: "
-			Leer Correo[i]
-			long<-longitud(Correo[i])
-			camp_obligatorio(Correo)
-			long_camp(long,20,40)
-		Hasta Que (Correo[i] <> ' ' y long>10)
-		//---------------------------Carga la contraseña del paciente-----------------------------
-		Repetir
-			Escribir " "
-			Escribir "---------------------------------------------------------------------------"
-			Escribir sin saltar "Crear contraseña (Mínimo 8 caracteres): "
-			Leer Contraseña[i]
-			long<-longitud(Contraseña[i])
-			camp_obligatorio(Contraseña)
-			long_camp(long,8,20)
-			Escribir "---------------------------------------------------------------------------"
-		Hasta que (long>=8 y Contraseña[i]<> '')
-		//----------------------------Carga el numero de celular del paciente--------------------
-		repetir
-			Escribir "--------------------------------------------------------------------------"
-			Escribir sin saltar "Nro. Celular: "
-			Leer Telefono[i]
-			Escribir "--------------------------------------------------------------------------"
-			long=longitud(Telefono[i])
-			camp_obligatorio(Telefono)
-			long_camp(long,9,15)
-		Hasta Que (long>9 y Telefono[i] <> '')
-		Repetir	
-			Escribir "¿Los datos son correctos?"
-			Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
-			Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
-			Escribir "1. SI"
-			Escribir "2. NO"
-			Leer opc
-		Hasta Que (opc== 1 o opc== 2 o opc==1357)
-		Escribir "DNI: ",DNI[i]
-		//k=1
-		//para k=1 Hasta limite Con Paso 1 Hacer
-			//si Correo[k]=Correo[i] y i<>k Entonces
-				//k=limite
-			//FinSi
-		//FinPara
-		si bandera2 Entonces
-			Escribir "Hay datos que ya existen"
-		SiNo
-			i=i+1 //Verificar error //Error verificado Nota:no borrar comentario
-			ingresados=ingresados+1
-		FinSi
-	SiNo
-		Escribir "Base de datos llena"
-	FinSi
-	si opc==1357 Entonces
-		BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc)
-	FinSi
-	si opc==1 Entonces
-		Limpiar Pantalla 
-		Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-		tiempo_espera()
-		INICIOSESION(Correo, Contraseña)
-	SiNo
-		Escribir "Seción cerrada... Repita el proceso"
-		tiempo_espera()
-		CREAR_USUARIO();
-		Limpiar Pantalla
-	FinSi	
-FinFuncion
 
 //-------------------------FUNCION INICIO DE SESIÓN DEL USUARIO--------------------------------------
 FUNCION INICIOSESION(Correo, Contraseña)
@@ -215,7 +216,8 @@ FUNCION INICIOSESION(Correo, Contraseña)
 						Escribir "0. Salir de la app"
 						Leer opc
 						si opc==1 Entonces
-							PRIMERMENU()
+							//PRIMERMENU()
+							escribir " "
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -242,7 +244,8 @@ FUNCION INICIOSESION(Correo, Contraseña)
 						Escribir "0. Salir de la app"
 						Leer opc
 						si opc==1 Entonces
-							PRIMERMENU()
+							//PRIMERMENU()
+							escribir " "
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -257,7 +260,8 @@ FUNCION INICIOSESION(Correo, Contraseña)
 						Leer opc
 					Hasta Que (opc=1 o opc=0)
 					si opc==1 Entonces
-						PRIMERMENU()
+						//PRIMERMENU()
+						escribir " "
 					SiNo
 						Escribir "",CERRARAPP();
 						Borrar Pantalla
@@ -271,7 +275,7 @@ FUNCION INICIOSESION(Correo, Contraseña)
 				MENUDELDOCTOR()
 				
 			De Otro Modo:
-				PRIMERMENU();
+				//PRIMERMENU();
 		FinSegun
 		Limpiar Pantalla
 FinFuncion
@@ -698,7 +702,7 @@ FinFuncion
 					Escribir " 1. Reintentar"
 					Leer opc
 					si (opc=0)
-						PRIMERMENU();
+						//PRIMERMENU();
 					SiNo
 						Escribir"",lista_profesionales();
 						Borrar Pantalla
@@ -751,8 +755,7 @@ FinFuncion
 		Borrar Pantalla
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
-Funcion camp_obligatorio(Nombre)
-	Definir i Como Entero
+Funcion camp_obligatorio(Nombre, i Por Referencia)
 	Si (Nombre[i]= '')
 		Escribir "Es requerido llenar este campo"
 		tiempo_espera
@@ -779,10 +782,8 @@ Funcion long_camp(long,long_num1,long_num2)
 	Escribir " "
 	Escribir "------------------------------------------------------------------------"
 FinFuncion
-Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI Por referencia,Correo,Telefono,opc)
+Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc, i Por Referencia)
 	Limpiar Pantalla
-	Definir i Como Entero
-	i=1
 	Escribir "DNI",DNI[i]
 	Escribir "No sirve"
 	si ingresados>0 Entonces
