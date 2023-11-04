@@ -37,7 +37,7 @@ Funcion PRIMERMENU()
 	borrar pantalla
 	Segun OPCCIC Hacer
 		0:
-			Escribir " ",CERRARAPP();
+			Escribir "",CERRARAPP();
 		1:
 			CREAR_USUARIO();
 			
