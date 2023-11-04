@@ -154,7 +154,7 @@ funcion CREAR_USUARIO()
 		Escribir "Base de datos llena"
 	FinSi
 	si opc==1357 Entonces
-		BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc)
+		BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc,i)
 	FinSi
 	si opc==1 Entonces
 		Limpiar Pantalla 
@@ -779,10 +779,8 @@ Funcion long_camp(long,long_num1,long_num2)
 	Escribir " "
 	Escribir "------------------------------------------------------------------------"
 FinFuncion
-Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI Por referencia,Correo,Telefono,opc)
+Funcion  BDD(ingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,opc,i Por Referencia)
 	Limpiar Pantalla
-	Definir i Como Entero
-	i=1
 	Escribir "DNI",DNI[i]
 	Escribir "No sirve"
 	si ingresados>0 Entonces
