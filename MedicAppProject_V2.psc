@@ -37,7 +37,7 @@ Funcion PRIMERMENU()
 		Escribir "|  	 0. Salir de la App       |"
 		Escribir " ----------------------------- "
 		leer OPCCIC
-	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
+	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0 o OPCCIC = 1357
 	borrar pantalla
 	Segun OPCCIC Hacer
 		0:
@@ -47,7 +47,9 @@ Funcion PRIMERMENU()
 			
 		2: 
 			INICIOSESION(Nombre,Apellido, DNI,Correo,Contraseña,i,datosingresados,longcorreo,longcontra)
+		1357:
 			
+			BDD(datosingresados, limite, Nombre, Apellido, DNI, Correo, Telefono, i)
 	FinSegun
 FinFuncion
 
@@ -55,28 +57,19 @@ FinFuncion
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
 	Definir limite, i, datosingresados, k, longcorreo, longcontra, RECOLECTOR como entero
-	limite=3; k=1; datosingresados=0; i=datosingresados+1
+	limite=3; k=1; datosingresados=1; i=datosingresados
 	
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
 	
 	Definir Nombre, Apellido, DNI, Telefono, Correo, Cedula, codigocedula, Contraseña como texto
 	
-	Definir menu2, camp_obl Como Logico
+	Definir badera2, menu2  Como Logico
 	
-	menu2=Falso; camp_obl=Falso
-	//------------------Se inicializa los vectores como caracteres
-	Para k=1 Hasta 1 Con Paso 1 Hacer
-		Nombre[k]=" "
-		Apellido[k]=" "
-		DNI[k]=" " 
-		Telefono[k]=" "
-		Correo[k]=" "
-		Cedula[k]=" "
-		Contraseña[k]=" "
-	FinPara
-	//------------------------------------------------------------
+	menu2=Falso; badera2=Falso
 
 	//-------comienzo de inicio de sesion----------------------
+	i=datosingresados
+	bandera2=Falso //va a verificar si los datos ya existen
 	si i<>limite Entonces
 		Borrar Pantalla
 		//---------------------------Carga el nombre del paciente-----------------------------
@@ -86,7 +79,7 @@ funcion CREAR_USUARIO()
 			Leer Nombre[i]
 			camp_obligatorio(Nombre,i)
 		Hasta Que (Nombre[i]<> '')
-			//----------------------Carga el apellido del paciente-------------------------------
+		//----------------------Carga el apellido del paciente-------------------------------
 		Repetir
 			Escribir " "
 			Escribir "------------------------------------------------------------------------"
@@ -94,7 +87,7 @@ funcion CREAR_USUARIO()
 			Leer Apellido[i]
 			camp_obligatorio(Apellido,i)
 		Hasta Que (Apellido[i]<> '')
-			//---------------------Carga el correo del paciente----------------------------------
+		//---------------------Carga el correo del paciente----------------------------------
 		Repetir
 			Escribir " "
 			Escribir "------------------------------------------------------------------------"
@@ -129,20 +122,6 @@ funcion CREAR_USUARIO()
 			Escribir "--------------------------------------------------------------------------"
 			longdetel=longitud(DNI[i])
 		Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
-		
-		para p=1 Hasta limite-1 Con Paso 1 Hacer
-			si Correo[p]=Correo[i] y i<>p Entonces
-				
-				p=limite
-			FinSi
-		FinPara
-		si menu2 Entonces
-			Escribir "Hay datos que ya existen"
-		SiNo
-			//i=i+1 //Verificar error
-			Escribir "Registro con exito"
-			
-		FinSi
 	SiNo
 		Escribir "Base de datos llena"
 	FinSi
@@ -154,26 +133,27 @@ funcion CREAR_USUARIO()
 		Escribir "2. NO"
 		Leer entrada
 	Hasta Que (entrada == 1 o entrada == 2 o entrada == 1357)
-	si entrada==1 Entonces
-		datosingresados=datosingresados+1
-		Borrar Pantalla
+	si bandera2 Entonces
+		Escribir "Hay datos que ya existen"
+	SiNo
+		si entrada==1 Entonces
+			i=i+1
+			datosingresados=datosingresados+1
+			Borrar Pantalla
 			Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-			Esperar 5 segundos
+			tiempo_espera()
 			INICIOSESION(Nombre,Apellido,DNI,Correo, Contraseña,i, datosingresados, longcorreo, longcontra)
 			Borrar Pantalla
 		SiNo
 			Si (entrada == 2)
 				Escribir "Seción cerrada... Repita el proceso"
-				esperar 5 Segundos
+				tiempo_espera()
 				CREAR_USUARIO();
-			SiNo
-				Si (entrada == 1357)
-					datosingresados=datosingresados+1
-					BDD(datosingresados, limite, Nombre, Apellido, DNI, Correo, Telefono, i)
-				FinSi
 			FinSi
-		Limpiar Pantalla
-	FinSi	
+			Limpiar Pantalla
+		FinSi	
+	FinSi
+
 FinFuncion
 
 //-------------------------FUNCION INICIO DE SESIÓN DEL USUARIO--------------------------------------
@@ -643,12 +623,6 @@ FinFuncion
 		Definir nombres, apellidos, especialidades  Como caracter
 		
 		
-		Para k=1 hasta 1 Con Paso 1
-			nombres[k]=" "
-			apellidos[k]=" "
-			especialidades[k]=" "
-			cedula_medica[k]=1
-		FinPara
 		
 		nombres[1] = "María"; apellidos[1] = "Gómez"; cedula_medica[1] = 123456; especialidades[1] = "Medico Clínico"
 		nombres[2] = "Juan"; apellidos[2] = "Rodríguez"; cedula_medica[2] = 234567; especialidades[2] = "Cardiología"
@@ -691,21 +665,21 @@ FinFuncion
 					Escribir "Datos encontrados"
 					Escribir i,") Cedula Medica: ",cedula_medica[i], "  Profesional: ",nombres[i]," ",apellidos[i]
 					
-					ESPERAR 3 SEGUNDOS
-					MENUDELDOCTOR(nombres, apellidos, i);
-				SiNo
-					Escribir "Cedula inexiste.Desea"
-					Escribir " 0. Volver"
-					Escribir " 1. Reintentar"
-					Leer opc
-					si (opc=0)
-						PRIMERMENU();
-					SiNo
-						Escribir"",lista_profesionales();
-						Borrar Pantalla
-					FinSi
-				
-					Limpiar Pantalla
+					tiempo_espera()
+					//MENUDELDOCTOR(nombres, apellidos, i);
+				//SiNo
+					//Escribir "Cedula inexiste.Desea"
+					//Escribir " 0. Volver"
+					//Escribir " 1. Reintentar"
+					//Leer opc
+					//si (opc=0)
+						//PRIMERMENU();
+					//SiNo
+						//Escribir"",lista_profesionales();
+						//Borrar Pantalla
+					//FinSi
+					
+					//Limpiar Pantalla
 				FinSi
 			FinPara
 		Hasta Que (opc=0 o opc=1)
@@ -756,7 +730,7 @@ FinFuncion
 Funcion camp_obligatorio(Nombre, i)
 	Si (Nombre[i]= '')
 		Escribir "Es requerido llenar este campo"
-		Esperar 3 Segundos
+		tiempo_espera()
 		Borrar Pantalla
 	SiNo
 		Escribir " "
@@ -768,7 +742,7 @@ FinFuncion
 Funcion long_camp(long)
 	Si (long>6 y long <= 8)
 		Escribir "CARACTERES INSUFICIENTES"
-		Esperar 3 Segundos
+		tiempo_espera()
 		Borrar Pantalla
 		CREAR_USUARIO();
 	FinSi
@@ -777,59 +751,69 @@ Funcion long_camp(long)
 FinFuncion
 
 //-----------------------BASEDEDATOS----------------------------------
-Funcion  BDD(datosingresados Por valor,limite Por valor,Nombre,Apellido,DNI,Correo,Telefono,i Por valor)
+Funcion  BDD(datosingresados,limite,Nombre,Apellido,DNI,Correo,Telefono,i)
 	Limpiar Pantalla
-	si datosingresados>=1 Entonces
-		para i=1 Hasta limite-1 Con Paso 1 Hacer
+	Escribir "datosingresados ",datosingresados
+	si datosingresados>1 Entonces
+		si DNI[i]<>"" Entonces
+			para i=1 Hasta limite-1 Con Paso 1 Hacer
 				Escribir "Base de Datos"
 				Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
 				Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
-		FinPara
+				Esperar Tecla
+				PRIMERMENU()
+			FinPara
+		FinSi
 	SiNo
-		Escribir "No hay registros en el sistema";
+		Escribir "No hay registros en el sistema"
+		tiempo_espera()
+		PRIMERMENU()
 	FinSi
 	Esperar Tecla
 FinFuncion
+//------------------------------------Tiempo de espera---------------------------------
+SubProceso tiempo_espera()
+	Esperar 3 Segundos
+FinsubProceso
+//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+Funcion LogoInicio_parte0()
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+	Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+	escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+	escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+	Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+	Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+	Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+	Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Esperar 1 Segundos
+	Borrar Pantalla
+FinFuncion
 
-	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
-	Funcion LogoInicio_parte0()
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-		Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-		escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-		escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-		Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-		Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-		Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-		Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Esperar 1 Segundos
-		Borrar Pantalla
-	FinFuncion
-	
 
