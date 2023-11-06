@@ -716,19 +716,19 @@ FinFuncion
 			Escribir Sin Saltar "INGRESE OPCIÓN:  "
 			Leer OPCIONMENU
 		Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
-			Segun OPCIONMENU Hacer
-				1:
-				2:	
-				3: INFORMACIONDELAAPPDOCTOR();
-				4: Escribir "",CERRARAPP();
-					Borrar Pantalla
-			FinSegun
+		Segun OPCIONMENU Hacer
+			1:
+			2:	
+			3: INFORMACIONDELAAPPDOCTOR();
+			4: Escribir "",CERRARAPP();
+				Borrar Pantalla
+		FinSegun
 FinFuncion
 //-------------FUNCIONCERRARAPLICACION----------------------------
-	Funcion menu<-CERRARAPP
-		Definir menu Como Logico
-		menu=falso
-		Borrar Pantalla
+Funcion menu<-CERRARAPP()
+	Definir menu Como Logico
+	menu=falso
+	Borrar Pantalla
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre, i)
