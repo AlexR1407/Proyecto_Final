@@ -6,7 +6,7 @@ Algoritmo PROYECTOFINAL
 		menu=Falso; 
 		accesomenupaciente=Falso
 		accesomenudoctor=Falso
-		AÑO=2024
+		
 		
 		LogoInicio_parte0()
 		
@@ -260,6 +260,7 @@ Funcion MENUDELPACIENTE(Nombre Por Referencia, Apellido Por Referencia, DNI Por 
 	definir NUMEROPACIENTE como entero
 	Definir nom, ape, doc, email Como Texto
 	nom <- Nombre[i] ; ape <-Apellido[i] ; doc<-DNI[i] ; email<-Correo[i]; NUMEROPACIENTE<-i 
+	
 Repetir
 	Limpiar Pantalla
 	MD=0
@@ -289,7 +290,8 @@ Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
 				INFORMACIONPERSONAL(nom,ape,doc,email,NUMEROPACIENTE)
 			4: 
 				
-				INFORMACIONDELAAPPPACIENTE(nom,ape,doc,email,NUMEROPACIENTE);
+				INFORMACIONDELAAPP();
+				MENUDELPACIENTE(Nombre, Apellido, DNI, Correo, i)
 				
 			5: Escribir "",CERRARAPP();
 				Borrar Pantalla
@@ -301,6 +303,8 @@ FinFuncion
 Funcion NUEVOTURNO()
 	Borrar Pantalla
 	// "NUEVO TURNO"
+	definir AÑO, DÍA, MES, CUMPLIRDIA, CUMPLIRMES Como Entero
+	AÑO=2024
 	Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
 	repetir
 		Escribir "DÍA: "
@@ -343,13 +347,13 @@ Funcion NUEVOTURNO()
 		Leer SEDE
 	HASTA QUE (SEDE >=0 O SEDE <=2)
 	Segun SEDE Hacer
-		1: CORRIENTES();
-		2: TRIUNVIRATO();
+		1: CORRIENTES(DIA,MES,AÑO);
+		2: TRIUNVIRATO(DIA,MES,AÑO);
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------
-Funcion CORRIENTES()
-	Definir OPCIONESPECIALIDAD como entero
+Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor)
+	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
 		Escribir "------------------------------------------------------"
@@ -381,18 +385,23 @@ Funcion CORRIENTES()
 		Leer OPCIONESPECIALIDAD
 	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=6)
 	Segun OPCIONESPECIALIDAD hacer
-		1: NUEVOTURNO();
-		2: NUEVOTURNO();
-		3: NUEVOTURNO();
-		4: NUEVOTURNO();
-		5: NUEVOTURNO();
-		6: NUEVOTURNO();
-		7: MENUDELPACIENTE(Nombre , Apellido , DNI , Correo , i )
+		1: SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		2: SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		3: SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		4: SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		6: SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		7: SEDE=1
+			MENUDELPACIENTE(Nombre , Apellido , DNI , Correo , i )
 	FinSegun
 FinFuncion
 
-Funcion TRIUNVIRATO()
-	Definir OPCIONESPECIALIDAD como entero
+Funcion TRIUNVIRATO(DIA Por Valor, MES Por Valor, AÑO Por Valor)
+	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
 		Escribir "------------------------------------------------------"
@@ -421,12 +430,66 @@ Funcion TRIUNVIRATO()
 		Leer OPCIONESPECIALIDAD
 	Hasta Que (OPCIONESPECIALIDAD>=1 o OPCIONESPECIALIDAD<=6)
 	Segun OPCIONESPECIALIDAD hacer
-		1:
-		2:
-		3:
-		4:
-		5: NUEVOTURNO();	
+		1:SEDE=2
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		2:SEDE=2
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		3:SEDE=2
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		4:SEDE=2
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+		5: SEDE=2
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
 	FinSegun
+FinFuncion
+
+//--------------------Mostrar OPCIONES DE ESPECIALISTAS-----------------------------------------
+Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor, SEDE Por Valor, DIA Por Valor, MES Por Valor,AÑO Por Valor)
+	definir CANTIDADDOCTORES como entero
+	SI(OPCIONESPECIALIDAD=1 Y SEDE = 1)
+		Escribir "Usted ha seleccionado la especialidad MEDICO/A CLINICO/A"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,4)
+		si CANTIDADDOCTORES=1
+			Escribir "1.Thomas Rodas " 
+			agregarfechas(DIA, MES, AÑO)
+		SiNo
+			Si (CANTIDADDOCTORES = 2)
+				Escribir "1.Carolina Jimenez "
+				agregarfechas(DIA,MES,AÑO)
+				escribir "-----------------------------"
+				Escribir "2.Isabel Rojas "
+				agregarfechas(DIA,MES,AÑO)
+		SiNo
+			Si (CANTIDADDOCTORES = 3)
+				Escribir "1.Thomas Rodas "
+				agregarfechas(DIA,MES,AÑO)
+				escribir "-----------------------------"
+				Escribir "2.María Gomez"
+				agregarfechas(DIA,MES,AÑO)
+				escribir "-----------------------------"
+				Escribir "3.Carolina Jimenez"
+				agregarfechas(DIA,MES,AÑO)
+			SiNo
+				Si (CANTIDADDOCTORES = 4)
+					Escribir "1.Thomas Rodas "
+					agregarfechas(DIA,MES,AÑO)
+					escribir "-----------------------------"
+					Escribir "2.María Gomez"
+					agregarfechas(DIA,MES,AÑO)
+					escribir "-----------------------------"
+					Escribir "3.Carolina Jimenez"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-----------------------------"
+					Escribir "4.Isabel Rojas"
+					agregarfechas(DIA,MES,AÑO)
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+
 FinFuncion
 
 //---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
@@ -498,7 +561,7 @@ Funcion INFORMACIONPERSONAL(nombre Por Valor, apellido Por Valor, dni Por Valor,
 
 FinFuncion
 
-Funcion INFORMACIONDELAAPPPACIENTE (nom, ape, doc, email, i)
+Funcion INFORMACIONDELAAPP()
 	 
 		Borrar Pantalla
 		Escribir "---------------------------------"
@@ -512,24 +575,9 @@ Funcion INFORMACIONDELAAPPPACIENTE (nom, ape, doc, email, i)
 		Escribir " "
 		Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
 		Esperar Tecla
-		MENUDELPACIENTE(Nombre, Apellido, DNI, Correo, i)
+		
 FinFuncion
-Funcion INFORMACIONDELAAPPDOCTOR ()
-	
-	Borrar Pantalla
-	Escribir "---------------------------------"
-	Escribir "VERSIÓN DE LA APP: 2.2v"
-	Escribir "--------------------------------"
-	Escribir "DESARROLLADO POR: "
-	Escribir " THOMAS RODAS"
-	Escribir " ALEX RAMOS "
-	Escribir "-------------------------------"
-	escribir " "
-	Escribir " "
-	Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
-	Esperar Tecla
-	MENUDELDOCTOR(nombres,apellidos,cedula_medica,especialidades,limite)
-FinFuncion
+
 
 //---------------------FUNCION PARA CARGAR LAS FECHAS DE LOS TURNOS------------------------------------
 funcion agregarfechas( DIA Por Referencia, MES Por Referencia, AÑO Por Referencia ) 
@@ -714,10 +762,11 @@ FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
 	Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor)
-		Definir OPCIONMENU Como Entero
+		Definir OPCIONMENU, numerodoctor Como Entero
+		numerodoctor<-i
 		Limpiar Pantalla
 		Repetir
-			Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[i]," ",apellidos[i]
+			Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[numerodoctor]," ",apellidos[numerodoctor]
 			Escribir " -----------------                                             ----------------------------"
 			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
 			Escribir " -----------------                                             ---------------------------- "
@@ -737,7 +786,8 @@ FinFuncion
 			Segun OPCIONMENU Hacer
 				1:
 				2:	
-				3: INFORMACIONDELAAPPDOCTOR();
+				3: INFORMACIONDELAAPP;
+					MENUDELDOCTOR(nombres,apellidos,cedula_medica,especialidades,limite)
 				4: Escribir "",CERRARAPP();
 					Borrar Pantalla
 			FinSegun
