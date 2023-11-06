@@ -642,7 +642,7 @@ FinFuncion
 	
 	//--------------------------FUNCIONES DE DOCTORES/MEDICOS-------------------------------
 	Funcion lista_profesionales()
-		Definir opc, cedula, i, confirmacion Como Entero
+		Definir opc, cedula, i, k,confirmacion Como Entero
 		Definir limite Como Entero
 		limite=30
 		Definir cedula_medica Como Entero
@@ -684,6 +684,7 @@ FinFuncion
 			Escribir "| Nro. Cedula Medica |"
 			Escribir " --------------------"
 			Leer cedula
+			
 			Para  i=1 hasta limite-1 con paso 1 Hacer
 				si (cedula_medica[i] == cedula )
 					Escribir " ¡MEDICO ENCONTRADO! "
@@ -691,7 +692,24 @@ FinFuncion
 					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i)
 				FinSi
 			FinPara
-
+			
+			Para  k=1 hasta limite-1 con paso 1 Hacer
+				si (cedula_medica[k] <> cedula )
+					Repetir
+						Borrar Pantalla
+						Escribir " ¡ERROR! :( NO se ha encontrado al medico con esa cedula... "
+						Escribir "Seleccione una opcion: "
+						Escribir "1. Reintentar"
+						Escribir "2. Volver al primer Menú"
+						leer opc
+					Hasta Que (opc = 1 o opc = 2)
+					Si (opc=1) Entonces
+						lista_profesionales() 
+					SiNo
+						PRIMERMENU(); 
+					FinSi
+				FinSi
+			FinPara
 	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
