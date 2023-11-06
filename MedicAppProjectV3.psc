@@ -145,13 +145,13 @@ funcion CREAR_USUARIO()
 		datosingresados=datosingresados+1
 		Borrar Pantalla
 			Escribir " LA CREACIÓN DE USUARIO SE HA REALIZADO CORRECTAMENTE, AHORA INICIE SESIÓN "
-			Esperar 5 segundos
+			tiempo_espera()
 			INICIOSESION(Nombre,Apellido,DNI,Correo, Contraseña,i, datosingresados, longcorreo, longcontra)
 			Borrar Pantalla
 		SiNo
 			Si (entrada == 2)
 				Escribir "Seción cerrada... Repita el proceso"
-				esperar 5 Segundos
+				tiempo_espera()
 				CREAR_USUARIO();
 			SiNo
 				Si (entrada == 1357)
@@ -752,7 +752,7 @@ FinFuncion
 Funcion camp_obligatorio(Nombre, i)
 	Si (Nombre[i]= '')
 		Escribir "Es requerido llenar este campo"
-		Esperar 3 Segundos
+		tiempo_espera()
 		Borrar Pantalla
 	SiNo
 		Escribir " "
@@ -764,7 +764,7 @@ FinFuncion
 Funcion long_camp(long)
 	Si (long>6 y long <= 8)
 		Escribir "CARACTERES INSUFICIENTES"
-		Esperar 3 Segundos
+		tiempo_espera()
 		Borrar Pantalla
 		CREAR_USUARIO();
 	FinSi
@@ -777,55 +777,58 @@ Funcion  BDD(datosingresados Por valor,limite Por valor,Nombre,Apellido,DNI,Corr
 	Limpiar Pantalla
 	si datosingresados>=1 Entonces
 		para i=1 Hasta limite-1 Con Paso 1 Hacer
-				Escribir "Base de Datos"
-				Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
-				Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
+			Escribir "Base de Datos"
+			Escribir "Nombre: ",Nombre[i],"   Apellido: ",Apellido[i],"   DNI: ",DNI[i]
+			Escribir "Correo electronico: ",Correo[i],"   Nº celular: ",Telefono[i]
 		FinPara
 	SiNo
 		Escribir "No hay registros en el sistema";
 	FinSi
 	Esperar Tecla
 FinFuncion
+//------------------------------------Tiempo de espera---------------------------------
+SubProceso tiempo_espera()
+	Esperar 3 Segundos
+FinsubProceso
+//---------------------------------INICIO DEL PROYECTO--------------------------------------------
+Funcion LogoInicio_parte0()
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+	Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+	escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+	escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+	Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+	Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+	Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+	Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Escribir  " "
+	Esperar 1 Segundos
+	Borrar Pantalla
+FinFuncion
 
-	//---------------------------------INICIO DEL PROYECTO--------------------------------------------
-	Funcion LogoInicio_parte0()
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-		Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-		escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-		escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-		Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-		Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-		Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-		Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Escribir  " "
-		Esperar 1 Segundos
-		Borrar Pantalla
-	FinFuncion
-	
 
