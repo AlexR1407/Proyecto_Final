@@ -1,20 +1,15 @@
 Algoritmo PROYECTOFINAL
-		Definir OPCIONMENU Como Entero
-		Definir DÍA, MES, AÑO como entero
-		Definir longdetel, opc, p, sede como entero //opc=respuesta,usuario,cedula
-		Definir menu, accesomenupaciente, accesomenudoctor Como Logico
-		menu=Falso; 
-		accesomenupaciente=Falso
-		accesomenudoctor=Falso
-		
-		
-		LogoInicio_parte0()
-		
-		
-		PRIMERMENU();
-		
-		
-		LogoInicio_parte0()
+		Definir PROGRAMA Como Logico
+		Repetir
+			
+			LogoInicio_parte0()
+			
+			
+			PRIMERMENU();
+			
+			
+			LogoInicio_parte0()
+		Hasta Que (PROGRAMA = fALSO)
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
@@ -275,9 +270,9 @@ Repetir
 	Escribir " ----------------------                                      ----------------------------"
 	Escribir " "
 	Escribir " "
-	Escribir "				                       ------------- 											"
-	Escribir "				                       | 5. Salir  | 											"
-	Escribir "				                       -------------                                            "
+	Escribir "				                       --------------------- 											"
+	Escribir "				                       | 5. CERRAR SESIÓN  | 											"
+	Escribir "				                       ---------------------                                            "
 	Escribir Sin Saltar "INGRESE OPCIÓN:  "
 	Leer OPCIONMENU
 Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
@@ -293,8 +288,7 @@ Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
 				INFORMACIONDELAAPP();
 				MENUDELPACIENTE(Nombre, Apellido, DNI, Correo, i)
 				
-			5: Escribir "",CERRARAPP();
-				Borrar Pantalla
+			5: PRIMERMENU()
 		FinSegun
 	
 FinFuncion
@@ -377,7 +371,7 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor)
 		Escribir "					5. Ginecología"
 		Escribir "------------------------------------------------------"
 		Escribir "------------------------------------------------------"
-		Escribir "					6. Dentista"
+		Escribir "					6. Odontología"
 		Escribir "------------------------------------------------------"
 		Escribir "------------------------------------------------------"
 		Escribir "						7. Volver"
@@ -444,9 +438,9 @@ Funcion TRIUNVIRATO(DIA Por Valor, MES Por Valor, AÑO Por Valor)
 FinFuncion
 
 //--------------------Mostrar OPCIONES DE ESPECIALISTAS-----------------------------------------
-Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor, SEDE Por Valor, DIA Por Valor, MES Por Valor,AÑO Por Valor)
+Funcion GENERARTURNOS(OPCIONESPECIALIDAD , SEDE , DIA , MES ,AÑO)
 	definir CANTIDADDOCTORES como entero
-	SI(OPCIONESPECIALIDAD=1 Y SEDE = 1)
+	SI(OPCIONESPECIALIDAD=1 Y SEDE = 1) Entonces
 		Escribir "Usted ha seleccionado la especialidad MEDICO/A CLINICO/A"
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
@@ -488,8 +482,278 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor, SEDE Por Valor, DIA Por Valo
 				FinSi
 			FinSi
 		FinSi
+	FinSi 
+	SI (OPCIONESPCIALIDAD = 2 Y SEDE=1) Entonces
+			Escribir "Usted ha seleccionado la especialidad PEDIATRÍA"
+			Escribir "-------------------------------------------------------------------"
+			Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+			Escribir " "
+			CANTIDADDOCTORES<-aleatorio(1,3)
+			si CANTIDADDOCTORES = 1
+				Escribir "1. Carlos García"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				si CANTIDADDOCTORES = 2
+					Escribir "1. Miguel Ortega"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Lucía García"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				SiNo
+					Si CANTIDADDOCTORES = 3
+						Escribir "1. Carlos García"
+						agregarfechas(DIA,MES,AÑO)
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. Miguel Ortega"
+						agregarfechas(DIA,MES,AÑO)
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Lucía García"
+						agregarfechas(DIA,MES,AÑO)
+						Escribir "-------------------------------------------------------------------"
+					FinSi
+				FinSi
+			FinSi
+		FinSi
 	FinSi
-
+	SI (OPCIONESPECIALIDAD = 3 Y SEDE = 1) Entonces
+		Escribir "Usted ha seleccionado la especialidad NUTRICIONISTA"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,2)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Andrea Sánchez"
+		SiNo
+			Si CANTIDADDOCTORES = 2
+				Escribir "1. Andrea Sánchez"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Elena Ruíz"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 4 y SEDE = 1) Entonces
+		Escribir "Usted ha seleccionado la especialidad Dermatología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,3)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Sofía Martínez"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Sofía Martínez"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Sergio Massa"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Escribir "1. Sofía Martínez"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Sergio Massa"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "3. Carlos Martínez"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 5 y SEDE = 1) Entonces
+		Escribir "Usted ha seleccionado la especialidad Ginecología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,3)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Javier Milei"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Javier Milei"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Diana Castro"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Escribir "1. Javier Milei"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Diana Castro"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "3. Isabel Cramer"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 6 y SEDE = 1) Entonces
+		Escribir "Usted ha seleccionado la especialidad Odontología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,3)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Lionel Messi"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Lionel Messi"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Mike Tyson"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Escribir "1. Lionel Messi"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Mike Tyson"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "3. Miguel Silva"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 1 y SEDE = 2) Entonces
+		Escribir "Usted ha seleccionado la especialidad Medicina Interna General"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Pedro González"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 2 y SEDE = 2) Entonces
+		Escribir "Usted ha seleccionado la especialidad Cardiología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,3)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Juan Rodríguez"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Juan Rodríguez"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Patricia Bullrich"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Escribir "1. Juan Rodríguez"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Patricia Bullrich"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "3. Alex Ramos"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 3 y SEDE = 2) Entonces
+		Escribir "Usted ha seleccionado la especialidad Oftalmología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,3)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Ana López"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Ana López"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. David Hernández"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Escribir "1. Ana López"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. David Hernández"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+					Escribir "3. Pablo Hernández"
+					agregarfechas(DIA,MES,AÑO)
+					Escribir "-------------------------------------------------------------------"
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 4 y SEDE = 2) Entonces
+		Escribir "Usted ha seleccionado la especialidad Dermatología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,2)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. Laura Pérez"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. Laura Pérez"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Alejandro Díaz"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			FinSi
+		FinSi
+	FinSi
+	SI (OPCIONESPECIALIDAD = 5 y SEDE = 2) Entonces
+		Escribir "Usted ha seleccionado la especialidad Dermatología"
+		Escribir "-------------------------------------------------------------------"
+		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
+		Escribir " "
+		CANTIDADDOCTORES<-aleatorio(1,2)
+		si CANTIDADDOCTORES = 1
+			Escribir "1. José Ramírez"
+			agregarfechas(DIA,MES,AÑO)
+			Escribir "-------------------------------------------------------------------"
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Escribir "1. José Ramírez"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Ricardo Vargas"
+				agregarfechas(DIA,MES,AÑO)
+				Escribir "-------------------------------------------------------------------"
+			FinSi
+		FinSi
+	FinSi
 FinFuncion
 
 //---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
@@ -772,14 +1036,14 @@ FinFuncion
 			Escribir " -----------------                                             ---------------------------- "
 			Escribir " "
 			Escribir " "
-			Escribir "							 	 		----------------------------"
-			Escribir "							  	   		| 3. INFORMACION DE LA APP |"
-			Escribir " 						  			----------------------------"
+			Escribir "							 	 		----------------------------				"
+			Escribir "							  	   		| 3. INFORMACION DE LA APP |				"
+			Escribir " 						  			----------------------------				"
 			Escribir " "
 			Escribir " "
-			Escribir "				                       ------------- 											"
-			Escribir "				                       | 4. Salir  | 											"
-			Escribir "				                       -------------                                            "
+			Escribir "				                       --------------------- 											"
+			Escribir "				                       | 4. CERRAR SESION  | 											"
+			Escribir "				                       ---------------------                                            "
 			Escribir Sin Saltar "INGRESE OPCIÓN:  "
 			Leer OPCIONMENU
 		Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
@@ -793,9 +1057,9 @@ FinFuncion
 			FinSegun
 FinFuncion
 //-------------FUNCIONCERRARAPLICACION----------------------------
-	Funcion menu<-CERRARAPP
-		Definir menu Como Logico
-		menu=falso
+	Funcion PROGRAMA<-CERRARAPP
+		Definir PROGRAMA Como Logico
+		PROGRAMA=falso
 		Borrar Pantalla
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
