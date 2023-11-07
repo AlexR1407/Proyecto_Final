@@ -246,7 +246,7 @@ FinFuncion
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
 				lista_profesionales() 
-				MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i)
+				MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i,cedula)
 				
 			De Otro Modo:
 				PRIMERMENU();
@@ -528,7 +528,7 @@ Funcion INFORMACIONDELAAPPDOCTOR ()
 	Escribir " "
 	Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
 	Esperar Tecla
-	MENUDELDOCTOR(nombres,apellidos,cedula_medica,especialidades,limite)
+	MENUDELDOCTOR(nombres,apellidos,cedula_medica,especialidades,limite,cedula)
 FinFuncion
 
 //---------------------FUNCION PARA CARGAR LAS FECHAS DE LOS TURNOS------------------------------------
@@ -689,7 +689,7 @@ FinFuncion
 				si (cedula_medica[i] == cedula )
 					Escribir " ¡MEDICO ENCONTRADO! "
 					Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
-					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i)
+					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i,cedula)
 				FinSi
 			FinPara
 			
@@ -713,11 +713,16 @@ FinFuncion
 	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
-	Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor)
+	Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor,cedula)
 		Definir OPCIONMENU Como Entero
 		Limpiar Pantalla
 		Repetir
-			Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[i]," ",apellidos[i]
+			Mostrar "i=",i
+			Para  i=1 hasta limite-1 con paso 1 Hacer
+				si (cedula_medica[i] == cedula )
+					Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[i]," ",apellidos[i]
+				FinSi
+			FinPara
 			Escribir " -----------------                                             ----------------------------"
 			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
 			Escribir " -----------------                                             ---------------------------- "
