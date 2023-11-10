@@ -247,7 +247,7 @@ FinFuncion
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
 				lista_profesionales() 
-				MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i)
+				MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i,cedula)
 				
 			De Otro Modo:
 				PRIMERMENU();
@@ -347,7 +347,10 @@ Funcion NUEVOTURNO()
 		Leer SEDE
 	HASTA QUE (SEDE >=0 O SEDE <=2)
 	Segun SEDE Hacer
+<<<<<<< HEAD
 		0: NUEVOTURNO()
+=======
+>>>>>>> main
 		1: CORRIENTES(DIA,MES,AÑO);
 		2: TRIUNVIRATO(DIA,MES,AÑO);
 	FinSegun
@@ -397,7 +400,11 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor)
 		6: SEDE=1
 			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
 		7: SEDE=1
+<<<<<<< HEAD
 			NUEVOTURNO()
+=======
+			MENUDELPACIENTE(Nombre , Apellido , DNI , Correo , i )
+>>>>>>> main
 	FinSegun
 FinFuncion
 
@@ -441,8 +448,11 @@ Funcion TRIUNVIRATO(DIA Por Valor, MES Por Valor, AÑO Por Valor)
 			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
 		5: SEDE=2
 			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE,DIA,MES,AÑO)
+<<<<<<< HEAD
 		6:
 			NUEVOTURNO()
+=======
+>>>>>>> main
 	FinSegun
 FinFuncion
 
@@ -492,8 +502,11 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD , SEDE , DIA , MES ,AÑO)
 			FinSi
 		FinSi
 	FinSi 
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> main
 	SI (OPCIONESPCIALIDAD = 2 Y SEDE=1) Entonces
 			Escribir "Usted ha seleccionado la especialidad PEDIATRÍA"
 			Escribir "-------------------------------------------------------------------"
@@ -765,9 +778,17 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD , SEDE , DIA , MES ,AÑO)
 			FinSi
 		FinSi
 	FinSi
+<<<<<<< HEAD
 	
 	Escribir "Para confirmar PRESIONAR ENTER"
 	Esperar Tecla
+=======
+FinFuncion
+
+//---------------------------FUNCION PARA VER LOS TURNOS DEL PACIENTE-------------------------------
+Funcion MISTURNOS ()
+		
+>>>>>>> main
 FinFuncion
 //------------------------------------FUNCION INFORMACION PERSONAL DEL PACIENTE---------------------
 
@@ -1008,7 +1029,7 @@ FinFuncion
 				si (cedula_medica[i] == cedula )
 					Escribir " ¡MEDICO ENCONTRADO! "
 					Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
-					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i)
+					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i,cedula)
 				FinSi
 			FinPara
 			
@@ -1031,6 +1052,7 @@ FinFuncion
 			FinPara
 	FinFuncion
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
+<<<<<<< HEAD
 	//<<<<<<< HEAD
 	//Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor,cedula)
 	//Definir OPCIONMENU Como Entero
@@ -1043,13 +1065,31 @@ FinFuncion
 	//		FinSi
 	//		FinPara
 	//=======
+=======
+//<<<<<<< HEAD
+	//Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor,cedula)
+		//Definir OPCIONMENU Como Entero
+		//Limpiar Pantalla
+		//Repetir
+			//Mostrar "i=",i
+			//Para  i=1 hasta limite-1 con paso 1 Hacer
+				//si (cedula_medica[i] == cedula )
+			//		Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[i]," ",apellidos[i]
+		//		FinSi
+	//		FinPara
+//=======
+>>>>>>> main
 	Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor)
 		Definir OPCIONMENU, numerodoctor Como Entero
 		numerodoctor<-i
 		Limpiar Pantalla
 		Repetir
 			Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[numerodoctor]," ",apellidos[numerodoctor]
+<<<<<<< HEAD
 			//>>>>>>> a9ac5699abffe107f5b4d7b5020b41120ad576c0
+=======
+//>>>>>>> a9ac5699abffe107f5b4d7b5020b41120ad576c0
+>>>>>>> main
 			Escribir " -----------------                                             ----------------------------"
 			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
 			Escribir " -----------------                                             ---------------------------- "
@@ -1066,6 +1106,7 @@ FinFuncion
 			Escribir Sin Saltar "INGRESE OPCIÓN:  "
 			Leer OPCIONMENU
 		Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
+<<<<<<< HEAD
 		Segun OPCIONMENU Hacer
 			1:
 			2:	
@@ -1080,6 +1121,22 @@ Funcion PROGRAMA<-CERRARAPP()
 	Definir PROGRAMA Como Logico
 	PROGRAMA=falso
 	Borrar Pantalla
+=======
+			Segun OPCIONMENU Hacer
+				1:
+				2:	
+				3: INFORMACIONDELAAPP;
+					MENUDELDOCTOR(nombres,apellidos,cedula_medica,especialidades,limite)
+				4: Escribir "",CERRARAPP();
+					Borrar Pantalla
+			FinSegun
+FinFuncion
+//-------------FUNCIONCERRARAPLICACION----------------------------
+	Funcion PROGRAMA<-CERRARAPP()
+		Definir PROGRAMA Como Logico
+		PROGRAMA=falso
+		Borrar Pantalla
+>>>>>>> main
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre, i)
