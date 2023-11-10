@@ -24,6 +24,10 @@ Algoritmo PROTOTIPOFECHAS_V2
 						SiNo
 							Si (j=2 y DIA > date[i,j-1] y MES = 10)
 								date[i,j]<-Aleatorio(MES+1,MES+2)
+							SiNo
+								si (j=2 y DIA < date[i,j-1] y MES = 10)
+									date[i,j]<-Aleatorio(MES,MES+2)
+								FinSi
 							FinSi
 						FinSi
 					FinSi
