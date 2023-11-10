@@ -1,23 +1,24 @@
 Algoritmo PROTOTIPOFECHAS_V2
-	Definir DIA, MES, AÑO Como Entero
-	Dimension date[100,3]
+	Definir DIA, MES, AÑO,limite Como Entero
+	limite=3
+	Dimension date[limite,3]
 	AÑO=2024
 	Escribir "Ingrese día: "
 	Leer DIA
 	Escribir "Ingrese mes: "
 	Leer MES
 	SI (MES = 1 O MES = 3 O MES = 5 O MES = 7 O MES = 8 O MES = 10 O MES = 12)
-		para i=1 hasta 100 Hacer
+		para i=1 hasta limite Hacer
 			para j=1 hasta 3 Hacer
 				si j=1
 					date[i,j] <- Aleatorio(1,31)
 				FinSi
 				si (j=2 y DIA < date[i,j-1] y MES < 12)
-					date[i,j]<-Aleatorio(MES,MES+2)
+					date[i,j]<-Aleatorio(MES,MES+1)
 				SiNo
 					si (j=2 y MES = 12)
 						date[i,j] <- Aleatorio(1,2)
-						AÑO <- AÑO+1
+						AÑO <- AÑO
 					SiNo
 						si (j=2 y DIA > date[i,j-1] y MES < 10)
 							date[i,j]<-Aleatorio(MES+1,MES+3)
@@ -40,15 +41,16 @@ Algoritmo PROTOTIPOFECHAS_V2
 		
 	SiNo
 		SI (MES = 4 O MES = 6 O MES = 9 O MES = 11)
-			para i=1 hasta 100 Hacer
+			para i=1 hasta limite Hacer
 				para j=1 hasta 3 Hacer
 					si j=1
 						date[i,j] <- Aleatorio(1,30)
 					FinSi
 					Si (j=2 y DIA < date[i,j-1] y MES < 11)
 						date[i,j] <- aleatorio(MES,MES+2)
-						Si (j=2 y DIA > date[i,j-1] y MES < 11)
-							date[i,j] <- aleatorio(MES+1,MES+3)
+					SiNo
+						Si (j=2 y MES = 11)
+							date[i,j] <- aleatorio(MES,MES+1)
 						SiNo
 							si (j=2 y DIA < date[i,j-1] y MES = 11)
 								date[i,j]<-Aleatorio(MES,MES+1)
@@ -69,7 +71,7 @@ Algoritmo PROTOTIPOFECHAS_V2
 			FinPara
 		FinSi
 		si (MES = 2 y (AÑO MOD 4)=0)
-			para i=1 hasta 100 Hacer
+			para i=1 hasta limite Hacer
 				para j=1 hasta 3 Hacer
 					si j=1
 						date[i,j] <- Aleatorio(1,29)
@@ -88,7 +90,7 @@ Algoritmo PROTOTIPOFECHAS_V2
 			FinPara
 		SiNo
 			si(MES = 2 y (AÑO MOD 4)<>0)
-				para i=1 hasta 100 Hacer
+				para i=1 hasta limite Hacer
 					para j=1 hasta 3 Hacer
 				si j=1
 					date[i,j] <- Aleatorio(1,28)
@@ -109,8 +111,8 @@ Algoritmo PROTOTIPOFECHAS_V2
 		FinSi
 	FinSi
 	Escribir " "
-	x<-Aleatorio(1,100)
-	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / "; Escribir Sin Saltar date[x,3]
+	x<-Aleatorio(1,limite)
+	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / ", date[x,3]
 FinAlgoritmo
 
 
