@@ -335,7 +335,10 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 		Escribir Sin Saltar "INGRESE OPCIÓN:  "
 		Leer OPCIONMENU
 	Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
-	
+	Segun OPCIONMENU Hacer
+		2:
+			
+	FinSegun
 FinFuncion
 
 Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
@@ -359,7 +362,7 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 	Hasta Que (OPCION>=1 O OPCION<=5)
 	
 	Segun OPCION hacer
-		1: NUEVOTURNO();
+		1: NUEVOTURNO_V2();
 		2:
 		3:
 		4:
@@ -418,6 +421,148 @@ Funcion NUEVOTURNO()
 	Segun SEDE Hacer
 		1: CORRIENTES(DIA,MES,AÑO);
 		2: TRIUNVIRATO(DIA,MES,AÑO);
+	FinSegun
+FinFuncion
+Funcion NUEVOTURNO_V2()
+	Borrar Pantalla
+	Definir DIA, MES, AÑO,limite Como Entero
+	limite=3
+	Dimension date[limite,3]
+	AÑO=2024
+	Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
+	Escribir "Ingrese día: "
+	Leer DIA
+	Escribir "Ingrese mes: "
+	Leer MES
+	SI (MES = 1 O MES = 3 O MES = 5 O MES = 7 O MES = 8 O MES = 10 O MES = 12)
+		para i=1 hasta limite Hacer
+			para j=1 hasta 3 Hacer
+				si j=1
+					date[i,j] <- Aleatorio(1,31)
+				FinSi
+				si (j=2 y DIA < date[i,j-1] y MES < 12)
+					date[i,j]<-Aleatorio(MES,MES+1)
+				SiNo
+					si (j=2 y MES = 12)
+						date[i,j] <- Aleatorio(1,2)
+						AÑO <- AÑO
+					SiNo
+						si (j=2 y DIA > date[i,j-1] y MES < 10)
+							date[i,j]<-Aleatorio(MES+1,MES+3)
+						SiNo
+							Si (j=2 y DIA > date[i,j-1] y MES = 10)
+								date[i,j]<-Aleatorio(MES+1,MES+2)
+							SiNo
+								si (j=2 y DIA < date[i,j-1] y MES = 10)
+									date[i,j]<-Aleatorio(MES,MES+2)
+								FinSi
+							FinSi
+						FinSi
+					FinSi
+				FinSi
+				si (j=3)
+					date[i,j] <- AÑO
+				FinSi
+			FinPara
+		FinPara
+		
+	SiNo
+		SI (MES = 4 O MES = 6 O MES = 9 O MES = 11)
+			para i=1 hasta limite Hacer
+				para j=1 hasta 3 Hacer
+					si j=1
+						date[i,j] <- Aleatorio(1,30)
+					FinSi
+					Si (j=2 y DIA < date[i,j-1] y MES < 11)
+						date[i,j] <- aleatorio(MES,MES+2)
+					SiNo
+						Si (j=2 y MES = 11)
+							date[i,j] <- aleatorio(MES,MES+1)
+						SiNo
+							si (j=2 y DIA < date[i,j-1] y MES = 11)
+								date[i,j]<-Aleatorio(MES,MES+1)
+							SiNo
+								si (j=2 y DIA > date[i,j-1] y MES = 11)
+									date[i,j] <- Aleatorio(1,12)
+									si date[i,j] < 12
+										AÑO<-(AÑO+1)
+									FinSi
+								FinSi
+							FinSi
+						FinSi
+					FinSi
+					si (j=3)
+						date[i,j] <- AÑO
+					FinSi
+				FinPara
+			FinPara
+		FinSi
+		si (MES = 2 y (AÑO MOD 4)=0)
+			para i=1 hasta limite Hacer
+				para j=1 hasta 3 Hacer
+					si j=1
+						date[i,j] <- Aleatorio(1,29)
+					FinSi
+					Si (j=2 y DIA < date[i,j-1])
+						date[i,j] <- Aleatorio(MES,MES+2)
+					SiNo
+						si (j=2 y DIA > date[i,j-1])
+							date[i,j] <- Aleatorio(MES+1,MES+3)
+						FinSi
+					FinSi
+					si j=3 Entonces
+						date[i,j] <- AÑO
+					FinSi
+				FinPara
+			FinPara
+		SiNo
+			si(MES = 2 y (AÑO MOD 4)<>0)
+				para i=1 hasta limite Hacer
+					para j=1 hasta 3 Hacer
+						si j=1
+							date[i,j] <- Aleatorio(1,28)
+						FinSi
+						Si (j=2 y DIA < date[i,j-1])
+							date[i,j] <- Aleatorio(MES,MES+2)
+						SiNo
+							si (j=2 y DIA > date[i,j-1])
+								date[i,j] <- Aleatorio(MES+1,MES+3)
+							FinSi
+						FinSi
+						si j=3 Entonces
+							date[i,j] <- AÑO
+						FinSi
+					FinPara
+				FinPara
+			FinSi
+		FinSi
+	FinSi
+	Escribir " "
+	x<-Aleatorio(1,limite)
+	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / ", date[x,3]
+	Escribir "ENTER para continuar"
+	Esperar Tecla
+	Repetir
+		Limpiar Pantalla
+		Escribir "Seleccione una Sede: " //sedes en desarrollo
+		Escribir "------------------------------------"
+		Escribir " 	  1. SEDE AV. CORRIENTES		   "
+		Escribir " 		Av.Corrientes 1100         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir "------------------------------------"
+		Escribir " 	   2. SEDE TRIUNVIRATO		   "
+		Escribir " 	   Av.Triunvirato 3174         "
+		Escribir "------------------------------------"
+		Escribir " "
+		Escribir " "
+		Escribir " 0. Volver"
+		Leer SEDE
+	HASTA QUE (SEDE >=0 O SEDE <=2)
+	Segun SEDE Hacer
+		1: CORRIENTES(DIA,MES,AÑO);
+		2: TRIUNVIRATO(DIA,MES,AÑO);
+		0: NUEVOTURNO_V2()
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------

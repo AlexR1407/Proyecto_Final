@@ -113,7 +113,11 @@ Algoritmo PROTOTIPOFECHAS_V2
 	Escribir " "
 	x<-Aleatorio(1,limite)
 	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / ", date[x,3]
+	Escribir " "
+	turno(date,x,z)
 FinAlgoritmo
-
+Funcion turno(date,x,z)
+	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / ", date[x,3]
+FinFuncion
 
 	
