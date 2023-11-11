@@ -2,19 +2,19 @@ Algoritmo PROYECTOFINAL
 		Definir PROGRAMA Como Logico
 		Repetir
 			
-			LogoInicio_parte0()
+			//LogoInicio_parte0()
 			
 			
-			PRIMERMENU();
+			PROGRAMA=PRIMERMENU();
 			
 			
-			LogoInicio_parte0()
+			//LogoInicio_parte0()
 		Hasta Que (PROGRAMA = fALSO)
 FinAlgoritmo
 //---------------------------------------FUNCIONES--------------------------------------------------------------
 
 //----------------Menu de CREAR USUARIO/INICIOSESION-----------------------------------------------------
-Funcion PRIMERMENU()
+Funcion OPCCIC=PRIMERMENU()
 	Definir OPCCIC Como Entero
 	repetir
 		Limpiar Pantalla
@@ -35,14 +35,12 @@ Funcion PRIMERMENU()
 	Hasta Que OPCCIC = 1 O OPCCIC = 2 o OPCCIC = 0
 	borrar pantalla
 	Segun OPCCIC Hacer
-		0:
-			Escribir " ",CERRARAPP();
 		1:
 			CREAR_USUARIO();
-			
 		2: 
 			INICIOSESION(Nombre,Apellido, DNI,Correo,Contraseña,i,datosingresados,longcorreo,longcontra)
-			
+		0:
+			OPCCIC=CERRARAPP();
 	FinSegun
 FinFuncion
 
@@ -50,7 +48,7 @@ FinFuncion
 funcion CREAR_USUARIO()
 	//------------VARIABLES----------------------------------------
 	Definir limite, i, datosingresados, k, longcorreo, longcontra, RECOLECTOR como entero
-	limite=3; k=1; datosingresados=0; i=datosingresados+1
+	limite=3; datosingresados=0; i=datosingresados+1
 	
 	Dimension Nombre[limite], Apellido[limite], DNI[limite], Telefono[limite], Correo[limite], Cedula[limite], Contraseña[limite]
 	
@@ -59,17 +57,6 @@ funcion CREAR_USUARIO()
 	Definir menu2, camp_obl Como Logico
 	
 	menu2=Falso; camp_obl=Falso
-	//------------------Se inicializa los vectores como caracteres
-	Para k=1 Hasta 1 Con Paso 1 Hacer
-		Nombre[k]=" "
-		Apellido[k]=" "
-		DNI[k]=" " 
-		Telefono[k]=" "
-		Correo[k]=" "
-		Cedula[k]=" "
-		Contraseña[k]=" "
-	FinPara
-	//------------------------------------------------------------
 
 	//-------comienzo de inicio de sesion----------------------
 	si i<>limite Entonces
@@ -124,7 +111,6 @@ funcion CREAR_USUARIO()
 			Escribir "--------------------------------------------------------------------------"
 			longdetel=longitud(DNI[i])
 		Hasta Que (longdetel<9 y longdetel>7 y DNI[i]<> ' ')
-		
 	SiNo
 		Escribir "Base de datos llena"
 	FinSi
@@ -194,7 +180,7 @@ FinFuncion
 									Escribir "0. Salir de la app"
 									Leer opc
 									si opc==1 Entonces
-										PRIMERMENU()
+										Escribir " ", PRIMERMENU()
 									SiNo
 										Escribir "",CERRARAPP();
 										Borrar Pantalla
@@ -214,7 +200,7 @@ FinFuncion
 									Escribir "0. Salir de la app"
 									Leer opc
 									si opc==1 Entonces
-										PRIMERMENU()
+										Escribir " ",PRIMERMENU()
 									SiNo
 										Escribir "",CERRARAPP();
 										Borrar Pantalla
@@ -230,7 +216,7 @@ FinFuncion
 						Leer opc
 					Hasta Que (opc=1 o opc=0)
 					si opc==1 Entonces
-						PRIMERMENU()
+						Escribir " ",PRIMERMENU()
 						SiNo
 							Escribir "",CERRARAPP();
 							Borrar Pantalla
@@ -241,10 +227,10 @@ FinFuncion
 				
 				//Contiene las lista de los profesionales con su nombre,apellido,nro de cedula y profesion
 				lista_profesionales() 
-				MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i,cedula)
+				//MENUDELDOCTOR(nombres,apellidos,cedula_medica, limite ,i,cedula)
 				
 			De Otro Modo:
-				PRIMERMENU();
+				Escribir " ",PRIMERMENU();
 
 	FinSegun
 FinFuncion
@@ -288,7 +274,7 @@ Hasta Que (OPCIONMENU>=1 O OPCIONMNU<=5)
 				INFORMACIONDELAAPP();
 				MENUDELPACIENTE(Nombre, Apellido, DNI, Correo, i)
 				
-			5: PRIMERMENU()
+			5: Escribir " ",PRIMERMENU()
 		FinSegun
 	
 FinFuncion
@@ -1000,7 +986,7 @@ FinFuncion
 				si (cedula_medica[i] == cedula )
 					Escribir " ¡MEDICO ENCONTRADO! "
 					Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
-					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i,cedula)
+					MENUDELDOCTOR(nombres,apellidos,cedula_medica,limite,i)
 				FinSi
 			FinPara
 			
@@ -1017,32 +1003,19 @@ FinFuncion
 					Si (opc=1) Entonces
 						lista_profesionales() 
 					SiNo
-						PRIMERMENU(); 
+						Escribir " ",PRIMERMENU(); 
 					FinSi
 				FinSi
 			FinPara
 	FinFuncion
 	
 	//------------------------------FUNCION MENÚ DEL DOCTOR--------------------------------------
-//<<<<<<< HEAD
-	//Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor,cedula)
-		//Definir OPCIONMENU Como Entero
-		//Limpiar Pantalla
-		//Repetir
-			//Mostrar "i=",i
-			//Para  i=1 hasta limite-1 con paso 1 Hacer
-				//si (cedula_medica[i] == cedula )
-			//		Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[i]," ",apellidos[i]
-		//		FinSi
-	//		FinPara
-//=======
 	Funcion MENUDELDOCTOR(nombres Por Referencia, apellidos Por Referencia, cedula_medica Por Referencia, limite Por Valor, i Por valor)
 		Definir OPCIONMENU, numerodoctor Como Entero
 		numerodoctor<-i
 		Limpiar Pantalla
 		Repetir
 			Escribir "Bienvenido/a al menú de Doctores Dr. ",nombres[numerodoctor]," ",apellidos[numerodoctor]
-//>>>>>>> a9ac5699abffe107f5b4d7b5020b41120ad576c0
 			Escribir " -----------------                                             ----------------------------"
 			Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
 			Escribir " -----------------                                             ---------------------------- "
@@ -1069,10 +1042,10 @@ FinFuncion
 			FinSegun
 FinFuncion
 //-------------FUNCIONCERRARAPLICACION----------------------------
-	Funcion PROGRAMA<-CERRARAPP()
-		Definir PROGRAMA Como Logico
-		PROGRAMA=falso
-		Borrar Pantalla
+Funcion PROGRAMA<-CERRARAPP()
+	Definir PROGRAMA Como Logico
+	PROGRAMA=falso
+	Borrar Pantalla
 FinFuncion
 //-----------------Verifica si hay un campo vacío-----------------------
 Funcion camp_obligatorio(Nombre, i)
