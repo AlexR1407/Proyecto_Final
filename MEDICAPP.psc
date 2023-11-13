@@ -77,8 +77,10 @@ Funcion opc<-PRIMERMENU()
 		Hasta Que (opc = 0 O opc = 1 O opc = 2)
 FinFuncion
 
+
+
 Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
-	Definir cantidad, DATO, DATONUMERICO como entero
+	Definir cantidad, DATO, DATONUMERICO, long como entero
 		
 		DATO=1; DATONUMERICO=1;cantidad = 1
 		Datos_ingresados=Datos_ingresados+1
@@ -87,47 +89,64 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 		Definir Datosnumericos como entero
 		
 		si (cantidad < limite)
-			
-				Borrar Pantalla
-				Escribir "-----------------------------------------------------------------------"
-				Escribir Sin Saltar "Nombre: "
-				leer Datos[cantidad,DATO]
-				//VALIDACIONES
+				Repetir
+					Borrar Pantalla
+					Escribir "-----------------------------------------------------------------------"
+					Escribir Sin Saltar "Nombre: "
+					leer Datos[cantidad,DATO]
+					Escribir "-----------------------------------------------------------------------"
+				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '')
+				Escribir " "
 				DATO=DATO+1
-				Escribir "-----------------------------------------------------------------------"
-				Escribir " "
-				Escribir "------------------------------------------------------------------------"
-				Escribir Sin saltar "Apellido: "
-				leer Datos[cantidad,DATO]
-				//VALIDACIONES
+				repetir
+					Borrar Pantalla
+					Escribir "------------------------------------------------------------------------"
+					Escribir Sin saltar "Apellido: "
+					leer Datos[cantidad,DATO]
+					Escribir "------------------------------------------------------------------------"
+					Escribir " "
+				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '')
 				DATO=DATO+1
-				Escribir "------------------------------------------------------------------------"
-				Escribir " "
-				Escribir "------------------------------------------------------------------------"
-				Escribir Sin Saltar "Email: "
-				leer Datos[cantidad,DATO]
-				//VALIDACIONES
+				repetir
+					Borrar Pantalla
+					Escribir "------------------------------------------------------------------------"
+					Escribir Sin Saltar "Email: "
+					leer Datos[cantidad,DATO]
+					long<-longitud(Datos[cantidad,DATO])
+					Escribir "------------------------------------------------------------------------"
+					Escribir " "
+				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '' y long>15)
 				DATO=DATO+1
-				Escribir "------------------------------------------------------------------------"
-				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
-				//validaciones
-				Leer Datos[cantidad,DATO]
-				Escribir "---------------------------------------------------------------------------"
-				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir sin saltar "Ingrese su número de DNI: "
-				Leer Datosnumericos[cantidad,DATONUMERICO]
-				//VA
+				repetir
+					Borrar Pantalla
+					Escribir "---------------------------------------------------------------------------"
+					Escribir sin saltar "Ingrese una contraseña para esta cuenta (Mínimo 8 caracteres): "
+					//validaciones
+					Leer Datos[cantidad,DATO]
+					long<-longitud(Datos[cantidad,DATO])
+					Escribir "---------------------------------------------------------------------------"
+				hasta que (long >= 8)
+				
+				repetir
+					Borrar Pantalla
+					Escribir " "
+					Escribir "---------------------------------------------------------------------------"
+					Escribir sin saltar "Ingrese su número de DNI: "
+					Leer Datosnumericos[cantidad,DATONUMERICO]
+					Escribir "---------------------------------------------------------------------------"
+				hasta que (Datosnumericos[cantidad,DATONUMERICO]>10000000 y Datosnumericos[cantidad,DATONUMERICO]<99999999) 
+				
 				DATONUMERICO=DATONUMERICO+1
-				Escribir "---------------------------------------------------------------------------"
 				Escribir " "
-				Escribir "---------------------------------------------------------------------------"
-				Escribir "Ingrese su número de Teléfono: "
-				Leer Datosnumericos[cantidad, DATONUMERICO]
-				//VALIDACIONES
-				Escribir "---------------------------------------------------------------------------"
+				
+				repetir
+					Borrar Pantalla
+					Escribir "---------------------------------------------------------------------------"
+					Escribir "Ingrese su número de Teléfono: "
+					Leer Datosnumericos[cantidad, DATONUMERICO]
+					Escribir "---------------------------------------------------------------------------"
+				hasta que (Datosnumericos[cantidad,DATONUMERICO] > 1100000000 y Datosnumericos[cantidad,DATONUMERICO] < 1199999999)
+				
 				Repetir
 					Borrar Pantalla
 					Escribir "¿ESTOS SON SUS DATOS?"
@@ -168,15 +187,15 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 		Escribir "Usted es: "
 		escribir " " 
 		Escribir " ----------------------------- " 
-		Escribir "|  		1. Paciente           |"
+		Escribir "|       1. Paciente          |"
 		Escribir " ----------------------------- "
 		Escribir " "
 		Escribir " ----------------------------- " 
-		Escribir "|  		  2. Doctor           |"
+		Escribir "|        2. Doctor           |"
 		Escribir " ----------------------------- "
 		Escribir " "
 		Escribir " ----------------------------- " 
-		Escribir "|  		  3. Volver           |"
+		Escribir "|        3. Volver           |"
 		Escribir " ----------------------------- "
 		Escribir " "
 		Leer opcion
@@ -293,7 +312,7 @@ Funcion DOCTORES()
 		si (cedula == cedula_medica[i])
 			Escribir " ¡MEDICO ENCONTRADO! "
 			Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
-			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite)
+			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite, especialidades[i])
 		FinSi
 	FinPara
 	
@@ -317,19 +336,19 @@ Funcion DOCTORES()
 			FinPara
 FinFuncion
 
-Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor)
+Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia)
 	Definir OPCIONMENU Como Entero
 	Limpiar Pantalla
 	Repetir
 		Escribir "Bienvenido/a al menú de Doctores Dr. ",nombre," ",apellido
-		Escribir " -----------------                                             ----------------------------"
-		Escribir "| 1. VER TURNOS   |                                            |   2. DATOS PERSONALES     | "
-		Escribir " -----------------                                             ---------------------------- "
+		Escribir " -----------------                                                  ----------------------------"
+		Escribir "| 1. VER TURNOS   |                                                 |   2. DATOS PERSONALES     | "
+		Escribir " -----------------                                                  ---------------------------- "
 		Escribir " "
 		Escribir " "
-		Escribir "							 	 		   ----------------------------				"
-		Escribir "							  	   		| 3. INFORMACION DE LA APP |				"
-		Escribir " 						  			  ----------------------------				"
+		Escribir "	                            ----------------------------				"
+		Escribir "	                            | 3. INFORMACION DE LA APP |				"
+		Escribir "                             ----------------------------				"
 		Escribir " "
 		Escribir " "
 		Escribir "				                       --------------------- 											"
@@ -338,8 +357,95 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 		Escribir Sin Saltar "INGRESE OPCIÓN:  "
 		Leer OPCIONMENU
 	Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
+	segun OPCIONMENU Hacer
+		1:
+		2: INFORMACIONPERSONALDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
+		3: INFORMACIONDELAAPPDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
+		4: 	ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
+			Esperar 3 Segundos
+			Escribir " ", PRIMERMENU()
+	FinSegun
+FinFuncion
+
+Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia) 
+	Definir OPCIONINFORMACIONPERSONAL Como Entero
+	Borrar Pantalla
+	// "VER INFORMACION PERSONAL"
+	Escribir "                @@@@@@@@@@@@                 "
+	Escribir "           @@@@@@@        @@@@@@@            "
+	Escribir "         @@@@                  @@@@          "
+	Escribir "       @@@                        @@@        "
+	Escribir "    @@@                            @@@       "
+	Escribir "    @@@           @@@@@@@@           @@@     "
+	Escribir "   @@@          @@@@@@@@@@@@@         @@@    "
+	Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+	Escribir "  @@@         @@@@@@@@@@@@@@@@         @@@   "
+	Escribir "  @@          @@@@@@@@@@@@@@@@          @@   "
+	Escribir " @@@          @@@@@@@@@@@@@@@@@          @@  "
+	Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+	Escribir " @@           @@@@@@@@@@@@@@@@           @@  "
+	Escribir " @@             @@@@@@@@@@@@             @@  "
+	Escribir " @@@              @@@@@@@@@              @@  "
+	Escribir "  @@         @@@@@@@@@@@@@@@@@@         @@   "
+	Escribir "  @@@      @@@@@@@@@@@@@@@@@@@@@@@     @@@   "
+	Escribir "  @@@   @@@@@@@@@@@@@@@@@@@@@@@@@@   @@@     "
+	Escribir "	   @@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@     "
+	Escribir "     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      "
+	Escribir "        @@@@@@@@@@@@@@@@@@@@@@@@@@@          "
+	Escribir "           @@@@@@@@@@@@@@@@@@@@@@            "
+	Escribir "                @@@@@@@@@@@@                 "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Escribir "--------------------------------------------------------------"
+	Escribir " Nombre del usuario: ", nombre , " ", apellido
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir "-------------------------------------------------------------- "
+	Escribir " Matrícula Doctor: ", cedula_medica
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir "--------------------------------------------------------------"
+	Escribir " Especialidad: ", Especialidad
+	Escribir "--------------------------------------------------------------"
+	Escribir " "
+	Escribir " "
+	Escribir " ------------------------------------------------- " 
+	Escribir "  				0) Volver 				"
+	Escribir " ------------------------------------------------- "
+	Escribir " "
+	Escribir " "
+	Escribir " "
+	Repetir
+		Leer OPCIONINFORMACIONPERSONAL
+	hasta que (OPCIONINFORMACIONPERSONAL=0)
+	borrar pantalla
+	si (OPCIONINFORMACIONPERSONAL = 0)
+		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
+	FinSi
+FinFuncion
+Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia)
+	
+		Borrar Pantalla
+		Escribir "---------------------------------"
+		Escribir "VERSIÓN DE LA APP: v3.2"
+		Escribir "--------------------------------"
+		Escribir "DESARROLLADO POR: "
+		Escribir " THOMAS RODAS"
+		Escribir " ALEX RAMOS "
+		Escribir "-------------------------------"
+		escribir " "
+		Escribir " "
+		Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
+		Esperar Tecla
+		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
 	
 FinFuncion
+
+
+
 
 Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 	Repetir
@@ -363,9 +469,9 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 	
 	Segun OPCION hacer
 		1: NUEVOTURNO(Datos, Datosnumericos, cantidad);
-		2:
+		2: MISTURNOS(Datos, Datosnumericos, cantidad);
 		3: INFORMACIONPERSONAL(Datos, Datosnumericos, cantidad);
-		4:	INFORMACIONDELAAPP(Datos, Datosnumericos, cantidad)
+		4:	INFORMACIONDELAAPP(Datos, Datosnumericos, cantidad);
 		5:
 			ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
 			Esperar 3 Segundos
@@ -635,7 +741,8 @@ Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenc
 FinFuncion
 
 Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor)
-	definir CANTIDADDOCTORES, diarandom, opcdoc como entero
+	definir CANTIDADDOCTORES, diarandom,diarandom2, diarandom3, diarandom4, opcdoc, horario1,horario2,horario3,horario4 como entero
+	definir nombredoctor como texto
 	SI(OPCIONESPECIALIDAD=1 Y SEDE = 1) Entonces
 		Borrar Pantalla
 		Escribir "Usted ha seleccionado la especialidad MEDICO/A CLINICO/A"
@@ -643,53 +750,62 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,4)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES=1
-			Escribir "1.Thomas Rodas " 
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Leer opcdoc
+			Repetir
+				Escribir "1.Thomas Rodas " 
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horario1, "hs"
+				Leer opcdoc
+			Hasta Que (opcdoc = 1)
+			si opcdoc=1
+				ref=0
+				nombredoctor<- "Thomas Rodas"
+				TURNO(opcdoc,nombredeldoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+				
+				Escribir "TURNO REALIZADO CON EXITO..."
+				Esperar 2 segundos
+				menupaciente(Datos, Datosnumericos, cantidad)
+			FinSi
 		SiNo
 			Si (CANTIDADDOCTORES = 2)
-				Escribir "1.Carolina Jimenez "
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				escribir "-----------------------------"
-				Escribir "2.Isabel Rojas "
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Leer opcdoc
+				Repetir
+					Escribir "1.Carolina Jimenez "
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horario1, "hs"
+					escribir "-----------------------------"
+					Escribir "2.Isabel Rojas "
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3], " ", horario2, "hs"
+					Leer opcdoc
+				Hasta Que (opcdoc=1 o opcdoc=2)
 			SiNo
 				Si (CANTIDADDOCTORES = 3)
-					Escribir "1.Thomas Rodas "
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					escribir "-----------------------------"
-					Escribir "2.María Gomez"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					escribir "-----------------------------"
-					Escribir "3.Carolina Jimenez"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Leer opcdoc
-				SiNo
-					Si (CANTIDADDOCTORES = 4)
+					repetir
 						Escribir "1.Thomas Rodas "
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horario1, "hs"
 						escribir "-----------------------------"
 						Escribir "2.María Gomez"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3], " ", horario2, "hs"
 						escribir "-----------------------------"
 						Escribir "3.Carolina Jimenez"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-						Escribir "-----------------------------"
-						Escribir "4.Isabel Rojas"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3], " ", horario3, "hs"
 						Leer opcdoc
+					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
+				SiNo
+					Si (CANTIDADDOCTORES = 4)
+						
+						Repetir
+							Escribir "1.Thomas Rodas "
+							Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+							escribir "-----------------------------"
+							Escribir "2.María Gomez"
+							Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+							escribir "-----------------------------"
+							Escribir "3.Carolina Jimenez"
+							Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+							Escribir "-----------------------------"
+							Escribir "4.Isabel Rojas"
+							Escribir date[diarandom4,1], " / "; Escribir Sin Saltar date[diarandom4,2], " / ", date[diarandom4,3]," ",horario4, "hs"
+							Leer opcdoc
+						Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3 o opcdoc=4)
 					FinSi
 				FinSi
 			FinSi
@@ -701,38 +817,44 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 			Escribir " "
 			CANTIDADDOCTORES<-aleatorio(1,3)
+			diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 			si CANTIDADDOCTORES = 1
-				Escribir "1. Carlos García"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Leer opcdoc
-			SiNo
-				si CANTIDADDOCTORES = 2
-					Escribir "1. Miguel Ortega"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "2. Lucía García"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				repetir
+					Escribir "1. Carlos García"
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
-				SiNo
-					Si CANTIDADDOCTORES = 3
-						Escribir "1. Carlos García"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				hasta que (opcdoc=1)
+			SiNo
+				si CANTIDADDOCTORES = 2
+					repetir
+						Escribir "1. Miguel Ortega"
+						
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 						Escribir "-------------------------------------------------------------------"
-						Escribir "2. Miguel Ortega"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-						Escribir "-------------------------------------------------------------------"
-						Escribir "3. Lucía García"
-						diarandom<-Aleatorio(1,cantidadfecha)
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+						Escribir "2. Lucía García"
+						
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
+					Hasta Que (opcdoc=1 o opcdoc=2)
+				SiNo
+					Si CANTIDADDOCTORES = 3
+						Repetir
+							Escribir "1. Carlos García"
+							
+							Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+							Escribir "-------------------------------------------------------------------"
+							Escribir "2. Miguel Ortega"
+							
+							Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+							Escribir "-------------------------------------------------------------------"
+							Escribir "3. Lucía García"
+							
+							Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+							Escribir "-------------------------------------------------------------------"
+							Leer opcdoc
+						Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 					FinSi
 				FinSi
 			FinSi
@@ -745,22 +867,24 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,2)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Andrea Sánchez"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Leer opcdoc
+			repetir
+				Escribir "1. Andrea Sánchez"
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+				Leer opcdoc
+			hasta que (opcdoc=1)
 		SiNo
 			Si CANTIDADDOCTORES = 2
-				Escribir "1. Andrea Sánchez"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Elena Ruíz"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Leer opcdoc
+				repetir
+					Escribir "1. Andrea Sánchez"
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Elena Ruíz"
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
 			FinSi
 		FinSi
 	FinSi
@@ -771,38 +895,39 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,3)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Sofía Martínez"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			repetir
 				Escribir "1. Sofía Martínez"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Sergio Massa"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
-			SiNo
-				Si CANTIDADDOCTORES = 3
+			hasta que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Repetir
 					Escribir "1. Sofía Martínez"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Sergio Massa"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "3. Carlos Martínez"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					repetir
+						Escribir "1. Sofía Martínez"
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. Sergio Massa"
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Carlos Martínez"
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Leer opcdoc
+					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 				FinSi
 			FinSi
 		FinSi
@@ -814,38 +939,39 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,3)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Javier Milei"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			repetir
 				Escribir "1. Javier Milei"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Diana Castro"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
-			SiNo
-				Si CANTIDADDOCTORES = 3
+			hasta que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				repetir
 					Escribir "1. Javier Milei"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Diana Castro"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "3. Isabel Cramer"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					repetir
+						Escribir "1. Javier Milei"
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. Diana Castro"
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Isabel Cramer"
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Leer opcdoc
+					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 				FinSi
 			FinSi
 		FinSi
@@ -857,38 +983,39 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,3)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Lionel Messi"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			repetir
 				Escribir "1. Lionel Messi"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Mike Tyson"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
+			hasta que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				repetir
+				Escribir "1. Lionel Messi"
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+				Escribir "-------------------------------------------------------------------"
+				Escribir "2. Mike Tyson"
+				Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+				Escribir "-------------------------------------------------------------------"
+				Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
 			SiNo
 				Si CANTIDADDOCTORES = 3
-					Escribir "1. Lionel Messi"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "2. Mike Tyson"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "3. Miguel Silva"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Leer opcdoc
+					repetir
+						Escribir "1. Lionel Messi"
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. Mike Tyson"
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Miguel Silva"
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Leer opcdoc
+					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 				FinSi
 			FinSi
 		FinSi
@@ -900,13 +1027,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
-		si CANTIDADDOCTORES = 1
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20)
+		repetir
 			Escribir "1. Pedro González"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 			Escribir "-------------------------------------------------------------------"
 			Leer opcdoc
-		FinSi
+		hasta que (opcdoc=1)
 	FinSi
 	SI (OPCIONESPECIALIDAD = 2 y SEDE = 2) Entonces
 		Borrar Pantalla
@@ -915,38 +1042,39 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,3)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Juan Rodríguez"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			repetir
 				Escribir "1. Juan Rodríguez"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Patricia Bullrich"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
-			SiNo
-				Si CANTIDADDOCTORES = 3
+			Hasta Que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				repetir
 					Escribir "1. Juan Rodríguez"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Patricia Bullrich"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "3. Alex Ramos"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					Repetir
+						Escribir "1. Juan Rodríguez"
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. Patricia Bullrich"
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Alex Ramos"
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Leer opcdoc
+					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 				FinSi
 			FinSi
 		FinSi
@@ -958,38 +1086,39 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,3)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);diarandom3<-Aleatorio(1,cantidadfecha);horario3<-Aleatorio(7,20);diarandom4<-Aleatorio(1,cantidadfecha);horario4<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Ana López"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			Repetir
 				Escribir "1. Ana López"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. David Hernández"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
-			SiNo
-				Si CANTIDADDOCTORES = 3
+			Hasta Que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Repetir
 					Escribir "1. Ana López"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. David Hernández"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-					Escribir "-------------------------------------------------------------------"
-					Escribir "3. Pablo Hernández"
-					diarandom<-Aleatorio(1,cantidadfecha)
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
+				Hasta Que (opcdoc=1 o opcdoc=2)
+			SiNo
+				Si CANTIDADDOCTORES = 3
+					repetir
+						Escribir "1. Ana López"
+						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. David Hernández"
+						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Escribir "3. Pablo Hernández"
+						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horario3, "hs"
+						Escribir "-------------------------------------------------------------------"
+						Leer opcdoc
+					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 				FinSi
 			FinSi
 		FinSi
@@ -1001,23 +1130,25 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,2)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. Laura Pérez"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			repetir
 				Escribir "1. Laura Pérez"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Alejandro Díaz"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
+			Hasta Que (opcdoc=1)
+		SiNo
+			si CANTIDADDOCTORES = 2
+				Repetir
+					Escribir "1. Laura Pérez"
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Alejandro Díaz"
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Leer opcdoc
+				Hasta Que (opcdoc=1 o opcdoc=2)
 			FinSi
 		FinSi
 	FinSi
@@ -1028,28 +1159,32 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
 		CANTIDADDOCTORES<-aleatorio(1,2)
+		diarandom<-Aleatorio(1,cantidadfecha);horario1<-Aleatorio(7,20);diarandom2<-Aleatorio(1,cantidadfecha);horario2<-Aleatorio(7,20);
 		si CANTIDADDOCTORES = 1
-			Escribir "1. José Ramírez"
-			diarandom<-Aleatorio(1,cantidadfecha)
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-			Escribir "-------------------------------------------------------------------"
-			Leer opcdoc
-		SiNo
-			si CANTIDADDOCTORES = 2
+			Repetir
 				Escribir "1. José Ramírez"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
-				Escribir "-------------------------------------------------------------------"
-				Escribir "2. Ricardo Vargas"
-				diarandom<-Aleatorio(1,cantidadfecha)
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]
+				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
+			Hasta Que (opcdoc=1)
+
+		SiNo
+			si CANTIDADDOCTORES = 2
+				repetir
+					Escribir "1. José Ramírez"
+					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horario1, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Ricardo Vargas"
+					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horario2, "hs"
+					Escribir "-------------------------------------------------------------------"
+					Leer opcdoc
+				hasta que (opcdoc=1 o opcdoc=2)
 			FinSi
 		FinSi
 	FinSi
 
 FinFuncion
+
 
 Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor) //FALTA LOS ARGUMENTOS
 	Definir OPCIONINFORMACIONPERSONAL Como Entero
@@ -1127,6 +1262,25 @@ Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, 
 		Esperar Tecla
 		menupaciente(Datos, Datosnumericos, cantidad)
 		
+FinFuncion
+
+Funcion TURNO(opcdoc Por Valor,nombredeldoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia)
+	si ref <> 0 y opcdoc=1
+		Escribir "-----------------------------------------------------------"
+		Escribir "DOCTOR/a: ",nombredeldoctor
+		Escribir "Fecha del turno: ",date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
+		Escribir "HORARIO: ",horarios1
+		Escribir "-----------------------------------------------------------"
+		Escribir " "
+		Escribir "PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
+		Esperar Tecla
+		menupaciente(Datos, Datosnumericos, cantidad)
+	FinSi
+FinFuncion
+
+Funcion MISTURNOS(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
+	ref=1
+	TURNO(opcdoc,nombredeldoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 FinFuncion
 //----------------------------------MAIN----------------------------------
 Algoritmo MedicApp
