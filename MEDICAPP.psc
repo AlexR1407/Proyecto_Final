@@ -40,8 +40,8 @@ Funcion LOGO ()
 	Borrar Pantalla
 FinFuncion
 
-Funcion opc<-PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia)
-		Repetir
+Funcion PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia,nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
+	Definir opc Como Entero
 			Limpiar Pantalla
 			Escribir " ----------------------------------------------------------------------------------------------------- "
 			Escribir " |  __        _____ _____  ______          _____    _    _  _____ _    _         _____  _____ ____   | "
@@ -73,8 +73,6 @@ Funcion opc<-PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, can
 			Escribir " --------------------------------------------------------------------------------------------------------------- "
 			Escribir " "
 			Escribir " "
-			Leer opc
-		Hasta Que (opc = 0 O opc = 1 O opc = 2)
 FinFuncion
 
 
@@ -94,8 +92,9 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 					Escribir "-----------------------------------------------------------------------"
 					Escribir Sin Saltar "Nombre: "
 					leer Datos[cantidad,DATO]
+					long<-longitud(Datos[cantidad,DATO])
 					Escribir "-----------------------------------------------------------------------"
-				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '')
+				hasta que (long > 0)
 				Escribir " "
 				DATO=DATO+1
 				repetir
@@ -103,9 +102,10 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 					Escribir "------------------------------------------------------------------------"
 					Escribir Sin saltar "Apellido: "
 					leer Datos[cantidad,DATO]
+					long<-longitud(Datos[cantidad,DATO])
 					Escribir "------------------------------------------------------------------------"
 					Escribir " "
-				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '')
+				hasta que (long > 0)
 				DATO=DATO+1
 				repetir
 					Borrar Pantalla
@@ -115,7 +115,7 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 					long<-longitud(Datos[cantidad,DATO])
 					Escribir "------------------------------------------------------------------------"
 					Escribir " "
-				hasta que (Datos[cantidad,DATO] <> ' ' o Datos[cantidad,DATO] <> '' y long>15)
+				hasta que (long>15)
 				DATO=DATO+1
 				repetir
 					Borrar Pantalla
@@ -163,7 +163,7 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 					leer OPCION
 				Hasta Que (OPCION = 1 O OPCION = 2)
 			si (OPCION = 1)
-				iniciarsesion( Datos, Datosnumericos, cantidad , Datos_ingresados)
+				iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref) 
 			SiNo
 				Escribir "REINICIE PROCESO..."
 				Esperar 2 segundos
@@ -176,7 +176,7 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 		
 FinFuncion
 
-Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Valor)
+Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Valor, nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
 	Definir CORREO, CONTRASEÑA como texto
 	Definir repetirproceso como logico
 	Definir intentos Como Entero
@@ -205,7 +205,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 			Si Datos_ingresados < 1
 				Escribir "ERROR...¡NO HAY DATOS CARGADOS!"
 				Esperar 2 Segundos
-				Escribir " ",PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
+				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
 					Mientras (repetirproceso==Verdadero) Hacer
 						Borrar Pantalla
@@ -238,7 +238,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
 									intentos = 0;
 									Esperar 2 Segundos
-									Escribir " ",PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
+									PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 								FinSi
 							FinSi
 						SiNo
@@ -251,7 +251,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Borrar Pantalla
 								Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
 								Esperar 2 Segundos
-								Escribir " ",PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
+								PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 							FinSi
 						FinSi
 						
@@ -260,14 +260,18 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 				FinSi
 				
 			2:
-				DOCTORES()
+				DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+			3:
+				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 		FinSegun
 		
 FinFuncion
-Funcion DOCTORES()
-	Definir opc, cedula, i, k Como Entero
+Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Valor, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
+	Definir opc, cedula, i, k, x Como Entero
 	Definir limite Como Entero
+	Definir accesomenudoctor Como Logico
 	limite=30
+	x=0
 	Definir cedula_medica Como Entero
 	Definir nombres, apellidos, especialidades  Como texto
 	Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
@@ -301,7 +305,7 @@ Funcion DOCTORES()
 	nombres[27] = "Lionel"; apellidos[27] = "Messi"; cedula_medica[27] = 181222; especialidades[27] = "Dentista";
 	nombres[28] = "Mike"; apellidos[28] = "Tyson"; cedula_medica[28] = 143670; especialidades[28] = "Dentista";
 	nombres[29] = "Miguel"; apellidos[29] = "Silva"; cedula_medica[29] = 103230; especialidades[29] = "Dentista";
-
+	
 	Borrar Pantalla
 	Escribir " --------------------"
 	Escribir "| Nro. Cedula Medica |"
@@ -312,32 +316,41 @@ Funcion DOCTORES()
 		si (cedula == cedula_medica[i])
 			Escribir " ¡MEDICO ENCONTRADO! "
 			Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
-			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite, especialidades[i])
+			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite, especialidades[i],opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		SiNo
+			si (cedula_medica[i] <> cedula )
+				accesomenudoctor <- falso
+			FinSi
 		FinSi
 	FinPara
 	
-	Para  k=1 hasta limite-1 con paso 1 Hacer
-		si (cedula_medica[k] <> cedula )
-			Repetir
+	si (accesomenudoctor = falso)
+		Repetir
+			
+			Borrar Pantalla
+			Escribir " ¡ERROR! :( NO se ha encontrado al medico con esa cedula... "
+			Escribir "Seleccione una opcion: "
+			Escribir "1. Reintentar"
+			Escribir "2. Volver al primer Menú"
+			leer opc
+			
+		Hasta Que (opc = 1 o opc = 2)
+		Si (opc=1) Entonces
+			DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref) 
+		SiNo
+			si (opc=2)
+				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				Borrar Pantalla
-				Escribir " ¡ERROR! :( NO se ha encontrado al medico con esa cedula... "
-				Escribir "Seleccione una opcion: "
-				Escribir "1. Reintentar"
-				Escribir "2. Volver al primer Menú"
-				leer opc
-			Hasta Que (opc = 1 o opc = 2)
-			Si (opc=1) Entonces
-				DOCTORES() 
 			SiNo
-				Escribir " ",PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
 				Borrar Pantalla
-					FinSi
-				FinSi
-			FinPara
+			FinSi
+		FinSi
+	FinSI
+
 FinFuncion
 
-Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia)
-	Definir OPCIONMENU Como Entero
+Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
+	Definir OPCIONMENUDOC Como Entero
 	Limpiar Pantalla
 	Repetir
 		Escribir "Bienvenido/a al menú de Doctores Dr. ",nombre," ",apellido
@@ -355,19 +368,34 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 		Escribir "				                       | 4. CERRAR SESION  | 											"
 		Escribir "				                       ---------------------                                            "
 		Escribir Sin Saltar "INGRESE OPCIÓN:  "
-		Leer OPCIONMENU
-	Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
-	segun OPCIONMENU Hacer
-		1:
-		2: INFORMACIONPERSONALDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
-		3: INFORMACIONDELAAPPDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
-		4: 	ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
+		Leer OPCIONMENUDOC
+	Hasta Que (OPCIONMENUDOC >= 1 y OPCIONMENUDOC <= 4)
+	segun OPCIONMENUDOC Hacer
+		1: 
+			VERTURNODOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		2: 
+			INFORMACIONPERSONALDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		3: 
+			INFORMACIONDELAAPPDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		4: 	
+			ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
 			Esperar 3 Segundos
-			Escribir " ", PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
+			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 	FinSegun
 FinFuncion
+ 
+Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
+	Definir strcat como texto
+	strcat<- Concatenar(nombre, " ")
+	strcat <- Concatenar(strcat, apellido)
+	si (nombredoctor = strcat)
+		ref = 2
+		TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+	FinSi
 
-Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia) 
+FinFuncion 
+ 
+Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 	Definir OPCIONINFORMACIONPERSONAL Como Entero
 	Borrar Pantalla
 	// "VER INFORMACION PERSONAL"
@@ -423,10 +451,10 @@ Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia
 	hasta que (OPCIONINFORMACIONPERSONAL=0)
 	borrar pantalla
 	si (OPCIONINFORMACIONPERSONAL = 0)
-		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
+		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 	FinSi
 FinFuncion
-Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia)
+Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 	
 		Borrar Pantalla
 		Escribir "---------------------------------"
@@ -440,7 +468,7 @@ Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, apellido Por Referencia,
 		Escribir " "
 		Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
 		Esperar Tecla
-		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad)
+		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 	
 FinFuncion
 
@@ -478,7 +506,7 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 		5:
 			ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
 			Esperar 3 Segundos
-			Escribir " ", PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
+			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 	FinSegun
 FinFuncion
 Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
@@ -618,7 +646,7 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 	FinSi
 	Repetir
 		Limpiar Pantalla
-		Escribir "Seleccione una Sede: " //sedes en desarrollo
+		Escribir "Seleccione una Sede: "
 		Escribir "------------------------------------"
 		Escribir " 	  1. SEDE AV. CORRIENTES		   "
 		Escribir " 		Av.Corrientes 1100         "
@@ -632,15 +660,17 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 		Escribir " "
 		Escribir " 0. Volver"
 		Leer SEDE
-	HASTA QUE (SEDE >=0 O SEDE <=2)
+	HASTA QUE (SEDE >=0 y SEDE <=2)
 	Segun SEDE Hacer
 		0: menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
-		1: CORRIENTES(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha);
-		2: TRIUNVIRATO(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha);
+		1: CORRIENTES(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref);
+		2: TRIUNVIRATO(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref);
+		de otro modo:
+			Escribir "OPCIÓN INCORRECTA"
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------
-Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor)
+Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
 	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -685,6 +715,9 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenci
 		4: 
 			SEDE=1
 			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE, date, Datos, Datosnumericos, cantidad, cantidadfecha)
+		5:
+			SEDE=1
+			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE, date, Datos, Datosnumericos, cantidad, cantidadfecha)
 		6: 
 			SEDE=1
 			GENERARTURNOS(OPCIONESPECIALIDAD, SEDE, date, Datos, Datosnumericos, cantidad, cantidadfecha)
@@ -693,7 +726,7 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenci
 	FinSegun
 FinFuncion
 
-Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor)
+Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
 	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -946,7 +979,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 						Esperar 2 segundos
 						menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 					SiNo
-						si opc=2
+						si opcdoc=2
 							ref=0
 							nombredoctor<- "Carlos García"
 							TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1056,7 +1089,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Elena Ruíz"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1117,7 +1150,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Sergio Massa"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1228,7 +1261,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Diana Castro"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1340,7 +1373,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Esperar 2 segundos
 				menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 			SiNo
-				si opc=2
+				si opcdoc=2
 					ref=0
 					nombredoctor<- "Mike Tyson"
 					TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1480,7 +1513,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Patricia Bullrich"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1591,7 +1624,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "David Hernández"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1703,7 +1736,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Alejandro Díaz"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1720,7 +1753,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 	FinSi
 	SI (OPCIONESPECIALIDAD = 5 y SEDE = 2) Entonces
 		Borrar Pantalla
-		Escribir "Usted ha seleccionado la especialidad Dermatología"
+		Escribir "Usted ha seleccionado la especialidad Otorrinolaringología"
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
@@ -1768,7 +1801,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Esperar 2 segundos
 					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					si opc=2
+					si opcdoc=2
 						ref=0
 						nombredoctor<- "Ricardo Vargas"
 						TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
@@ -1867,73 +1900,130 @@ Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, 
 FinFuncion
 
 Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia)
-	si ref <> 0 y opcdoc=1
+	si ref = 1 y opcdoc=1
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
-		Escribir "HORARIO: ",horarios1
+		Escribir "HORARIO: ",horarios1, "hs"
 		Escribir "-----------------------------------------------------------"
 
 	FinSi
-	si ref <> 0 y opcdoc = 2
+	
+	si ref = 2 y opcdoc=1
+		Escribir "-----------------------------------------------------------"
+		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
+		Escribir "Fecha del turno: ",date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
+		Escribir "HORARIO: ",horarios1, "hs"
+		Escribir "-----------------------------------------------------------"
+		
+	FinSi
+	
+	si ref = 1 y opcdoc = 2
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom2,1]," / ", date[diarandom2,2], " / ", date[diarandom2,3] 
-		Escribir "HORARIO: ",horarios2
+		Escribir "HORARIO: ",horarios2, "hs"
 		Escribir "-----------------------------------------------------------"
 
 	FinSi
-	si ref <> 0 y opcdoc = 3
+	
+	si ref = 2 y opcdoc=2
+		Escribir "-----------------------------------------------------------"
+		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
+		Escribir "Fecha del turno: ",date[diarandom2,1]," / ", date[diarandom2,2], " / ", date[diarandom2,3] 
+		Escribir "HORARIO: ",horarios2, "hs"
+		Escribir "-----------------------------------------------------------"
+		
+	FinSi
+	
+	si ref = 1 y opcdoc = 3
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom3,1]," / ", date[diarandom3,2], " / ", date[diarandom3,3] 
-		Escribir "HORARIO: ",horarios3
+		Escribir "HORARIO: ",horarios3, "hs"
 		Escribir "-----------------------------------------------------------"
 
 	FinSi
-	si ref <> 0 y opcdoc = 4
+	
+	si ref = 2 y opcdoc=3
+		Escribir "-----------------------------------------------------------"
+		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
+		Escribir "Fecha del turno: ",date[diarandom3,1]," / ", date[diarandom3,2], " / ", date[diarandom3,3] 
+		Escribir "HORARIO: ",horarios3, "hs"
+		Escribir "-----------------------------------------------------------"
+		
+	FinSi
+	
+	si ref = 1 y opcdoc = 4
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom4,1]," / ", date[diarandom4,2], " / ", date[diarandom4,3] 
-		Escribir "HORARIO: ",horarios4
+		Escribir "HORARIO: ",horarios4, "hs"
 		Escribir "-----------------------------------------------------------"
 
 	FinSi
+	
+	si ref = 2 y opcdoc=4
+		Escribir "-----------------------------------------------------------"
+		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
+		Escribir "Fecha del turno: ",date[diarandom4,1]," / ", date[diarandom4,2], " / ", date[diarandom4,3] 
+		Escribir "HORARIO: ",horarios4, "hs"
+		Escribir "-----------------------------------------------------------"
+		
+	FinSi
+	
 FinFuncion
 
 Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
+	Definir opc Como Entero
 	ref=1
 	TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
-	Escribir " "
-	Escribir "PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
-	Esperar Tecla
-	menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+	Repetir
+		Escribir " "
+		Escribir "PRESIONE 1 VOLVER AL MENÚ"
+		Escribir "PRESIONE 0 CANCELAR TURNO"
+		Leer opc
+	Hasta Que (opc==0 o opc==1)
+	
+	si (opc == 1)
+		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+	sino	
+		Borrar Pantalla
+		Escribir "TURNO CANCELADO CON ÉXITO"
+		Esperar 2 SEGUNDOS
+		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+	FinSi
+	
 FinFuncion
+
 //----------------------------------MAIN----------------------------------
 Algoritmo MedicApp
 	Definir PROGRAMA Como Logico
-	Definir opcionprimermenu Como Entero
+	Definir opcionprimermenu, opc Como Entero
 	limite=10000
 	Datos_ingresados=0
 	PROGRAMA=Verdadero
 	
-	Si PROGRAMA = Verdadero
+	REPETIR
 		LOGO()
+		Repetir
+		PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+		Leer opc
+		si (opc < 0 o opc > 2)
+			Escribir "LA OPCIÓN QUE SELECCIONÓ ES INCORRECTA"
+		FinSi
+		Hasta Que (opc = 0 O opc = 1 O opc = 2)
 		
-		opcionprimermenu<-PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos)
-		segun opcionprimermenu hacer
+		segun opc hacer
 			
-			0: PROGRAMA <- Falso
+			0: PROGRAMA = FALSO
 				
 			1:	CREARUSUARIO(limite, Datos_ingresados)
 				
-			2:	iniciarsesion(Datos, Datosnumericos, cantidad, Datos_ingredos)
+			2:	iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref) 
 				
 		FinSegun
-	SiNo
-		LOGO()
-	FinSi
-	
-	
+		
+	Hasta Que (PROGRAMA = FALSO)
 	
 FinAlgoritmo
