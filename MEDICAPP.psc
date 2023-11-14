@@ -42,37 +42,38 @@ FinFuncion
 
 Funcion PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia,nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
 	Definir opc Como Entero
-			Limpiar Pantalla
-			Escribir " ----------------------------------------------------------------------------------------------------- "
-			Escribir " |  __        _____ _____  ______          _____    _    _  _____ _    _         _____  _____ ____   | "
-			Escribir " | /_ |      / ____|  __ \|  ____|   /\   |  __ \  | |  | |/ ____| |  | |  /\   |  __ \|_   _/ __ \  |"
-			Escribir " |  | |     | |    | |__) | |__     /  \  | |__) | | |  | | (___ | |  | | /  \  | |__) | | || |  | | |"
-			Escribir " |  | |     | |    |  _  /|  __|   / /\ \ |  _  /  | |  | |\___ \| |  | |/ /\ \ |  _  /  | || |  | | |"
-			Escribir " |  | |     | |____| | \ \| |____ / ____ \| | \ \  | |__| |____) | |__| / ____ \| | \ \ _| || |__| | | "
-			Escribir " |  |_|      \_____|_|  \_\______/_/    \_\_|  \_\  \____/|_____/ \____/_/    \_\_|  \_\_____\____/  |"
-			Escribir " |                                                                                                   |"
-			Escribir " ----------------------------------------------------------------------------------------------------- "
-			Escribir " "
-			Escribir " ------------------------------------------------------------------------------------------------------- "
-			Escribir " |   ___        _____ _   _ _____ _____ _____          _____     _____ ______  _____ _____  __  _   _  | "
-			Escribir " |  |__ \      |_   _| \ | |_   _/ ____|_   _|   /\   |  __ \   / ____|  ____|/ ____|_   _|/_/ | \ | | | "
-			Escribir " |     ) |       | | |  \| | | || |      | |    /  \  | |__) | | (___ | |__  | (___   | | / _ \|  \| | | "
-			Escribir " |    / /        | | | . ` | | || |      | |   / /\ \ |  _  /   \___ \|  __|  \___ \  | || | | | . ` | | "
-			Escribir " |   / /_       _| |_| |\  |_| || |____ _| |_ / ____ \| | \ \   ____) | |____ ____) |_| || |_| | |\  | | "
-			Escribir " |  |____|     |_____|_| \_|_____\_____|_____/_/    \_\_|  \_\ |_____/|______|_____/|_____\___/|_| \_| | "
-			Escribir " ------------------------------------------------------------------------------------------------------- "
-			Escribir " "
-			Escribir " "
-			Escribir " --------------------------------------------------------------------------------------------------------------- "
-			Escribir " |   ___         _____         _      _____ _____    _____  ______   _                          _____  _____   | "
-			Escribir " |  / _ \       / ____|  /\   | |    |_   _|  __ \  |  __ \|  ____| | |        /\         /\   |  __ \|  __ \  | "
-			Escribir " | | | | |     | (___   /  \  | |      | | | |__) | | |  | | |__    | |       /  \       /  \  | |__) | |__) | | "
-			Escribir " | | | | |      \___ \ / /\ \ | |      | | |  _  /  | |  | |  __|   | |      / /\ \     / /\ \ |  ___/|  ___/  | "
-			Escribir " | | |_| |      ____) / ____ \| |____ _| |_| | \ \  | |__| | |____  | |____ / ____ \   / ____ \| |    | |      | "
-			Escribir " |  \___/      |_____/_/    \_\______|_____|_|  \_\ |_____/|______| |______/_/    \_\ /_/    \_\_|    |_|      | "
-			Escribir " --------------------------------------------------------------------------------------------------------------- "
-			Escribir " "
-			Escribir " "
+		
+		Limpiar Pantalla
+		Escribir " ----------------------------------------------------------------------------------------------------- "
+		Escribir " |  __        _____ _____  ______          _____    _    _  _____ _    _         _____  _____ ____   | "
+		Escribir " | /_ |      / ____|  __ \|  ____|   /\   |  __ \  | |  | |/ ____| |  | |  /\   |  __ \|_   _/ __ \  |"
+		Escribir " |  | |     | |    | |__) | |__     /  \  | |__) | | |  | | (___ | |  | | /  \  | |__) | | || |  | | |"
+		Escribir " |  | |     | |    |  _  /|  __|   / /\ \ |  _  /  | |  | |\___ \| |  | |/ /\ \ |  _  /  | || |  | | |"
+		Escribir " |  | |     | |____| | \ \| |____ / ____ \| | \ \  | |__| |____) | |__| / ____ \| | \ \ _| || |__| | | "
+		Escribir " |  |_|      \_____|_|  \_\______/_/    \_\_|  \_\  \____/|_____/ \____/_/    \_\_|  \_\_____\____/  |"
+		Escribir " |                                                                                                   |"
+		Escribir " ----------------------------------------------------------------------------------------------------- "
+		Escribir " "
+		Escribir " ------------------------------------------------------------------------------------------------------- "
+		Escribir " |   ___        _____ _   _ _____ _____ _____          _____     _____ ______  _____ _____  __  _   _  | "
+		Escribir " |  |__ \      |_   _| \ | |_   _/ ____|_   _|   /\   |  __ \   / ____|  ____|/ ____|_   _|/_/ | \ | | | "
+		Escribir " |     ) |       | | |  \| | | || |      | |    /  \  | |__) | | (___ | |__  | (___   | | / _ \|  \| | | "
+		Escribir " |    / /        | | | . ` | | || |      | |   / /\ \ |  _  /   \___ \|  __|  \___ \  | || | | | . ` | | "
+		Escribir " |   / /_       _| |_| |\  |_| || |____ _| |_ / ____ \| | \ \   ____) | |____ ____) |_| || |_| | |\  | | "
+		Escribir " |  |____|     |_____|_| \_|_____\_____|_____/_/    \_\_|  \_\ |_____/|______|_____/|_____\___/|_| \_| | "
+		Escribir " ------------------------------------------------------------------------------------------------------- "
+		Escribir " "
+		Escribir " "
+		Escribir " --------------------------------------------------------------------------------------------------------------- "
+		Escribir " |   ___         _____         _      _____ _____    _____  ______   _                          _____  _____   | "
+		Escribir " |  / _ \       / ____|  /\   | |    |_   _|  __ \  |  __ \|  ____| | |        /\         /\   |  __ \|  __ \  | "
+		Escribir " | | | | |     | (___   /  \  | |      | | | |__) | | |  | | |__    | |       /  \       /  \  | |__) | |__) | | "
+		Escribir " | | | | |      \___ \ / /\ \ | |      | | |  _  /  | |  | |  __|   | |      / /\ \     / /\ \ |  ___/|  ___/  | "
+		Escribir " | | |_| |      ____) / ____ \| |____ _| |_| | \ \  | |__| | |____  | |____ / ____ \   / ____ \| |    | |      | "
+		Escribir " |  \___/      |_____/_/    \_\______|_____|_|  \_\ |_____/|______| |______/_/    \_\ /_/    \_\_|    |_|      | "
+		Escribir " --------------------------------------------------------------------------------------------------------------- "
+		Escribir " "
+		Escribir " "
 FinFuncion
 
 
@@ -115,7 +116,7 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia)
 					long<-longitud(Datos[cantidad,DATO])
 					Escribir "------------------------------------------------------------------------"
 					Escribir " "
-				hasta que (long>15)
+				hasta que (long>11)
 				DATO=DATO+1
 				repetir
 					Borrar Pantalla
@@ -179,9 +180,8 @@ FinFuncion
 Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Valor, nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
 	Definir CORREO, CONTRASEÑA como texto
 	Definir repetirproceso como logico
-	Definir intentos Como Entero
-	intentos=0
-	repetirproceso=Verdadero
+	Definir intentos, i Como Entero
+	intentos=5
 	Repetir
 		Limpiar Pantalla
 		Escribir "Usted es: "
@@ -207,7 +207,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 				Esperar 2 Segundos
 				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 				SiNo
-					Mientras (repetirproceso==Verdadero) Hacer
+					Para i=1 Hasta intentos Hacer
 						Borrar Pantalla
 						Escribir "------------------------------------------------------------"
 						Escribir " Ingrese CORREO ELECTRÓNICO: (máximo 5 intentos)"
@@ -226,37 +226,36 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Esperar 1 Segundos
 								Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
 								Esperar 2 Segundos
-								repetirproceso=Falso
+								i=intentos
 							SiNo
-								repetirproceso=verdadero
-								intentos=intentos+1
 								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-								Escribir "intentos: ", intentos
+								Escribir "intentos: ", intentos-i
 								Esperar 3 Segundos
-								Si (intentos = 5) 
+								Si (i = 5) 
 									Borrar Pantalla
 									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
-									intentos = 0;
 									Esperar 2 Segundos
 									PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 								FinSi
 							FinSi
 						SiNo
-							repetirproceso=verdadero
-							intentos=intentos+1
-							Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-							Escribir "intentos: ", intentos
-							Esperar 3 Segundos
-							Si (intentos = 5) 
-								Borrar Pantalla
-								Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
-								Esperar 2 Segundos
-								PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+							si CORREO<>"" Entonces
+								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
+								Escribir "intentos: ", intentos-i
+								Esperar 3 Segundos
+							SiNo
+								escribir "ERROR. VOLVER A INTENTAR"
+								Escribir "intentos: ", intentos-i
+								Esperar 3 Segundos
 							FinSi
 						FinSi
-						
-					FinMientras
-					menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+						Si (i = 5) 
+							Borrar Pantalla
+							Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
+							Esperar 2 Segundos
+							PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+						FinSi
+					FinPara
 				FinSi
 				
 			2:
@@ -520,6 +519,7 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 	repetir
 		Escribir "DÍA: "
 		Leer DIA
+		volvermenup(DIA)
 		Si DIA >= 1 y DIA <= 31 Entonces
 			CUMPLIRDIA=1
 		SiNo
@@ -1995,23 +1995,27 @@ Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diaran
 	FinSi
 	
 FinFuncion
-
+Funcion volvermenup(long)
+	si long==0 Entonces
+		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+	FinSi
+FinFuncion
 //----------------------------------MAIN----------------------------------
 Algoritmo MedicApp
 	Definir PROGRAMA Como Logico
-	Definir opcionprimermenu, opc Como Entero
+	Definir opcionprimermenu, opc, val_sal Como Entero
 	limite=10000
 	Datos_ingresados=0
 	PROGRAMA=Verdadero
 	
 	REPETIR
-		LOGO()
+		//LOGO()
 		Repetir
-		PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
-		Leer opc
-		si (opc < 0 o opc > 2)
-			Escribir "LA OPCIÓN QUE SELECCIONÓ ES INCORRECTA"
-		FinSi
+			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+			Leer opc
+			si (opc < 0 o opc > 2)
+				Escribir "LA OPCIÓN QUE SELECCIONÓ ES INCORRECTA"
+			FinSi
 		Hasta Que (opc = 0 O opc = 1 O opc = 2)
 		
 		segun opc hacer
