@@ -36,7 +36,7 @@ Funcion LOGO ()
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	Esperar 1 Segundos
+	Esperar Tecla
 	Borrar Pantalla
 FinFuncion
 
@@ -812,7 +812,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			Si (CANTIDADDOCTORES = 2)
 				Repetir
-					Escribir "1.Carolina Jimenez "
+					Escribir "1.Carolina Jiménez "
 					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
 					escribir "-----------------------------"
 					Escribir "2.Isabel Rojas "
@@ -821,7 +821,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Hasta Que (opcdoc=1 o opcdoc=2)
 				si opcdoc=1
 					ref=0
-					nombredoctor<- "Carolina Jimenez"
+					nombredoctor<- "Carolina Jiménez"
 					TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 					
 					Escribir "TURNO REALIZADO CON EXITO..."
@@ -845,7 +845,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 						Escribir "2.María Gomez"
 						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3], " ", horarios2, "hs"
 						escribir "-----------------------------"
-						Escribir "3.Carolina Jimenez"
+						Escribir "3.Carolina Jiménez"
 						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3], " ", horarios3, "hs"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -868,7 +868,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 							menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 						SiNo
 							si(opcdoc=3)
-								nombredoctor<- "Carolina Jimenez"
+								nombredoctor<- "Carolina Jiménez"
 								TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 								
 								Escribir "TURNO REALIZADO CON EXITO..."
@@ -887,7 +887,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 							Escribir "2.María Gomez"
 							Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 							escribir "-----------------------------"
-							Escribir "3.Carolina Jimenez"
+							Escribir "3.Carolina Jiménez"
 							Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 							Escribir "-----------------------------"
 							Escribir "4.Isabel Rojas"
@@ -914,7 +914,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 								menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 							SiNo
 								si(opcdoc=3)
-									nombredoctor<- "Carolina Jimenez"
+									nombredoctor<- "Carolina Jiménez"
 									TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 									
 									Escribir "TURNO REALIZADO CON EXITO..."
@@ -1979,11 +1979,14 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		
 	FinSi
 	
+	
 FinFuncion
 
 Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 	Definir opc Como Entero
-	ref=1
+	
+		ref=1
+
 	TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 	Repetir
 		Escribir " "
@@ -1996,6 +1999,7 @@ Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diaran
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 	sino	
 		Borrar Pantalla
+		ref<-0
 		Escribir "TURNO CANCELADO CON ÉXITO"
 		Esperar 2 SEGUNDOS
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
@@ -2014,9 +2018,9 @@ Algoritmo MedicApp
 	limite=10000
 	Datos_ingresados=0
 	PROGRAMA=Verdadero
-	
+	LOGO()
 	REPETIR
-		//LOGO()
+		//
 		Repetir
 			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 			Leer opc
@@ -2036,5 +2040,5 @@ Algoritmo MedicApp
 		FinSegun
 		
 	Hasta Que (PROGRAMA = FALSO)
-	
+	LOGO()
 FinAlgoritmo
