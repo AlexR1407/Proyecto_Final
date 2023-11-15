@@ -388,16 +388,37 @@ FinFuncion
 Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 		Borrar Pantalla
 		Definir strcat como texto
+		Definir opc Como Entero
 		strcat<- Concatenar(nombre, " ")
 		strcat <- Concatenar(strcat, apellido)
 		si (nombredoctor = strcat)
 			ref = 2
 			TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 		FinSi
-		Escribir "PRESIONE CUALQUIER TECLA PARA VOLVER..."
-		Esperar Tecla
-		Borrar Pantalla
-		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		Repetir
+			Escribir " "
+			Escribir "PRESIONE 1 VOLVER AL MENÚ"
+			Escribir "PRESIONE 0 CANCELAR TURNO"
+			Leer opc
+		Hasta Que (opc==0 o opc==1)
+		
+		si (opc == 1)
+			Borrar Pantalla
+			MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
+		sino	
+			Borrar Pantalla
+			
+			nombredoctor<-""
+			date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
+			date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
+			date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
+			date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
+			Escribir "TURNO CANCELADO CON ÉXITO"
+			Esperar 2 SEGUNDOS
+			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+		FinSi
+		
+		
 FinFuncion 
  
 Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
@@ -1979,14 +2000,16 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		
 	FinSi
 	
+	si nombredoctor=""
+		Escribir " "
+		Borrar Pantalla
+	FinSi
 	
 FinFuncion
 
 Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor)
 	Definir opc Como Entero
-	
 		ref=1
-
 	TURNO(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 	Repetir
 		Escribir " "
@@ -1999,7 +2022,11 @@ Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diaran
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 	sino	
 		Borrar Pantalla
-		ref<-0
+		nombredoctor<-""
+		date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
+		date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
+		date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
+		date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
 		Escribir "TURNO CANCELADO CON ÉXITO"
 		Esperar 2 SEGUNDOS
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
