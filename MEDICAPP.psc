@@ -5,39 +5,71 @@ Funcion LOGO ()
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+	escribir "                        $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+	Escribir "                        $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+	escribir "                        $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+	escribir "                        $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+	Escribir "                        $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+	Escribir "                        $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+	Escribir "                        $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+	Escribir "                        \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
 	Escribir  " "
 	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar 1 Segundos
-	Borrar Pantalla
+	
+FinFuncion
+
+Funcion esculapio()
+	
+	Definir i,j Como Entero
+	Definir esc como texto
+	Dimension esc[30]
+	
+	esc[1]="                                                                   @@"       
+	esc[2]="                                                                   @@ ..::."   
+	esc[3]="                                                               .=*#@@@@@@@@@>"
+	esc[4]="                                                            :%@%*  @@ ··::·" 
+	esc[5]="                                                            @@*    @@"      
+	esc[6]="                                                            =@@*++%@@#*+-"   
+	esc[7]="                                                               ****@@  -@@:" 
+	esc[8]="                                                                   @@  -@@-" 
+	esc[9]="                                                               :*%@@@@%#+"  
+	esc[10]="                                                             #@=  @@_"      
+	esc[11]="                                                             %@+::@@=:."    
+	esc[12]="                                                                **@@ :#%."  
+	esc[13]="                                                                  @@ :#%"   
+	esc[14]="                                                                 =@@%**"    
+	esc[15]="                                                               =#=%@" 
+	
+	esc[16]="                                                                  @@.     "
+	esc[17]="                                                            .::..#@@:     "
+	esc[18]="                                                           <@@@@@@@@@%*=. "
+	esc[19]="                                                            ·::··-@@  =%@+"
+	esc[20]="                                                                 =@@   -@@"
+	esc[21]="                                                             -##*%@@%#%%*·"
+	esc[22]="                                                            =@#   @@      "
+	esc[23]="                                                             *@#*#@@=:_    "
+	esc[24]="                                                                  @@  #@=  "
+	esc[25]="                                                                  @@   #@: "
+	esc[26]="                                                              *#*#@@%%#-  "
+	esc[27]="                                                             :@=  @@      "
+	esc[28]="                                                              ·+#%@@*      "
+	esc[29]="	                                                              -@@=** "
+	
+	Para j=1 Hasta 3
+		Borrar Pantalla
+		Logo()
+		Para i=1 Hasta 15
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+		Borrar Pantalla
+		Logo()
+		Para i=16 Hasta 29
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+	FinPara
+	
 FinFuncion
 
 Funcion PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia,nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
@@ -227,6 +259,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
 								Esperar 2 Segundos
 								i=intentos
+								menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 							SiNo
 								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
 								Escribir "intentos: ", intentos-i
@@ -2009,7 +2042,7 @@ Algoritmo MedicApp
 	PROGRAMA=Verdadero
 	
 	REPETIR
-		//LOGO()
+		esculapio()
 		Repetir
 			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 			Leer opc
@@ -2029,5 +2062,6 @@ Algoritmo MedicApp
 		FinSegun
 		
 	Hasta Que (PROGRAMA = FALSO)
+	esculapio()
 	
 FinAlgoritmo
