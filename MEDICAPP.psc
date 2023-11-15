@@ -5,39 +5,71 @@ Funcion LOGO ()
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+	escribir "                        $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+	Escribir "                        $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+	escribir "                        $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+	escribir "                        $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+	Escribir "                        $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+	Escribir "                        $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+	Escribir "                        $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+	Escribir "                        \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
 	Escribir  " "
 	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar 1 Segundos
-	Borrar Pantalla
+	
+FinFuncion
+
+Funcion esculapio()
+	
+	Definir i,j Como Entero
+	Definir esc como texto
+	Dimension esc[30]
+	
+	esc[1]="                                                                   @@"       
+	esc[2]="                                                                   @@ ..::."   
+	esc[3]="                                                               .=*#@@@@@@@@@>"
+	esc[4]="                                                            :%@%*  @@ ··::·" 
+	esc[5]="                                                            @@*    @@"      
+	esc[6]="                                                            =@@*++%@@#*+-"   
+	esc[7]="                                                               ****@@  -@@:" 
+	esc[8]="                                                                   @@  -@@-" 
+	esc[9]="                                                               :*%@@@@%#+"  
+	esc[10]="                                                             #@=  @@_"      
+	esc[11]="                                                             %@+::@@=:."    
+	esc[12]="                                                                **@@ :#%."  
+	esc[13]="                                                                  @@ :#%"   
+	esc[14]="                                                                 =@@%**"    
+	esc[15]="                                                               =#=%@" 
+	
+	esc[16]="                                                                  @@.     "
+	esc[17]="                                                            .::..#@@:     "
+	esc[18]="                                                           <@@@@@@@@@%*=. "
+	esc[19]="                                                            ·::··-@@  =%@+"
+	esc[20]="                                                                 =@@   -@@"
+	esc[21]="                                                             -##*%@@%#%%*·"
+	esc[22]="                                                            =@#   @@      "
+	esc[23]="                                                             *@#*#@@=:_    "
+	esc[24]="                                                                  @@  #@=  "
+	esc[25]="                                                                  @@   #@: "
+	esc[26]="                                                              *#*#@@%%#-  "
+	esc[27]="                                                             :@=  @@      "
+	esc[28]="                                                              ·+#%@@*      "
+	esc[29]="	                                                              -@@=** "
+	
+	Para j=1 Hasta 3
+		Borrar Pantalla
+		Logo()
+		Para i=1 Hasta 15
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+		Borrar Pantalla
+		Logo()
+		Para i=16 Hasta 29
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+	FinPara
+	
 FinFuncion
 
 Funcion PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia,nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, horarios1,diarandom2 Por Referencia, horarios2,diarandom3 Por Referencia, horarios3,diarandom4 Por Referencia, horarios4, ref)
@@ -227,11 +259,12 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
 								Esperar 2 Segundos
 								i=intentos
+								menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 							SiNo
 								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
 								Escribir "intentos: ", intentos-i
 								Esperar 3 Segundos
-								Si (i = 5) 
+								Si (i = 0) 
 									Borrar Pantalla
 									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
 									Esperar 2 Segundos
@@ -249,7 +282,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Esperar 3 Segundos
 							FinSi
 						FinSi
-						Si (i = 5) 
+						Si (i = 0) 
 							Borrar Pantalla
 							Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
 							Esperar 2 Segundos
@@ -367,14 +400,6 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 		Escribir "				                       | 4. CERRAR SESION  | 											"
 		Escribir "				                       ---------------------                                            "
 		Escribir Sin Saltar "INGRESE OPCIÓN:  "
-<<<<<<< HEAD
-		Leer OPCIONMENU
-	Hasta Que (OPCIONMENU>=1 O OPCIONMENU<=4)
-	Segun OPCIONMENU Hacer
-		2:
-			
-	FinSegun
-=======
 		Leer OPCIONMENUDOC
 	Hasta Que (OPCIONMENUDOC >= 1 y OPCIONMENUDOC <= 4)
 	segun OPCIONMENUDOC Hacer
@@ -476,8 +501,6 @@ Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia,
 		Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
 		Esperar Tecla
 		MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
-	
->>>>>>> main
 FinFuncion
 
 
@@ -504,11 +527,7 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 	Hasta Que (OPCION>=1 O OPCION<=5)
 	
 	Segun OPCION hacer
-<<<<<<< HEAD
-		1: NUEVOTURNO_V2();
-=======
 		1: NUEVOTURNO(Datos, Datosnumericos, cantidad);
->>>>>>> main
 		2:
 			Borrar Pantalla
 			MISTURNOS(opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref,Datos, Datosnumericos, cantidad)
@@ -680,148 +699,6 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 		2: TRIUNVIRATO(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref);
 		de otro modo:
 			Escribir "OPCIÓN INCORRECTA"
-	FinSegun
-FinFuncion
-Funcion NUEVOTURNO_V2()
-	Borrar Pantalla
-	Definir DIA, MES, AÑO,limite Como Entero
-	limite=3
-	Dimension date[limite,3]
-	AÑO=2024
-	Escribir "INGRESE DÍA Y MES (correspondiente al 2024)"
-	Escribir "Ingrese día: "
-	Leer DIA
-	Escribir "Ingrese mes: "
-	Leer MES
-	SI (MES = 1 O MES = 3 O MES = 5 O MES = 7 O MES = 8 O MES = 10 O MES = 12)
-		para i=1 hasta limite Hacer
-			para j=1 hasta 3 Hacer
-				si j=1
-					date[i,j] <- Aleatorio(1,31)
-				FinSi
-				si (j=2 y DIA < date[i,j-1] y MES < 12)
-					date[i,j]<-Aleatorio(MES,MES+1)
-				SiNo
-					si (j=2 y MES = 12)
-						date[i,j] <- Aleatorio(1,2)
-						AÑO <- AÑO
-					SiNo
-						si (j=2 y DIA > date[i,j-1] y MES < 10)
-							date[i,j]<-Aleatorio(MES+1,MES+3)
-						SiNo
-							Si (j=2 y DIA > date[i,j-1] y MES = 10)
-								date[i,j]<-Aleatorio(MES+1,MES+2)
-							SiNo
-								si (j=2 y DIA < date[i,j-1] y MES = 10)
-									date[i,j]<-Aleatorio(MES,MES+2)
-								FinSi
-							FinSi
-						FinSi
-					FinSi
-				FinSi
-				si (j=3)
-					date[i,j] <- AÑO
-				FinSi
-			FinPara
-		FinPara
-		
-	SiNo
-		SI (MES = 4 O MES = 6 O MES = 9 O MES = 11)
-			para i=1 hasta limite Hacer
-				para j=1 hasta 3 Hacer
-					si j=1
-						date[i,j] <- Aleatorio(1,30)
-					FinSi
-					Si (j=2 y DIA < date[i,j-1] y MES < 11)
-						date[i,j] <- aleatorio(MES,MES+2)
-					SiNo
-						Si (j=2 y MES = 11)
-							date[i,j] <- aleatorio(MES,MES+1)
-						SiNo
-							si (j=2 y DIA < date[i,j-1] y MES = 11)
-								date[i,j]<-Aleatorio(MES,MES+1)
-							SiNo
-								si (j=2 y DIA > date[i,j-1] y MES = 11)
-									date[i,j] <- Aleatorio(1,12)
-									si date[i,j] < 12
-										AÑO<-(AÑO+1)
-									FinSi
-								FinSi
-							FinSi
-						FinSi
-					FinSi
-					si (j=3)
-						date[i,j] <- AÑO
-					FinSi
-				FinPara
-			FinPara
-		FinSi
-		si (MES = 2 y (AÑO MOD 4)=0)
-			para i=1 hasta limite Hacer
-				para j=1 hasta 3 Hacer
-					si j=1
-						date[i,j] <- Aleatorio(1,29)
-					FinSi
-					Si (j=2 y DIA < date[i,j-1])
-						date[i,j] <- Aleatorio(MES,MES+2)
-					SiNo
-						si (j=2 y DIA > date[i,j-1])
-							date[i,j] <- Aleatorio(MES+1,MES+3)
-						FinSi
-					FinSi
-					si j=3 Entonces
-						date[i,j] <- AÑO
-					FinSi
-				FinPara
-			FinPara
-		SiNo
-			si(MES = 2 y (AÑO MOD 4)<>0)
-				para i=1 hasta limite Hacer
-					para j=1 hasta 3 Hacer
-						si j=1
-							date[i,j] <- Aleatorio(1,28)
-						FinSi
-						Si (j=2 y DIA < date[i,j-1])
-							date[i,j] <- Aleatorio(MES,MES+2)
-						SiNo
-							si (j=2 y DIA > date[i,j-1])
-								date[i,j] <- Aleatorio(MES+1,MES+3)
-							FinSi
-						FinSi
-						si j=3 Entonces
-							date[i,j] <- AÑO
-						FinSi
-					FinPara
-				FinPara
-			FinSi
-		FinSi
-	FinSi
-	Escribir " "
-	x<-Aleatorio(1,limite)
-	Escribir date[x,1], " / "; Escribir Sin Saltar date[x,2], " / ", date[x,3]
-	Escribir "ENTER para continuar"
-	Esperar Tecla
-	Repetir
-		Limpiar Pantalla
-		Escribir "Seleccione una Sede: " //sedes en desarrollo
-		Escribir "------------------------------------"
-		Escribir " 	  1. SEDE AV. CORRIENTES		   "
-		Escribir " 		Av.Corrientes 1100         "
-		Escribir "------------------------------------"
-		Escribir " "
-		Escribir "------------------------------------"
-		Escribir " 	   2. SEDE TRIUNVIRATO		   "
-		Escribir " 	   Av.Triunvirato 3174         "
-		Escribir "------------------------------------"
-		Escribir " "
-		Escribir " "
-		Escribir " 0. Volver"
-		Leer SEDE
-	HASTA QUE (SEDE >=0 O SEDE <=2)
-	Segun SEDE Hacer
-		1: CORRIENTES(DIA,MES,AÑO);
-		2: TRIUNVIRATO(DIA,MES,AÑO);
-		0: NUEVOTURNO_V2()
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------
@@ -2164,7 +2041,7 @@ Algoritmo MedicApp
 	PROGRAMA=Verdadero
 	
 	REPETIR
-		//LOGO()
+		esculapio()
 		Repetir
 			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 			Leer opc
@@ -2184,5 +2061,6 @@ Algoritmo MedicApp
 		FinSegun
 		
 	Hasta Que (PROGRAMA = FALSO)
+	esculapio()
 	
 FinAlgoritmo
