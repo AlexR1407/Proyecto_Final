@@ -201,12 +201,8 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 		Leer opcion
 	hasta que (opcion==1 o opcion==2 o opcion==3)
 	Segun opcion hacer
-			1:
-			Si Datos_ingresados < 1
-				Escribir "ERROR...¡NO HAY DATOS CARGADOS!"
-				Esperar 2 Segundos
-				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
-				SiNo
+		1:
+			
 					Para i=1 Hasta intentos Hacer
 						Borrar Pantalla
 						Escribir "------------------------------------------------------------"
@@ -257,7 +253,6 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 							PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
 						FinSi
 					FinPara
-				FinSi
 				
 			2:
 				DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
@@ -407,12 +402,21 @@ Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_me
 			MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 		sino	
 			Borrar Pantalla
-			
 			nombredoctor<-""
-			date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
-			date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
-			date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
-			date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
+			si diarandom <> 0
+				date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
+			FinSi
+			si diarandom2<>0
+				date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
+			FinSi
+			si diarandom3 <> 0
+				date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
+			FinSi
+			
+			si diarandom4 <> 0
+				date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
+			FInSi
+			
 			Escribir "TURNO CANCELADO CON ÉXITO"
 			Esperar 2 SEGUNDOS
 			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
@@ -2023,10 +2027,20 @@ Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diaran
 	sino	
 		Borrar Pantalla
 		nombredoctor<-""
-		date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
-		date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
-		date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
-		date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
+		si diarandom <> 0
+			date[diarandom,1]<-0  ;date[diarandom,2]<-0;date[diarandom,3]<-0 ;horarios1<-0;
+		FinSi
+		si diarandom2<>0
+			date[diarandom2,1]<-0  ;date[diarandom2,2]<-0;date[diarandom2,3]<-0 ;horarios2<-0;
+		FinSi
+		si diarandom3 <> 0
+			date[diarandom3,1]<-0  ;date[diarandom3,2]<-0;date[diarandom3,3]<-0 ;horarios3<-0;
+		FinSi
+		
+		si diarandom4 <> 0
+			date[diarandom4,1]<-0  ;date[diarandom4,2]<-0;date[diarandom4,3]<-0 ;horarios4<-0;
+		FInSi
+		
 		Escribir "TURNO CANCELADO CON ÉXITO"
 		Esperar 2 SEGUNDOS
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
