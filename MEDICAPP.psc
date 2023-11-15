@@ -449,7 +449,7 @@ Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_me
 			
 			Escribir "TURNO CANCELADO CON ÉXITO"
 			Esperar 2 SEGUNDOS
-			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
+			MENUDELDOCTOR(nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad)
 		FinSi
 		
 		
