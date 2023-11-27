@@ -839,7 +839,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES=1
 			Repetir
 				Escribir "1.Thomas Rodas " 
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
 				Leer opcdoc
 			Hasta Que (opcdoc = 1)
 			si opcdoc=1
@@ -855,10 +855,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			Si (CANTIDADDOCTORES = 2)
 				Repetir
 					Escribir "1.Carolina Jiménez "
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
 					escribir "-----------------------------"
 					Escribir "2.Isabel Rojas "
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3], " ", horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3], " ", horarios2, "hs"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
 				si opcdoc=1
@@ -882,13 +882,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si (CANTIDADDOCTORES = 3)
 					repetir
 						Escribir "1.Thomas Rodas "
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3], " ", horarios1, "hs"
 						escribir "-----------------------------"
 						Escribir "2.María Gomez"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3], " ", horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3], " ", horarios2, "hs"
 						escribir "-----------------------------"
 						Escribir "3.Carolina Jiménez"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3], " ", horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3], " ", horarios3, "hs"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 					si opcdoc=1
@@ -924,16 +924,16 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 						
 						Repetir
 							Escribir "1.Thomas Rodas "
-							Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+							Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 							escribir "-----------------------------"
 							Escribir "2.María Gomez"
-							Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+							Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 							escribir "-----------------------------"
 							Escribir "3.Carolina Jiménez"
-							Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+							Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 							Escribir "-----------------------------"
 							Escribir "4.Isabel Rojas"
-							Escribir date[diarandom4,1], " / "; Escribir Sin Saltar date[diarandom4,2], " / ", date[diarandom4,3]," ",horarios4, "hs"
+							Escribir date[diarandom4,1], " / " date[diarandom4,2], " / ", date[diarandom4,3]," ",horarios4, "hs"
 							Leer opcdoc
 						Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3 o opcdoc=4)
 						
@@ -990,7 +990,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 1
 				repetir
 					Escribir "1. Carlos García"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1)
@@ -1010,11 +1010,11 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					repetir
 						Escribir "1. Miguel Ortega"
 						
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Lucía García"
 						
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2)
@@ -1044,15 +1044,15 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 						Repetir
 							Escribir "1. Carlos García"
 							
-							Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+							Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 							Escribir "-------------------------------------------------------------------"
 							Escribir "2. Miguel Ortega"
 							
-							Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+							Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 							Escribir "-------------------------------------------------------------------"
 							Escribir "3. Lucía García"
 							
-							Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+							Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 							Escribir "-------------------------------------------------------------------"
 							Leer opcdoc
 						Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1102,7 +1102,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Andrea Sánchez"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1121,10 +1121,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			Si CANTIDADDOCTORES = 2
 				repetir
 					Escribir "1. Andrea Sánchez"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Elena Ruíz"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1163,7 +1163,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Sofía Martínez"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1182,10 +1182,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				Repetir
 					Escribir "1. Sofía Martínez"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Sergio Massa"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1214,13 +1214,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si CANTIDADDOCTORES = 3
 					repetir
 						Escribir "1. Sofía Martínez"
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Sergio Massa"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Carlos Martínez"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1269,7 +1269,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Javier Milei"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1292,10 +1292,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				repetir
 					Escribir "1. Javier Milei"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Diana Castro"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1326,13 +1326,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si CANTIDADDOCTORES = 3
 					repetir
 						Escribir "1. Javier Milei"
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Diana Castro"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Isabel Cramer"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1383,7 +1383,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Lionel Messi"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1404,10 +1404,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				repetir
 				Escribir "1. Lionel Messi"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Escribir "2. Mike Tyson"
-				Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+				Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1 o opcdoc=2)
@@ -1438,13 +1438,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si CANTIDADDOCTORES = 3
 					repetir
 						Escribir "1. Lionel Messi"
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Mike Tyson"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Miguel Silva"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1494,7 +1494,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		diarandom<-Aleatorio(1,cantidadfecha);horarios1<-Aleatorio(7,20)
 		repetir
 			Escribir "1. Pedro González"
-			Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+			Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 			Escribir "-------------------------------------------------------------------"
 			Leer opcdoc
 		hasta que (opcdoc=1)
@@ -1523,7 +1523,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Juan Rodríguez"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1545,10 +1545,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				repetir
 					Escribir "1. Juan Rodríguez"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Patricia Bullrich"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1577,13 +1577,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si CANTIDADDOCTORES = 3
 					Repetir
 						Escribir "1. Juan Rodríguez"
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Patricia Bullrich"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Alex Ramos"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1634,7 +1634,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			Repetir
 				Escribir "1. Ana López"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1655,10 +1655,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				Repetir
 					Escribir "1. Ana López"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. David Hernández"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
@@ -1689,13 +1689,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				Si CANTIDADDOCTORES = 3
 					repetir
 						Escribir "1. Ana López"
-						Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+						Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. David Hernández"
-						Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+						Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Pablo Hernández"
-						Escribir date[diarandom3,1], " / "; Escribir Sin Saltar date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
+						Escribir date[diarandom3,1], " / " date[diarandom3,2], " / ", date[diarandom3,3]," ",horarios3, "hs"
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1746,7 +1746,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			repetir
 				Escribir "1. Laura Pérez"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1767,10 +1767,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				Repetir
 					Escribir "1. Laura Pérez"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Alejandro Díaz"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
@@ -1811,7 +1811,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		si CANTIDADDOCTORES = 1
 			Repetir
 				Escribir "1. José Ramírez"
-				Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+				Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1832,10 +1832,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			si CANTIDADDOCTORES = 2
 				repetir
 					Escribir "1. José Ramírez"
-					Escribir date[diarandom,1], " / "; Escribir Sin Saltar date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
+					Escribir date[diarandom,1], " / " date[diarandom,2], " / ", date[diarandom,3]," ",horarios1, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Ricardo Vargas"
-					Escribir date[diarandom2,1], " / "; Escribir Sin Saltar date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
+					Escribir date[diarandom2,1], " / " date[diarandom2,2], " / ", date[diarandom2,3]," ",horarios2, "hs"
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
