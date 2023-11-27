@@ -2108,3 +2108,5 @@ Algoritmo MedicApp
 	Hasta Que (PROGRAMA = FALSO)
 	LOGO()
 FinAlgoritmo
+
+
