@@ -229,7 +229,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
 								Escribir "intentos: ", intentos-i
 								Esperar 3 Segundos
-								Si (i = 5) 
+								Si (i = 0) 
 									Borrar Pantalla
 									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
 									Esperar 2 Segundos
@@ -505,7 +505,6 @@ Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia,
 		Escribir " PRESIONE CUALQUIER TECLA PARA VOLVER AL MENÚ"
 		Esperar Tecla
 		MENUDELDOCTOR(nombre,apellido,cedula_medica,limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref, Datos, Datosnumericos, cantidad, Datos_ingresados)
-	
 FinFuncion
 
 
