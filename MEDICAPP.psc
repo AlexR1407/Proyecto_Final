@@ -198,64 +198,69 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 		Escribir " ----------------------------- "
 		Escribir " "
 		Leer opcion
-	hasta que (opcion==1 o opcion==2 o opcion==3)
-	Segun opcion hacer
-		1:
-			si Datos_ingresados>0
-				Para i=1 Hasta intentos Hacer
-					Borrar Pantalla
-					Escribir "------------------------------------------------------------"
-					Escribir " Ingrese CORREO ELECTRÓNICO: (máximo 5 intentos)"
-					leer CORREO
-					Escribir "------------------------------------------------------------"
-					si (CORREO == Datos[cantidad,3] )
-						Escribir "SU CORREO ELECTRONICO ES CORRECTO"
-						Esperar 1 Segundos
-						Escribir " "
+		Segun opcion hacer
+			1:
+				si Datos_ingresados>0
+					Para i=1 Hasta intentos Hacer
+						Borrar Pantalla
 						Escribir "------------------------------------------------------------"
-						Escribir " Ingrese CONTRASEÑA: (máximo 5 intentos)"
-						leer CONTRASEÑA
+						Escribir " Ingrese CORREO ELECTRÓNICO: (máximo 5 intentos)"
+						leer CORREO
 						Escribir "------------------------------------------------------------"
-						si (CONTRASEÑA == Datos[cantidad,4])
-							Escribir "SU CONTRASEÑA ES CORRECTA"
+						si (CORREO == Datos[cantidad,3] )
+							Escribir "SU CORREO ELECTRONICO ES CORRECTO"
 							Esperar 1 Segundos
-							Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
-							Esperar 2 Segundos
-							i=intentos
-							menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom,diarandom2, diarandom3, diarandom4, ref, Datos_ingresados, HORARIO, OPC)
-						SiNo
-							Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-							Escribir "intentos: ", intentos-i
-							Esperar 3 Segundos
-							Si (i = 0) 
-								Borrar Pantalla
-								Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
+							Escribir " "
+							Escribir "------------------------------------------------------------"
+							Escribir " Ingrese CONTRASEÑA: (máximo 5 intentos)"
+							leer CONTRASEÑA
+							Escribir "------------------------------------------------------------"
+							si (CONTRASEÑA == Datos[cantidad,4])
+								Escribir "SU CONTRASEÑA ES CORRECTA"
+								Esperar 1 Segundos
+								Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
 								Esperar 2 Segundos
-								PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom,diarandom2, diarandom3, diarandom4, ref)
+								i=intentos
+								menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom,diarandom2, diarandom3, diarandom4, ref, Datos_ingresados, HORARIO, OPC)
+							SiNo
+								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
+								Escribir "intentos: ", intentos-i
+								Esperar 3 Segundos
+								Si (i = 0) 
+									Borrar Pantalla
+									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
+									Esperar 2 Segundos
+									PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom,diarandom2, diarandom3, diarandom4, ref)
+								FinSi
+							FinSi
+						SiNo
+							si CORREO<>"" Entonces
+								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
+								Escribir "intentos: ", intentos-i
+								Esperar 3 Segundos
+							SiNo
+								escribir "ERROR. VOLVER A INTENTAR"
+								Escribir "intentos: ", intentos-i
+								Esperar 3 Segundos
 							FinSi
 						FinSi
-					SiNo
-						si CORREO<>"" Entonces
-							Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-							Escribir "intentos: ", intentos-i
-							Esperar 3 Segundos
-						SiNo
-							escribir "ERROR. VOLVER A INTENTAR"
-							Escribir "intentos: ", intentos-i
-							Esperar 3 Segundos
-						FinSi
-					FinSi
-				FinPara
-			SiNo
-				Escribir "NO HAY USUARIOS REGISTRADOS..."
+					FinPara
+				SiNo
+					Escribir "NO HAY USUARIOS REGISTRADOS..."
+					Esperar 2 Segundos
+					iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3, diarandom4, ref, HORARIO, OPC)  
+				FinSi
+			2:
+				DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3,diarandom4, ref, HORARIO, OPC)
+			3:
+				PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref)
+			De Otro Modo:
+				Escribir "OPCIÓN INCORRECTA..."
 				Esperar 2 Segundos
-				iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3, diarandom4, ref, HORARIO, OPC)  
-			FinSi
-		2:
-			DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3,diarandom4, ref, HORARIO, OPC)
-		3:
-			PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref)
-	FinSegun
+				Borrar Pantalla
+		FinSegun
+	
+	hasta que (opcion==1 o opcion==2 o opcion==3)
 	
 FinFuncion
 Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, diarandom2 Por Referencia, diarandom3 Por Referencia, diarandom4 Por Referencia, ref, HORARIO Por Referencia, OPC)
@@ -314,7 +319,9 @@ Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad P
 	Para  i=1 hasta limite-1 con paso 1 Hacer
 		si (cedula == cedula_medica[i])
 			Escribir " ¡MEDICO ENCONTRADO! "
+			Esperar 1 segundos
 			Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
+			Esperar 1 Segundos
 			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite, especialidades[i],opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 		SiNo
 			si (cedula_medica[i] <> cedula )
@@ -1915,14 +1922,14 @@ Funcion horarios(opcdoc,nombredoctor,date Por Referencia, diarandom,diarandom2, 
 	FinPara
 	Repetir
 		leer OPC
-	Hasta Que OPC>=1 y OPC<=16
+	Hasta Que (OPC>=1 y OPC<=16)
 	
 	si HORARIO[OPC,2]<10
 		Escribir "Usted seleccionó la opción: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs", " con el doctor/a: ", nombredoctor
 	SiNo
 		Escribir "Usted seleccionó la opción: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs", " con el doctor/a: ", nombredoctor
 	FinSi	
-	TURNO(opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref, Datos, Datosnumericos, cantidad, Datos_ingresados,HORARIO, OPC)
+	TURNO(opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 FinFuncion
 
 Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, diarandom,diarandom2, diarandom3, diarandom4, ref, HORARIO Por Referencia, OPC)
@@ -2008,7 +2015,7 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir " "
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
-		Escribir "Fecha del turno: ",date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
+		Escribir "Fecha del turno: ", date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
 		si (HORARIO[OPC,2]<10)
 			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
 		SiNo
