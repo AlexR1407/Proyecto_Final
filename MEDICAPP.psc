@@ -247,12 +247,6 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Esperar 3 Segundos
 							FinSi
 						FinSi
-						Si (i = 5) 
-							Borrar Pantalla
-							Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
-							Esperar 2 Segundos
-							PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, diarandom, horarios1,diarandom2, horarios2,diarandom3, horarios3,diarandom4, horarios4, ref)
-						FinSi
 					FinPara
 				SiNo
 					Escribir "NO HAY USUARIOS REGISTRADOS..."
