@@ -1,6 +1,6 @@
 
 //------------------------------------------------------------------------------FUNCIONES----------------------------------------------------------
-Funcion LOGO ()
+Funcion LOGO 
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
@@ -79,7 +79,7 @@ FinFuncion
 
 
 Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia)
-	Definir cantidad, DATO, DATONUMERICO, long como entero
+	Definir cantidad, DATO, DATONUMERICO, long, x como entero
 	
 	DATO=1; DATONUMERICO=1;cantidad = 1
 	Datos_ingresados=Datos_ingresados+1
@@ -537,13 +537,16 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 	Hasta Que (OPCION>=1 O OPCION<=5)
 	
 	Segun OPCION hacer
-		1: NUEVOTURNO(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3, diarandom4, ref, HORARIO, OPC);
+		1: 
+			NUEVOTURNO(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3, diarandom4, ref, HORARIO, OPC);
 		2:
 			Borrar Pantalla
 			MISTURNOS(opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref,Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 			
-		3: INFORMACIONPERSONAL(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,  diarandom2,  diarandom3,  diarandom4,  ref, HORARIO, OPC);
-		4:	INFORMACIONDELAAPP(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,  diarandom2,  diarandom3,diarandom4, ref, HORARIO, OPC);
+		3: 
+			INFORMACIONPERSONAL(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,  diarandom2,  diarandom3,  diarandom4,  ref, HORARIO, OPC);
+		4:	
+			INFORMACIONDELAAPP(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, diarandom,  diarandom2,  diarandom3,diarandom4, ref, HORARIO, OPC);
 		5:
 			ESCRIBIR "SESIÓN CERRADA CON ÉXITO"
 			Esperar 3 Segundos
@@ -709,15 +712,18 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 		Leer SEDE
 	HASTA QUE (SEDE >=0 y SEDE <=2)
 	Segun SEDE Hacer
-		0: menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_ingresados, HORARIO, OPC)
-		1: CORRIENTES(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_ingresados, HORARIO, OPC);
-		2: TRIUNVIRATO(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_Ingresados, HORARIO, OPC);
+		0:
+			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_ingresados, HORARIO, OPC)
+		1: 
+			CORRIENTES(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_ingresados, HORARIO, OPC);
+		2: 
+			TRIUNVIRATO(DIA,MES,AÑO, date, Datos, Datosnumericos, cantidad, cantidadfecha, opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4,ref, Datos_Ingresados, HORARIO, OPC);
 		de otro modo:
 			Escribir "OPCIÓN INCORRECTA"
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------
-Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia,diarandom2 Por Referencia,diarandom3 Por Referencia,diarandom4 Por Referencia ref, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC)
+Funcion CORRIENTES(DIA Por Valor,MES Por Valor ,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia,diarandom2 Por Referencia,diarandom3 Por Referencia,diarandom4 Por Referencia, ref, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC)
 	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -773,7 +779,7 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenci
 	FinSegun
 FinFuncion
 
-Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia,diarandom2 Por Referencia,diarandom3 Por Referencia, diarandom4 Por Referencia ref, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC)
+Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor,date Por Referencia, diarandom Por Referencia,diarandom2 Por Referencia,diarandom3 Por Referencia, diarandom4 Por Referencia, ref, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC)
 	Definir OPCIONESPECIALIDAD, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -1865,7 +1871,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 FinFuncion
 
 Funcion horarios(opcdoc,nombredoctor,date Por Referencia, diarandom,diarandom2, diarandom3, diarandom4, ref, Datos Por Referencia, Datosnumericos Por Referencia, cantidad, Datos_ingresados)
-	definir aux, HM, i, j, h,m como Entero 
+	definir aux, i, j, h, m como Entero 
 	h=7
 	Dimension HORARIO[16,2]
 	Para i=1 hasta 16 con paso 1 Hacer
@@ -1922,6 +1928,9 @@ Funcion horarios(opcdoc,nombredoctor,date Por Referencia, diarandom,diarandom2, 
 	FinPara
 	Repetir
 		leer OPC
+		si (OPC<1 o OPC>16)
+			Escribir "OPCIÓN INCORRECTA..."
+		FinSi
 	Hasta Que (OPC>=1 y OPC<=16)
 	
 	si HORARIO[OPC,2]<10
@@ -1929,6 +1938,8 @@ Funcion horarios(opcdoc,nombredoctor,date Por Referencia, diarandom,diarandom2, 
 	SiNo
 		Escribir "Usted seleccionó la opción: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs", " con el doctor/a: ", nombredoctor
 	FinSi	
+	
+	
 	TURNO(opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 FinFuncion
 
@@ -2010,16 +2021,16 @@ Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, 
 	
 FinFuncion
 
-Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia, diarandom2 Por Referencia, diarandom3 Por Referencia, diarandom4 Por Referencia, ref, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC Por Referencia)
+Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia, diarandom2 Por Referencia, diarandom3 Por Referencia, diarandom4 Por Referencia, ref, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, HORARIO Por Referencia, FS)
 	si ref = 1 y opcdoc=1
 		Escribir " "
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ", date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
-		si (HORARIO[OPC,2]<10)
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2030,10 +2041,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ",date[diarandom,1]," / ", date[diarandom,2], " / ", date[diarandom,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2044,10 +2055,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom2,1]," / ", date[diarandom2,2], " / ", date[diarandom2,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2058,10 +2069,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ",date[diarandom2,1]," / ", date[diarandom2,2], " / ", date[diarandom2,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2072,10 +2083,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom3,1]," / ", date[diarandom3,2], " / ", date[diarandom3,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2086,10 +2097,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ",date[diarandom3,1]," / ", date[diarandom3,2], " / ", date[diarandom3,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2100,10 +2111,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ",date[diarandom4,1]," / ", date[diarandom4,2], " / ", date[diarandom4,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2114,10 +2125,10 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 		Escribir "-----------------------------------------------------------"
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ",date[diarandom4,1]," / ", date[diarandom4,2], " / ", date[diarandom4,3] 
-		si HORARIO[OPC,2]<10
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":0", HORARIO[OPC,2], "hs"
+		si (HORARIO[FS,2] < 10)
+			Escribir "HORARIO: ", HORARIO[FS,1], ":0", HORARIO[FS,2], "hs"
 		SiNo
-			Escribir "HORARIO: ", HORARIO[OPC,1], ":", HORARIO[OPC,2], "hs"
+			Escribir "HORARIO: ", HORARIO[FS,1], ":", HORARIO[FS,2], "hs"
 		FinSi
 		Escribir "-----------------------------------------------------------"
 		
@@ -2130,18 +2141,17 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, diarandom Por Referencia
 	
 FinFuncion
 
-Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, diarandom2 Por Referencia,diarandom3 Por Referencia,diarandom4 Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC)
-	Definir op Como Entero
+Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diarandom Por Referencia, diarandom2 Por Referencia,diarandom3 Por Referencia,diarandom4 Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, HORARIO Por Referencia, OPC Por Referencia)
 	ref=1
 	TURNO(opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3, diarandom4, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 	Repetir
 		Escribir " "
 		Escribir "PRESIONE 1 VOLVER AL MENÚ"
 		Escribir "PRESIONE 0 CANCELAR TURNO"
-		Leer op
-	Hasta Que (op==0 o op==1)
+		Leer opcion
+	Hasta Que (opcion==0 o opcion==1)
 	
-	si (op == 1)
+	si (opcion == 1)
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom, diarandom2,diarandom3, diarandom4,  ref, Datos_ingresados, HORARIO, OPC)
 	sino	
 		Borrar Pantalla
@@ -2166,6 +2176,7 @@ Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, diaran
 	FinSi
 	
 FinFuncion
+
 Funcion volvermenup(long)
 	si long==0 Entonces
 		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, diarandom,diarandom2,diarandom3,diarandom4, ref, Datos_ingresados, HORARIO, OPC)
@@ -2194,11 +2205,14 @@ Algoritmo MedicApp
 		
 		segun opc hacer
 			
-			0: PROGRAMA = FALSO
+			0: 
+				PROGRAMA = FALSO
 				
-			1:	CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos)
+			1:
+				CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos)
 				
-			2:	iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3,diarandom4, ref, HORARIO, OPC) 
+			2:	
+				iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, diarandom, diarandom2, diarandom3,diarandom4, ref, HORARIO, OPC) 
 				
 		FinSegun
 		
@@ -2206,4 +2220,4 @@ Algoritmo MedicApp
 	LOGO()
 FinAlgoritmo
 
-
+//:)
