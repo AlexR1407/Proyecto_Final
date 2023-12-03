@@ -2052,6 +2052,7 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir " "
 		Escribir "-----------------------------------------------------------"
 		Escribir "DOCTOR/a: ",nombredoctor
+		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
 			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
 		SiNo
