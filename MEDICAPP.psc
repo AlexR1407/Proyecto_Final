@@ -266,11 +266,13 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 	
 FinFuncion
 Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, Horario Por Referencia, OPC)
-	Definir op, cedula, i, k, x Como Entero
+	Definir op, cedula, i, posiciondoc, x Como Entero
 	Definir limite Como Entero
-	Definir accesomenudoctor Como Logico
+	Definir accesomenudoctor, band Como Logico
+	accesomenudoctor=falso
+	band=falso
 	limite=30
-	x=0
+	x=0; i=1
 	Definir cedula_medica Como Entero
 	Definir nombres, apellidos, especialidades  Como texto
 	Dimension cedula_medica[limite], nombres[limite], apellidos[limite], especialidades[limite]
@@ -318,39 +320,47 @@ Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad P
 	si cedula = 0
 		iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, Especialidad, opcdoc,nombredoctor,date, opciondefecha,  ref, Horario, OPC) 
 	FinSi
-	Para  i=1 hasta limite-1 con paso 1 Hacer
-		si (cedula == cedula_medica[i])
+	Mientras (band=falso y i<limite)
+		si (cedula == cedula_medica[i] y i<limite)
 			Escribir " ¡MEDICO ENCONTRADO! "
 			Esperar 1 segundos
 			Escribir "Bienvenido/a doctor/a ", nombres[i], " ", apellidos[i]
 			Esperar 1 Segundos
-			MENUDELDOCTOR(nombres[i],apellidos[i],cedula_medica[i],limite, especialidades[i],opcdoc,nombredoctor,date, opciondefecha,   ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC)
-		FinSi
-	FinPara
-	si (cedula_medica[i] <> cedula )
-		accesomenudoctor <- falso
-		si (accesomenudoctor = falso)
-			Repetir
-				
-				Borrar Pantalla
-				Escribir " ¡ERROR! :( NO se ha encontrado al medico con esa cedula... "
-				Escribir "Seleccione una opcion: "
-				Escribir "1. Reintentar"
-				Escribir "2. Volver al primer Menú"
-				leer op
-				
-			Hasta Que (op = 1 o op = 2)
-			Si (op=1) Entonces
-				DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC) 
-			SiNo
-				si (op=2)
-					PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, opciondefecha,ref)
-					Borrar Pantalla
-				SiNo
-					Borrar Pantalla
-				FinSi
+			accesomenudoctor=Verdadero
+			band=Verdadero
+			posiciondoc<-i
+		SiNo
+			si (cedula_medica[i] <> cedula y i=limite-1 )
+				accesomenudoctor=Falso
+				si (accesomnudoctor = falso)
+					Repetir
+						
+						Borrar Pantalla
+						Escribir " ¡ERROR! :( NO se ha encontrado al medico con esa cedula... "
+						Escribir "Seleccione una opcion: "
+						Escribir "1. Reintentar"
+						Escribir "2. Volver al primer Menú"
+						leer op
+						
+					Hasta Que (op = 1 o op = 2)
+					Si (op=1) Entonces
+						DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC) 
+					SiNo
+						si (op=2)
+							PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, Especialidad,opcdoc,nombredoctor,date, opciondefecha,ref)
+							Borrar Pantalla
+						SiNo
+							Borrar Pantalla
+						FinSi
+					FinSi
+				FinSI
 			FinSi
-		FinSI
+		FinSi
+		i=i+1
+	FinMientras
+	
+	Si band=Verdadero
+		MENUDELDOCTOR(nombres[posiciondoc],apellidos[posiciondoc],cedula_medica,limite, Especialidad,opcdoc,nombredoctor,date, opciondefecha,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC)
 	FinSi
 	
 	
@@ -396,7 +406,7 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 	FinSegun
 FinFuncion
 
-Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Valor, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC, opciondefecha)
+Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, Especialidad Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC, opciondefecha)
 	Borrar Pantalla
 	Definir strcat como texto
 	Definir op Como Entero
@@ -872,7 +882,6 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 				ref=0
 				nombredoctor<- "Carlos García"
 				FECHAYHORA(opcdoc,nombredoctor,date, opciondefecha, ref, Datos , Datosnumericos, cantidad, Datos_ingresados, cantidadfecha,horario, OPC)
-				
 				Escribir "TURNO REALIZADO CON EXITO..."
 				Esperar 2 segundos
 				menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
@@ -1398,6 +1407,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Juan Rodríguez"
 					
 					Escribir "-------------------------------------------------------------------"
