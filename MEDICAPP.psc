@@ -712,8 +712,9 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES=1
 			Repetir
+				escribir "-----------------------------"
 				Escribir "1.Thomas Rodas " 
-				
+				escribir "-----------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc = 1)
 			si opcdoc=1
@@ -728,11 +729,11 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			Si (CANTIDADDOCTORES = 2)
 				Repetir
+					escribir "-----------------------------"
 					Escribir "1.Carolina Jiménez "
-					
 					escribir "-----------------------------"
 					Escribir "2.Isabel Rojas "
-					
+					escribir "-----------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
 				si opcdoc=1
@@ -755,14 +756,13 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si (CANTIDADDOCTORES = 3)
 					repetir
+						escribir "-----------------------------"
 						Escribir "1.Thomas Rodas "
-						
 						escribir "-----------------------------"
 						Escribir "2.María Gomez"
-						
 						escribir "-----------------------------"
 						Escribir "3.Carolina Jiménez"
-						
+						escribir "-----------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
 					si opcdoc=1
@@ -797,17 +797,15 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Si (CANTIDADDOCTORES = 4)
 						
 						Repetir
+							escribir "-----------------------------"
 							Escribir "1.Thomas Rodas "
-							
 							escribir "-----------------------------"
 							Escribir "2.María Gomez"
-							
 							escribir "-----------------------------"
 							Escribir "3.Carolina Jiménez"
-							
 							Escribir "-----------------------------"
 							Escribir "4.Isabel Rojas"
-						
+							escribir "-----------------------------"
 							Leer opcdoc
 						Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3 o opcdoc=4)
 						
@@ -864,8 +862,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Carlos García"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -883,13 +881,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Miguel Ortega"
-					
-					
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Lucía García"
-					
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
@@ -917,17 +912,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					Repetir
+						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Carlos García"
-						
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Miguel Ortega"
-						
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Lucía García"
-						
-						
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -975,8 +965,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Andrea Sánchez"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -994,11 +984,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			Si CANTIDADDOCTORES = 2
 				repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Andrea Sánchez"
-					
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Elena Ruíz"
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1036,8 +1025,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Sofía Martínez"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1055,11 +1044,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Sofía Martínez"
-					
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Sergio Massa"
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1087,14 +1075,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Sofía Martínez"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Sergio Massa"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Carlos Martínez"
-						
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1142,8 +1128,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Javier Milei"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1165,11 +1151,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Javier Milei"
-					
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Diana Castro"
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1199,14 +1184,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Javier Milei"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Diana Castro"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Isabel Cramer"
-						
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1256,8 +1239,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Lionel Messi"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			hasta que (opcdoc=1)
@@ -1277,11 +1260,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Lionel Messi"
-					
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Mike Tyson"
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1311,14 +1293,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Lionel Messi"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Mike Tyson"
-						
 						Escribir "-------------------------------------------------------------------"
-						Escribir "3. Miguel Silva"
-						
+						Escribir "3. Miguel Silva"	
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1367,8 +1347,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		Escribir " "
 		opciondefecha<-Aleatorio(1,cantidadfecha); 
 		repetir
+			Escribir "-------------------------------------------------------------------"
 			Escribir "1. Pedro González"
-			
 			Escribir "-------------------------------------------------------------------"
 			Leer opcdoc
 		hasta que (opcdoc=1)
@@ -1396,8 +1376,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Juan Rodríguez"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1421,8 +1401,7 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 					Escribir "1. Juan Rodríguez"
 					
 					Escribir "-------------------------------------------------------------------"
-					Escribir "2. Patricia Bullrich"
-					
+					Escribir "2. Patricia Bullrich"	
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -1450,14 +1429,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					Repetir
-						Escribir "1. Juan Rodríguez"
-						
+						Escribir "-------------------------------------------------------------------"
+						Escribir "1. Juan Rodríguez"	
 						Escribir "-------------------------------------------------------------------"
 						Escribir "2. Patricia Bullrich"
-						
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Alex Ramos"
-						
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					Hasta Que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1507,8 +1484,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			Repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Ana López"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1528,11 +1505,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
-					Escribir "1. Ana López"
-					
 					Escribir "-------------------------------------------------------------------"
-					Escribir "2. David Hernández"
-					
+					Escribir "1. Ana López"	
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. David Hernández"	
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
@@ -1562,14 +1538,12 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
-						Escribir "1. Ana López"
-						
 						Escribir "-------------------------------------------------------------------"
-						Escribir "2. David Hernández"
-						
+						Escribir "1. Ana López"	
+						Escribir "-------------------------------------------------------------------"
+						Escribir "2. David Hernández"	
 						Escribir "-------------------------------------------------------------------"
 						Escribir "3. Pablo Hernández"
-						
 						Escribir "-------------------------------------------------------------------"
 						Leer opcdoc
 					hasta que (opcdoc=1 o opcdoc=2 o opcdoc=3)
@@ -1619,8 +1593,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Laura Pérez"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1640,11 +1614,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
-					Escribir "1. Laura Pérez"
-					
 					Escribir "-------------------------------------------------------------------"
-					Escribir "2. Alejandro Díaz"
-					
+					Escribir "1. Laura Pérez"
+					Escribir "-------------------------------------------------------------------"
+					Escribir "2. Alejandro Díaz"	
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				Hasta Que (opcdoc=1 o opcdoc=2)
@@ -1684,8 +1657,8 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		
 		si CANTIDADDOCTORES = 1
 			Repetir
+				Escribir "-------------------------------------------------------------------"
 				Escribir "1. José Ramírez"
-				
 				Escribir "-------------------------------------------------------------------"
 				Leer opcdoc
 			Hasta Que (opcdoc=1)
@@ -1705,11 +1678,10 @@ Funcion GENERARTURNOS(OPCIONESPECIALIDAD Por Valor , SEDE Por Valor, date Por Re
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
-					Escribir "1. José Ramírez"
-					
+					Escribir "-------------------------------------------------------------------"
+					Escribir "1. José Ramírez"	
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Ricardo Vargas"
-					
 					Escribir "-------------------------------------------------------------------"
 					Leer opcdoc
 				hasta que (opcdoc=1 o opcdoc=2)
@@ -2058,7 +2030,6 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		SiNo
 			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
 		FinSi
-		
 		Escribir "-----------------------------------------------------------"
 		
 	FinSi
@@ -2141,28 +2112,28 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 FinFuncion
 
 Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
-	ref=1
-	TURNO(opcdoc,nombredoctor,date, opciondefecha, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
-	Repetir
-		Escribir " "
-		Escribir "PRESIONE 1 VOLVER AL MENÚ"
-		Escribir "PRESIONE 0 CANCELAR TURNO"
-		Leer opcion
-	Hasta Que (opcion==0 o opcion==1)
-	
-	si (opcion == 1)
-		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
-	sino	
-		Borrar Pantalla
-		nombredoctor<-""
-		si opciondefecha <> 0
-			date[opciondefecha,1]<-0  ;date[opciondefecha,2]<-0;date[opciondefecha,3]<-0 
-		FinSi
+		ref=1
+		TURNO(opcdoc,nombredoctor,date, opciondefecha, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
+		Repetir
+			Escribir " "
+			Escribir "PRESIONE 1 VOLVER AL MENÚ"
+			Escribir "PRESIONE 0 CANCELAR TURNO"
+			Leer opcion
+		Hasta Que (opcion==0 o opcion==1)
 		
-		Escribir "TURNO CANCELADO CON ÉXITO"
-		Esperar 2 SEGUNDOS
-		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
-	FinSi
+		si (opcion == 1)
+			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
+		sino	
+			Borrar Pantalla
+			nombredoctor<-""
+			si opciondefecha <> 0
+				date[opciondefecha,1]<-0  ;date[opciondefecha,2]<-0;date[opciondefecha,3]<-0 
+			FinSi
+			
+			Escribir "TURNO CANCELADO CON ÉXITO"
+			Esperar 2 SEGUNDOS
+			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
+		FinSi
 	
 FinFuncion
 
@@ -2212,5 +2183,3 @@ Algoritmo MedicApp
 	Hasta Que (PROGRAMA = FALSO)
 	LOGO()
 FinAlgoritmo
-
-//:)
