@@ -1,6 +1,7 @@
 
 //------------------------------------------------------------------------------FUNCIONES----------------------------------------------------------
 Funcion LOGO 
+	Borrar Pantalla
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
@@ -78,10 +79,10 @@ FinFuncion
 
 
 
-Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia,especialidades, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario, OPC)
-	Definir cantidad, DATO, DATONUMERICO, long, x como entero
+Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia,especialidades, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario Por Referencia, OPC, cantidad Por Referencia)
+	Definir DATO, DATONUMERICO, long, x como entero
 	
-	DATO=1; DATONUMERICO=1;cantidad = 1
+	DATO=1; DATONUMERICO=1;cantidad = cantidad+1
 	Datos_ingresados=Datos_ingresados+1
 	
 	
@@ -167,7 +168,7 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Po
 		SiNo
 			Escribir "REINICIE PROCESO..."
 			Esperar 2 segundos
-			CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos,especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC)
+			CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos,especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC, cantidad)
 		FinSi
 		
 	SiNo
@@ -176,11 +177,13 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Po
 	
 FinFuncion
 
-Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, Horario, OPC)
+Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, Horario, OPC)
 	Definir CORREO, CONTRASEÑA como texto
 	Definir repetirproceso como logico
 	Definir intentos, i Como Entero
 	intentos=5
+	i=0
+	repetirproceso=Verdadero
 	Repetir
 		Limpiar Pantalla
 		Escribir "Usted es: "
@@ -203,15 +206,36 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 		Segun opcion hacer
 			1:
 				si Datos_ingresados>0
-					Para i=1 Hasta intentos Hacer
+					
+					Mientras intentos>0
 						Borrar Pantalla
 						Escribir "------------------------------------------------------------"
 						Escribir " Ingrese CORREO ELECTRÓNICO: (máximo 5 intentos)"
 						leer CORREO
 						Escribir "------------------------------------------------------------"
-						si (CORREO == Datos[cantidad,3] )
+						si (CORREO == Datos[cantidad,3] y intentos>0)
 							Escribir "SU CORREO ELECTRONICO ES CORRECTO"
+							repetirproceso=falso
+							intentos=-1
 							Esperar 1 Segundos
+							
+							
+						SiNo
+							Escribir "¡ERROR! CORREO ERRONEO..."
+							Escribir "intentos: ", intentos
+							Esperar 3 Segundos
+								intentos=intentos-1
+							si intentos=0
+								Escribir "HAS ALCANZADO EL LÍMITE... VUELVA A INTENTAR"
+								ESPERAR 2 SEGUNDOS
+								PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, especialidades,opcdoc,nombredoctor,date, opciondefecha, ref)
+							FinSi
+						FinSi
+					FinMientras
+					si repetirproceso=falso
+						intentos=5
+						Mientras intentos>0
+							Borrar Pantalla
 							Escribir " "
 							Escribir "------------------------------------------------------------"
 							Escribir " Ingrese CONTRASEÑA: (máximo 5 intentos)"
@@ -222,35 +246,25 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								Esperar 1 Segundos
 								Escribir "AHORA USTED TIENE ACCESO AL MENÚ DE PACIENTE"
 								Esperar 2 Segundos
-								i=intentos
-								menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
+								i=1
+								intentos=-1
 							SiNo
-								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-								Escribir "intentos: ", intentos-i
+								Escribir "¡ERROR! CONTRASEÑA ERRONEA..."
+								Escribir "intentos: ", intentos
+								intentos=intentos-1
 								Esperar 3 Segundos
-								Si (i = 0) 
+								Si (intentos = 0) 
 									Borrar Pantalla
-									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A CREAR USUARIO"
+									Escribir "CANTIDAD DE INTENTOS SUPERADOS... VUELVA A INTENTAR"
 									Esperar 2 Segundos
 									PRIMERMENU(Datos, Datosnumericos, cantidad, Datos_ingredos,nombre, apellido, cedula_medica, limite, especialidades,opcdoc,nombredoctor,date, opciondefecha, ref)
 								FinSi
 							FinSi
-						SiNo
-							si CORREO<>"" Entonces
-								Escribir "ERROR CORREO NO ENCONTRADO EN NUESTRA BASE DE DATOS..."
-								Escribir "intentos: ", intentos-i
-								Esperar 3 Segundos
-							SiNo
-								escribir "ERROR. VOLVER A INTENTAR"
-								Escribir "intentos: ", intentos-i
-								Esperar 3 Segundos
-							FinSi
+						FinMientras
+						si i=1
+							menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC)
 						FinSi
-					FinPara
-				SiNo
-					Escribir "NO HAY USUARIOS REGISTRADOS..."
-					Esperar 2 Segundos
-					iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC)  
+					FinSi
 				FinSi
 			2:
 				DOCTORES(Datos, Datosnumericos, cantidad, Datos_ingresados, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC)
@@ -265,7 +279,7 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 
 	
 FinFuncion
-Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, Horario Por Referencia, OPC)
+Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, Horario Por Referencia, OPC)
 	Definir op, cedula, i, posiciondoc, x Como Entero
 	Definir limite Como Entero
 	Definir accesomenudoctor, band Como Logico
@@ -366,7 +380,7 @@ Funcion DOCTORES(Datos Por Referencia, Datosnumericos Por Referencia, cantidad P
 	
 FinFuncion
 
-Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor,  Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
+Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia,  Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
 	Definir OPCIONMENUDOC Como Entero
 	Limpiar Pantalla
 	Repetir
@@ -406,7 +420,7 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 	FinSegun
 FinFuncion
 
-Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC, opciondefecha)
+Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, Horario Por Referencia, OPC, opciondefecha)
 	Borrar Pantalla
 	Definir strcat como texto
 	Definir op Como Entero
@@ -451,7 +465,7 @@ Funcion VERTURNODOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_me
 	
 FinFuncion 
 
-Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
+Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
 	Definir OPCIONINFORMACIONPERSONAL Como Entero
 	Borrar Pantalla
 	// "VER INFORMACION PERSONAL"
@@ -510,7 +524,7 @@ Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia
 		MENUDELDOCTOR(nombre,apellido,cedula_medica,limite, especialidades,opcdoc,nombredoctor,date, opciondefecha,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC)
 	FinSi
 FinFuncion
-Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
+Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
 	
 	Borrar Pantalla
 	Escribir "---------------------------------"
@@ -530,7 +544,7 @@ FinFuncion
 
 
 
-Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, opcdoc Por Valor,nombredoctor,date Por Referencia, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
+Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, opcdoc Por Valor,nombredoctor,date Por Referencia, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
 	Definir OPCIONMENUPACIENTE Como Entero
 	Repetir
 		Limpiar Pantalla
@@ -570,7 +584,7 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 			iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, especialidades, opcdoc,nombredoctor,date, opciondefecha,ref, Horario, OPC) 
 	FinSegun
 FinFuncion
-Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor, opciondefecha,ref, Horario, OPC, date Por Referencia, cantidadfecha)
+Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, opcdoc,nombredoctor, opciondefecha,ref, Horario, OPC, date Por Referencia, cantidadfecha)
 	Borrar Pantalla
 	// "NUEVO TURNO"
 
@@ -603,7 +617,7 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 	FinSegun
 FinFuncion
 //-------------------------FUNCION PARA LAS SEDES---------------------------------
-Funcion CORRIENTES(DIA Por Valor,MES Por Valor ,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
+Funcion CORRIENTES(DIA Por Valor,MES Por Valor ,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
 	Definir OPCIONespecialidades, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -659,7 +673,7 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor ,AÑO Por Valor, date Por Referenc
 	FinSegun
 FinFuncion
 
-Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
+Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, cantidadfecha Por Valor,  opcdoc Por Valor,nombredoctor, opciondefecha Por Referencia, ref, Datos_ingresados Por Referencia, Horario, OPC)
 	Definir OPCIONespecialidades, SEDE como entero
 	Repetir
 		Borrar Pantalla
@@ -709,7 +723,7 @@ Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenc
 	FinSegun
 FinFuncion
 
-Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, cantidadfecha Por Valor, Datos_ingresados Por Referencia, Horario, OPC, opciondefecha)
+Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por Referencia, Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, cantidadfecha Por Valor, Datos_ingresados Por Referencia, Horario, OPC, opciondefecha)
 	definir CANTIDADDOCTORES, opcdoc  como entero
 	definir nombredoctor como texto
 	SI(OPCIONespecialidades=1 Y SEDE = 1) Entonces
@@ -1922,7 +1936,7 @@ Funcion FECHAYHORA(opcdoc,nombredoctor,date Por Referencia, opciondefecha Por Re
 	FinSi
 FinFuncion
 
-Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario Por Referencia, OPC)
+Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario Por Referencia, OPC)
 	Definir OPCIONINFORMACIONPERSONAL Como Entero
 	Borrar Pantalla
 	// "VER INFORMACION PERSONAL"
@@ -1982,7 +1996,7 @@ Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia,
 	FinSi
 FinFuncion
 
-Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario, OPC)
+Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario, OPC)
 		
 		Borrar Pantalla
 		Escribir "---------------------------------"
@@ -2121,7 +2135,7 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 	
 FinFuncion
 
-Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Valor, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
+Funcion MISTURNOS(opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, Horario Por Referencia, OPC)
 		ref=1
 		TURNO(opcdoc,nombredoctor,date, opciondefecha, ref, Datos, Datosnumericos, cantidad, Datos_ingresados, HORARIO, OPC)
 		Repetir
@@ -2155,13 +2169,14 @@ FinFuncion
 //----------------------------------MAIN----------------------------------
 Algoritmo MedicApp
 	Definir PROGRAMA Como Logico
-	Definir opcionprimermenu, opc, val_sal, opciondefecha Como Entero
+	Definir opcionprimermenu, opc, val_sal, opciondefecha, cantidad Como Entero
 	Dimension Horario[16,2]
 	Dimension date[200,3]
 	matriz(Horario)
 	matrizfecha(date)
 	limite=10000
 	Datos_ingresados=0
+	cantidad=0
 	PROGRAMA=Verdadero
 	Dimension Datos[limite,4], Datosnumericos[limite,2]
 	Definir Datos como texto
@@ -2183,7 +2198,7 @@ Algoritmo MedicApp
 				PROGRAMA = FALSO
 				
 			1:
-				CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos,especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC)
+				CREARUSUARIO(limite, Datos_ingresados, Datos, Datosnumericos,especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC, cantidad)
 				
 			2:	
 				iniciarsesion(Datos, Datosnumericos, cantidad , Datos_ingresados,nombre, apellido, cedula_medica, limite, especialidades, opcdoc,nombredoctor,date, opciondefecha, ref, Horario, OPC)   
