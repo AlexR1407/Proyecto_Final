@@ -438,6 +438,7 @@ Funcion MENUDELDOCTOR(nombre Por Referencia, apellido Por Referencia, cedula_med
 		si OPCIONMENUDOC < 1 o OPCIONMENUDOC >4
 			Escribir "OPCION INCORRECTA..."
 			Esperar 1 Segundos
+			MENUDELDOCTOR(nombre,apellido,cedula_medica,limite, especialidades,opcdoc,nombredoctor,date, opciondefecha,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC, SEDE)
 		FinSi
 	Hasta Que (OPCIONMENUDOC >= 1 y OPCIONMENUDOC <= 4)
 	segun OPCIONMENUDOC Hacer
@@ -545,18 +546,14 @@ Funcion INFORMACIONPERSONALDOCTOR(nombre Por Referencia, Apellido Por Referencia
 	Escribir " "
 	Escribir " "
 	Escribir " ------------------------------------------------- " 
-	Escribir "  				0) Volver 				"
+	Escribir "       PRESIONE CUALQUIER TECLA PARA VOLVER			"
 	Escribir " ------------------------------------------------- "
 	Escribir " "
 	Escribir " "
 	Escribir " "
-	Repetir
-		Leer OPCIONINFORMACIONPERSONAL
-	hasta que (OPCIONINFORMACIONPERSONAL=0)
-	borrar pantalla
-	si (OPCIONINFORMACIONPERSONAL = 0)
-		MENUDELDOCTOR(nombre,apellido,cedula_medica,limite, especialidades,opcdoc,nombredoctor,date, opciondefecha,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC, SEDE)
-	FinSi
+	Esperar Tecla
+	MENUDELDOCTOR(nombre,apellido,cedula_medica,limite, especialidades,opcdoc,nombredoctor,date, opciondefecha,  ref, Datos, Datosnumericos, cantidad, Datos_ingresados, Horario, OPC, SEDE)
+
 FinFuncion
 Funcion INFORMACIONDELAAPPDOCTOR(nombre Por Referencia, Apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia,  ref,Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, Horario Por Referencia, OPC, SEDE Por Referencia)
 	
@@ -600,6 +597,7 @@ Funcion menupaciente(Datos Por Referencia, Datosnumericos Por Referencia, cantid
 		SI OPCIONMENUPACIENTE < 1 O OPCIONMENUPACIENTE > 5
 			Escribir "OPCIÓN INCORRECTA"
 			Esperar 1 Segundos
+			menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha,ref, Datos_ingresados, Horario, OPC, SEDE)
 		FinSi
 	Hasta Que (OPCIONMENUPACIENTE>=1 O OPCIONMENUPACIENTE<=5)
 	Segun OPCIONMENUPACIENTE hacer
@@ -766,10 +764,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 segundos
 		CANTIDADDOCTORES<-aleatorio(1,4)
 		
 		si CANTIDADDOCTORES=1
 			Repetir
+				Borrar Pantalla
 				escribir "-----------------------------"
 				Escribir "1.Thomas Rodas " 
 				escribir "-----------------------------"
@@ -787,6 +787,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			Si (CANTIDADDOCTORES = 2)
 				Repetir
+					Borrar Pantalla
 					escribir "-----------------------------"
 					Escribir "1.Carolina Jiménez "
 					escribir "-----------------------------"
@@ -814,6 +815,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si (CANTIDADDOCTORES = 3)
 					repetir
+						Borrar Pantalla
 						escribir "-----------------------------"
 						Escribir "1.Thomas Rodas "
 						escribir "-----------------------------"
@@ -855,6 +857,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 					Si (CANTIDADDOCTORES = 4)
 						
 						Repetir
+							Borrar Pantalla
 							escribir "-----------------------------"
 							Escribir "1.Thomas Rodas "
 							escribir "-----------------------------"
@@ -916,10 +919,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		Esperar 3 segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Carlos García"
 				Escribir "-------------------------------------------------------------------"
@@ -938,6 +943,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Miguel Ortega"
 					Escribir "-------------------------------------------------------------------"
@@ -969,6 +975,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					Repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Carlos García"
 						Escribir "-------------------------------------------------------------------"
@@ -1018,10 +1025,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 segundos
 		CANTIDADDOCTORES<-aleatorio(1,2)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Andrea Sánchez"
 				Escribir "-------------------------------------------------------------------"
@@ -1041,6 +1050,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			Si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Andrea Sánchez"
 					Escribir "-------------------------------------------------------------------"
@@ -1078,10 +1088,13 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 Segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Sofía Martínez"
 				Escribir "-------------------------------------------------------------------"
@@ -1101,6 +1114,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Sofía Martínez"
 					Escribir "-------------------------------------------------------------------"
@@ -1132,6 +1146,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Sofía Martínez"
 						Escribir "-------------------------------------------------------------------"
@@ -1181,10 +1196,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		Esperar 3 Segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Javier Milei"
 				Escribir "-------------------------------------------------------------------"
@@ -1208,6 +1225,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Javier Milei"
 					Escribir "-------------------------------------------------------------------"
@@ -1241,6 +1259,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Javier Milei"
 						Escribir "-------------------------------------------------------------------"
@@ -1292,10 +1311,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Lionel Messi"
 				Escribir "-------------------------------------------------------------------"
@@ -1317,6 +1338,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Lionel Messi"
 					Escribir "-------------------------------------------------------------------"
@@ -1350,6 +1372,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Lionel Messi"
 						Escribir "-------------------------------------------------------------------"
@@ -1402,8 +1425,10 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 segundos
 		opciondefecha<-Aleatorio(1,cantidadfecha); 
 		repetir
+			Borrar Pantalla
 			Escribir "-------------------------------------------------------------------"
 			Escribir "1. Pedro González"
 			Escribir "-------------------------------------------------------------------"
@@ -1429,10 +1454,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		Esperar 3 Segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Juan Rodríguez"
 				Escribir "-------------------------------------------------------------------"
@@ -1455,9 +1482,10 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Juan Rodríguez"
-					
+					Escribir "-------------------------------------------------------------------"
 					Escribir "-------------------------------------------------------------------"
 					Escribir "2. Patricia Bullrich"	
 					Escribir "-------------------------------------------------------------------"
@@ -1487,6 +1515,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					Repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Juan Rodríguez"	
 						Escribir "-------------------------------------------------------------------"
@@ -1538,10 +1567,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		Esperar 3 Segundos
 		CANTIDADDOCTORES<-aleatorio(1,3)
 		
 		si CANTIDADDOCTORES = 1
 			Repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Ana López"
 				Escribir "-------------------------------------------------------------------"
@@ -1563,6 +1594,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Ana López"	
 					Escribir "-------------------------------------------------------------------"
@@ -1596,6 +1628,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 			SiNo
 				Si CANTIDADDOCTORES = 3
 					repetir
+						Borrar Pantalla
 						Escribir "-------------------------------------------------------------------"
 						Escribir "1. Ana López"	
 						Escribir "-------------------------------------------------------------------"
@@ -1647,10 +1680,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		esperar 3 segundos
 		CANTIDADDOCTORES<-aleatorio(1,2)
 		
 		si CANTIDADDOCTORES = 1
 			repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. Laura Pérez"
 				Escribir "-------------------------------------------------------------------"
@@ -1672,6 +1707,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				Repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. Laura Pérez"
 					Escribir "-------------------------------------------------------------------"
@@ -1711,10 +1747,12 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		Escribir "-------------------------------------------------------------------"
 		Escribir "SELECCIONE EL TURNO CON EL ESPECIALISTA QUE DESEE: "
 		Escribir " "
+		Esperar 3 Segundos
 		CANTIDADDOCTORES<-aleatorio(1,2)
 		
 		si CANTIDADDOCTORES = 1
 			Repetir
+				Borrar Pantalla
 				Escribir "-------------------------------------------------------------------"
 				Escribir "1. José Ramírez"
 				Escribir "-------------------------------------------------------------------"
@@ -1736,6 +1774,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 		SiNo
 			si CANTIDADDOCTORES = 2
 				repetir
+					Borrar Pantalla
 					Escribir "-------------------------------------------------------------------"
 					Escribir "1. José Ramírez"	
 					Escribir "-------------------------------------------------------------------"
@@ -1825,21 +1864,28 @@ Funcion matrizfecha(date Por Referencia)
 					date[i,j] <- Aleatorio(1,31)
 				FinSi
 				si (j=2 y DIA < date[i,j-1] y MES < 12)
-					date[i,j]<-Aleatorio(MES,MES+1)
+					date[i,j]<-Aleatorio(MES,MES+3)
 				SiNo
 					si (j=2 y MES = 12)
-						date[i,j] <- Aleatorio(1,2)
+						date[i,j] <- Aleatorio(1,3)
+						si (date[i,j] = 2 y (AÑO mod 4) = 0)
+							date[i,j-1]<-Aleatorio(1,29)
+						SiNo
+							si (date[i,j] = 2 y (AÑO mod 4) <> 0)
+								date[i,j-1]<-Aleatorio(1,28)
+							FinSi
+						FinSi
 						AÑO=auxaño;
 						AÑO <- AÑO+1
 					SiNo
 						si (j=2 y DIA > date[i,j-1] y MES < 10)
-							date[i,j]<-Aleatorio(MES+1,MES+3)
+							date[i,j]<-Aleatorio(MES+1,MES+5)
 						SiNo
 							Si (j=2 y DIA > date[i,j-1] y MES = 10)
-								date[i,j]<-Aleatorio(MES+1,MES+2)
+								date[i,j]<-Aleatorio(MES+1,MES+4)
 							SiNo
 								si (j=2 y DIA < date[i,j-1] y MES = 10)
-									date[i,j]<-Aleatorio(MES,MES+2)
+									date[i,j]<-Aleatorio(MES,MES+4)
 								FinSi
 							FinSi
 						FinSi
@@ -1858,13 +1904,13 @@ Funcion matrizfecha(date Por Referencia)
 						date[i,j] <- Aleatorio(1,30)
 					FinSi
 					Si (j=2 y DIA < date[i,j-1] y MES < 11)
-						date[i,j] <- aleatorio(MES,MES+2)
+						date[i,j] <- aleatorio(MES,MES+4)
 					SiNo
 						Si (j=2 y MES = 11)
-							date[i,j] <- aleatorio(MES,MES+1)
+							date[i,j] <- aleatorio(MES,MES+3)
 						SiNo
 							si (j=2 y DIA < date[i,j-1] y MES = 11)
-								date[i,j]<-Aleatorio(MES,MES+1)
+								date[i,j]<-Aleatorio(MES,MES+3)
 							SiNo
 								si (j=2 y DIA > date[i,j-1] y MES = 11)
 									date[i,j] <- Aleatorio(1,12)
@@ -1889,10 +1935,10 @@ Funcion matrizfecha(date Por Referencia)
 						date[i,j] <- Aleatorio(1,29)
 					FinSi
 					Si (j=2 y DIA < date[i,j-1])
-						date[i,j] <- Aleatorio(MES,MES+2)
+						date[i,j] <- Aleatorio(MES,MES+4)
 					SiNo
 						si (j=2 y DIA > date[i,j-1])
-							date[i,j] <- Aleatorio(MES+1,MES+3)
+							date[i,j] <- Aleatorio(MES+1,MES+4)
 						FinSi
 					FinSi
 					si j=3 Entonces
@@ -1908,10 +1954,10 @@ Funcion matrizfecha(date Por Referencia)
 							date[i,j] <- Aleatorio(1,28)
 						FinSi
 						Si (j=2 y DIA < date[i,j-1])
-							date[i,j] <- Aleatorio(MES,MES+2)
+							date[i,j] <- Aleatorio(MES,MES+4)
 						SiNo
 							si (j=2 y DIA > date[i,j-1])
-								date[i,j] <- Aleatorio(MES+1,MES+3)
+								date[i,j] <- Aleatorio(MES+1,MES+5)
 							FinSi
 						FinSi
 						si j=3 Entonces
@@ -1929,6 +1975,7 @@ Funcion FECHAYHORA(opcdoc,nombredoctor,date Por Referencia, opciondefecha Por Re
 	Definir DA Como Entero
 	Dimension AUX[10]
 	para i=1 hasta 10 con paso 1 hacer
+		
 		DA<-Aleatorio(1,200)
 		AUX[i]<-DA
 		Escribir i, "). Fecha del turno: ",date[DA,1]," / ", date[DA,2], " / ", date[DA,3]
@@ -1936,7 +1983,9 @@ Funcion FECHAYHORA(opcdoc,nombredoctor,date Por Referencia, opciondefecha Por Re
 	Escribir "INGRESE LA OPCIÓN QUE DESEE: "
 	Repetir
 		leer opciondefecha
-		
+		si opciondefecha <1 o opciondefecha>10
+			Escribir "OPCIÓN INCORRECTA..."
+		FinSi
 	Hasta Que (opciondefecha >= 1 y opciondefecha <= 10) 
 	opciondefecha<-AUX[opciondefecha]
 	Repetir
@@ -1959,6 +2008,7 @@ Funcion FECHAYHORA(opcdoc,nombredoctor,date Por Referencia, opciondefecha Por Re
 		FinPara
 			leer OPC 
 			si (OPC<1 o OPC>16) Entonces
+				esperar 1 segundo
 				Escribir "OPCIÓN INCORRECTA..."
 			FinSi
 	Hasta Que (OPC>=1 y OPC<=16)
@@ -2016,18 +2066,14 @@ Funcion INFORMACIONPERSONAL(Datos Por Referencia, Datosnumericos Por Referencia,
 	Escribir " "
 	Escribir " "
 	Escribir " ------------------------------------------------- " 
-	Escribir "|  				0) Volver 				|"
+	Escribir "|      PRESIONE CUALQUIER TECLA PARA VOLVER       |"
 	Escribir " ------------------------------------------------- "
 	Escribir " "
 	Escribir " "
 	Escribir " "
-	Repetir
-		Leer OPCIONINFORMACIONPERSONAL
-	hasta que (OPCIONINFORMACIONPERSONAL=0)
-	borrar pantalla
-	si (OPCIONINFORMACIONPERSONAL = 0)
-		menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha, ref, Datos_ingresados, Horario, OPC, SEDE)
-	FinSi
+	Esperar Tecla
+	menupaciente(Datos, Datosnumericos, cantidad,opcdoc,nombredoctor,date, opciondefecha, ref, Datos_ingresados, Horario, OPC, SEDE)
+
 FinFuncion
 
 Funcion INFORMACIONDELAAPP(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingresados Por Referencia, opcdoc,nombredoctor,date Por Referencia, opciondefecha, ref, Horario, OPC, SEDE Por Referencia)
@@ -2283,7 +2329,7 @@ Algoritmo MedicApp
 			FinSi
 		Hasta Que (OPC = 0 O OPC = 1 O OPC = 2)
 		
-		segun opc hacer
+		segun OPC hacer
 			
 			0: 
 				PROGRAMA = FALSO
