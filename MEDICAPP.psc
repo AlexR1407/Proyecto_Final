@@ -1,44 +1,74 @@
 
 //------------------------------------------------------------------------------FUNCIONES----------------------------------------------------------
 Funcion LOGO 
-	Borrar Pantalla
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
 	Escribir  " "
-	escribir "                                                    $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
-	Escribir "                                                    $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
-	escribir "                                                    $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
-	escribir "                                                    $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
-	Escribir "                                                    $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
-	Escribir "                                                    $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
-	Escribir "                                                    $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
-	Escribir "                                                    \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
+	escribir "                        $$\      $$\ $$$$$$$$\ $$$$$$$\  $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$$\  $$$$$$$\ "
+	Escribir "                        $$$\    $$$ |$$  _____|$$  __$$\ \_$$  _|$$  __$$\  $$  __$$\ $$  __$$\ $$  __$$\"
+	escribir "                        $$$$\  $$$$ |$$ |      $$ |  $$ |  $$ |  $$ /  \__| $$ /  $$ |$$ |  $$ |$$ |  $$ | 	"
+	escribir "                        $$\$$\$$ $$ |$$$$$\    $$ |  $$ |  $$ |  $$ |       $$$$$$$$ |$$$$$$$  |$$$$$$$  |	"
+	Escribir "                        $$ \$$$  $$ |$$  __|   $$ |  $$ |  $$ |  $$ |       $$  __$$ |$$  ____/ $$  ____/  	"
+	Escribir "                        $$ |\$  /$$ |$$ |      $$ |  $$ |  $$ |  $$ |  $$\  $$ |  $$ |$$ |      $$ |     	"
+	Escribir "                        $$ | \_/ $$ |$$$$$$$$\ $$$$$$$  |$$$$$$\ \$$$$$$  | $$ |  $$ |$$ |      $$ |  		"
+	Escribir "                        \__|     \__|\________|\_______/ \______| \______/  \__|  \__|\__|      \__|		"
 	Escribir  " "
 	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Escribir  " "
-	Esperar Tecla
-	Borrar Pantalla
+	
+FinFuncion
+Funcion esculapio
+	
+	Definir i,j Como Entero
+	Definir esc como texto
+	Dimension esc[30]
+	
+	esc[1]="                                                                   @@"       
+	esc[2]="                                                                   @@ ..::."   
+	esc[3]="                                                               .=*#@@@@@@@@@>"
+	esc[4]="                                                            :%@%*  @@ ··::·" 
+	esc[5]="                                                            @@*    @@"      
+	esc[6]="                                                            =@@*++%@@#*+-"   
+	esc[7]="                                                               ****@@  -@@:" 
+	esc[8]="                                                                   @@  -@@-" 
+	esc[9]="                                                               :*%@@@@%#+"  
+	esc[10]="                                                             #@=  @@_"      
+	esc[11]="                                                             %@+::@@=:."    
+	esc[12]="                                                                **@@ :#%."  
+	esc[13]="                                                                  @@ :#%"   
+	esc[14]="                                                                 =@@%**"    
+	esc[15]="                                                               =#=%@" 
+	
+	esc[16]="                                                                  @@.     "
+	esc[17]="                                                            .::..#@@:     "
+	esc[18]="                                                           <@@@@@@@@@%*=. "
+	esc[19]="                                                            ·::··-@@  =%@+"
+	esc[20]="                                                                 =@@   -@@"
+	esc[21]="                                                             -##*%@@%#%%*·"
+	esc[22]="                                                            =@#   @@      "
+	esc[23]="                                                             *@#*#@@=:_    "
+	esc[24]="                                                                  @@  #@=  "
+	esc[25]="                                                                  @@   #@: "
+	esc[26]="                                                              *#*#@@%%#-  "
+	esc[27]="                                                             :@=  @@      "
+	esc[28]="                                                              ·+#%@@*      "
+	esc[29]="	                                                              -@@=** "
+	
+	Para j=1 Hasta 3
+		Borrar Pantalla
+		Logo
+		Para i=1 Hasta 15
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+		Borrar Pantalla
+		Logo
+		Para i=16 Hasta 29
+			Mostrar esc[i]
+		FinPara
+		Esperar 1 Segundos
+	FinPara
+	
 FinFuncion
 
 Funcion PRIMERMENU(Datos Por Referencia, Datosnumericos Por Referencia, cantidad Por Referencia, Datos_ingredos Por Referencia,nombre Por Referencia, apellido Por Referencia, cedula_medica Por Referencia, limite Por Valor, especialidades Por Referencia, opcdoc,nombredoctor Por Referencia,date Por Referencia, opciondefecha Por Referencia, ref, SEDE Por Referencia)
@@ -2242,7 +2272,7 @@ Algoritmo MedicApp
 	Dimension Datos[limite,4], Datosnumericos[limite,2]
 	Definir Datos como texto
 	Definir Datosnumericos como entero
-	LOGO()
+	esculapio()
 	REPETIR
 		//
 		Repetir
@@ -2267,5 +2297,5 @@ Algoritmo MedicApp
 		FinSegun
 		
 	Hasta Que (PROGRAMA = FALSO)
-	LOGO()
+	esculapio()
 FinAlgoritmo
