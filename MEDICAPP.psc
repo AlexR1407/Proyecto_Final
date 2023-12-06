@@ -156,10 +156,10 @@ Funcion CREARUSUARIO(limite Por valor, Datos_ingresados Por Referencia, Datos Po
 			long<-longitud(Datos[cantidad,DATO])
 			Escribir "---------------------------------------------------------------------------"
 		hasta que (long >= 8)
-		
+		Escribir " "
 		repetir
 			Borrar Pantalla
-			Escribir " "
+			
 			Escribir "---------------------------------------------------------------------------"
 			Escribir sin saltar "Ingrese su número de DNI: "
 			Leer Datosnumericos[cantidad,DATONUMERICO]
@@ -279,9 +279,9 @@ Funcion iniciarsesion(Datos Por Referencia, Datosnumericos Por Referencia, canti
 								i=1
 								intentos=-1
 							SiNo
+								intentos=intentos-1
 								Escribir "¡ERROR! CONTRASEÑA ERRONEA..."
 								Escribir "intentos: ", intentos
-								intentos=intentos-1
 								Esperar 3 Segundos
 								Si (intentos = 0) 
 									Borrar Pantalla
@@ -626,8 +626,8 @@ Funcion NUEVOTURNO(Datos Por Referencia, Datosnumericos Por Referencia, cantidad
 		Limpiar Pantalla
 		Escribir "Seleccione una Sede: "
 		Escribir "------------------------------------"
-		Escribir " 	  1. SEDE AV. CORRIENTES		   "
-		Escribir " 		Av.Corrientes 1100         "
+		Escribir " 	   1. SEDE CORRIENTES		   "
+		Escribir " 	   Av.Corrientes 1100         "
 		Escribir "------------------------------------"
 		Escribir " "
 		Escribir "------------------------------------"
@@ -656,7 +656,7 @@ Funcion CORRIENTES(DIA Por Valor,MES Por Valor ,AÑO Por Valor, date Por Referenc
 	Repetir
 		Borrar Pantalla
 		Escribir "------------------------------------------------------"
-		Escribir "			   SELECCIONE UNA especialidades"
+		Escribir "			   SELECCIONE UNA ESPECIALIDAD"
 		Escribir "------------------------------------------------------"
 		Escribir " "
 		Escribir " "
@@ -712,7 +712,7 @@ Funcion TRIUNVIRATO(DIA Por Valor,MES Por Valor,AÑO Por Valor, date Por Referenc
 	Repetir
 		Borrar Pantalla
 		Escribir "------------------------------------------------------"
-		Escribir "			   SELECCIONE UNA especialidades"
+		Escribir "			   SELECCIONE UNA ESPECIALIDAD"
 		Escribir "------------------------------------------------------"
 		Escribir " "
 		Escribir " "
@@ -957,7 +957,7 @@ Funcion GENERARTURNOS(OPCIONespecialidades Por Valor , SEDE Por Valor, date Por 
 				SiNo
 					si opcdoc=2
 						ref=0
-						nombredoctor<- "Carlos García"
+						nombredoctor<- "Lucía García"
 						FECHAYHORA(opcdoc,nombredoctor,date, opciondefecha, ref, Datos , Datosnumericos, cantidad, Datos_ingresados, cantidadfecha,horario, OPC, SEDE)
 						
 						Escribir "TURNO REALIZADO CON EXITO..."
@@ -2056,9 +2056,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2077,9 +2077,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2098,9 +2098,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2119,9 +2119,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2140,9 +2140,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2161,9 +2161,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2182,9 +2182,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "DOCTOR/a: ",nombredoctor
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
@@ -2203,9 +2203,9 @@ Funcion TURNO(opcdoc,nombredoctor, date Por Referencia, opciondefecha Por Refere
 		Escribir "Paciente: ",Datos[cantidad,1], " ",Datos[cantidad,2] 
 		Escribir "Fecha del turno: ", date[opciondefecha,1]," / ", date[opciondefecha,2], " / ", date[opciondefecha,3] 
 		si (Horario[OPC,2] < 10) Entonces
-			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":0", Horario[OPC,2], "hs"
 		SiNo
-			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2]
+			Escribir "Horario: ", Horario[OPC,1], ":", Horario[OPC,2], "hs"
 		FinSi
 		Si (SEDE=1)
 			Escribir "SEDE: AV. CORRIENTES - Av.Corrientes 1100 "
